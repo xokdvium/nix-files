@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-USE_NH=false # Use nh (https://github.com/viperML/nh) to switch
+# NixOS and Home Manager switch utilties with bootstrapping capability based on:
+#   - https://github.com/viperML/nh
+
+set -euo pipefail
+
+# Use nh to switch
+USE_NH=false
 
 usage() {
   echo "Usage: $(basename "$0") [-n] [-m PROFILE] [-s PROFILE]"

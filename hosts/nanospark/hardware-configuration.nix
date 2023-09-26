@@ -8,7 +8,7 @@
   modulesPath,
   ...
 }: {
-  imports = [];
+  imports = [./zfs.nix];
 
   boot.initrd.availableKernelModules = ["ata_piix" "ohci_pci" "ehci_pci" "ahci" "sd_mod" "sr_mod"];
   boot.initrd.kernelModules = [];
@@ -16,16 +16,48 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/b94cc863-aa34-474c-967f-4e195e8848da";
-    fsType = "ext4";
+    device = "rpool/nixos";
+    fsType = "zfs";
+  };
+
+  fileSystems."/home" = {
+    device = "rpool/nixos/home";
+    fsType = "zfs";
+  };
+
+  fileSystems."/nix" = {
+    device = "rpool/nixos/nix";
+    fsType = "zfs";
+  };
+
+  fileSystems."/root" = {
+    device = "rpool/nixos/root";
+    fsType = "zfs";
+  };
+
+  fileSystems."/usr" = {
+    device = "rpool/nixos/usr";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var" = {
+    device = "rpool/nixos/var";
+    fsType = "zfs";
+  };
+
+  fileSystems."/persistent" = {
+    device = "rpool/nixos/persistent";
+    fsType = "zfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/9BB0-532A";
+    device = "/dev/disk/by-label/boot";
     fsType = "vfat";
   };
 
-  swapDevices = [];
+  swapDevices = [
+    {device = "/dev/disk/by-label/swap";}
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

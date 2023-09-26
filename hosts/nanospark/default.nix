@@ -23,8 +23,9 @@
     };
   };
 
-  networking = {
+  networking = rec {
     hostName = "nanospark";
+    hostId = builtins.substring 0 8 (builtins.hashString "sha512" hostName);
     networkmanager.enable = true;
   };
 

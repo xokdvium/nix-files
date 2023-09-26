@@ -14,5 +14,7 @@
     inputs.nh.packages.${system}.default
 
     bitwarden-cli # Password manager
+    ascii-image-converter # Generate ascii art from images
+    librsvg # SVG renderer
   ];
 }
