@@ -1,6 +1,12 @@
 {pkgs, ...}: {
   # https://github.com/rayandrew/nix-config
-  home.packages = with pkgs; [nvchad alejandra ripgrep];
+  home.packages = with pkgs; [
+    nvchad
+    alejandra
+    ripgrep
+    nodejs_20
+    unzip
+  ];
 
   programs.neovim = {
     enable = true;

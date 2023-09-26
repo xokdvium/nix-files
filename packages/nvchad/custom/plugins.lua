@@ -77,6 +77,16 @@ local plugins = {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   },
+
+  {
+    "mcauley-penney/tidy.nvim",
+    config = {
+      filetype_exclude = { "markdown", "diff" },
+    },
+    init = function()
+      vim.keymap.set("n", "<leader>te", require("tidy").toggle, {})
+    end,
+  },
 }
 
 return plugins

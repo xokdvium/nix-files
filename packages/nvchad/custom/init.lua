@@ -13,9 +13,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- ruler at column 80
-vim.wo.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 
 -- tab config stuff
-vim.o.expandtab = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
+-- how invisible characters
+vim.opt.list = true
+vim.opt.listchars = {
+  extends = "→",
+  precedes = "←",
+  eol = "↵",
+  nbsp = "+",
+  trail = "·",
+}

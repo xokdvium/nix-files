@@ -8,6 +8,12 @@
 in {
   programs.kitty = {
     enable = true;
+
+    font = {
+      name = config.fontProfiles.monospace.family;
+      size = 12;
+    };
+
     settings = {
       foreground = "#${colors.base05}";
       background = "#${colors.base00}";
