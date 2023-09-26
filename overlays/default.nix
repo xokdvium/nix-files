@@ -1,4 +1,4 @@
 # This file defines overlays
-{ inputs, ... }: {
-  additions = final: prev: import ../packages { pkgs = final; };
+{inputs, ...}: {
+  additions = final: prev: import ../packages {pkgs = final;};
 }

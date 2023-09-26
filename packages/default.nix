@@ -1,1 +1,1 @@
-{ pkgs }: rec { nvchad = pkgs.callPackage ./nvchad { inherit (pkgs) ; }; }
+{pkgs}: rec {nvchad = pkgs.callPackage ./nvchad {inherit (pkgs);};}
