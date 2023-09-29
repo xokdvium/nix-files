@@ -6,14 +6,16 @@
   outputs,
   ...
 }: let
-  inherit (inputs) nix-colors;
+  inherit (inputs) nix-colors nix-index-database;
   inherit (nix-colors) colorSchemes;
   inherit (nix-colors.lib-contrib {inherit pkgs;}) colorschemeFromPicture;
 in {
   imports =
     [
       ../features/common.nix
+
       nix-colors.homeManagerModule
+      nix-index-database.hmModules.nix-index
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -38,6 +40,7 @@ in {
   programs = {
     home-manager.enable = true;
     git.enable = true;
+    nix-index-database.comma.enable = true;
   };
 
   systemd.user.startServices = "sd-switch";
