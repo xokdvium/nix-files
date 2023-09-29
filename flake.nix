@@ -14,7 +14,12 @@
     # Cool cli wrapper for flakes
     nh = {
       url = "github:viperML/nh";
-      inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
