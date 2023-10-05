@@ -23,16 +23,23 @@ local sources = {
 
   -- c/c++
   formatting.clang_format,
+  formatting.cmake_format,
+  diagnostics.cmake_lint,
 
   -- lua
   formatting.stylua,
 
   -- nix
   formatting.alejandra,
+  diagnostics.deadnix,
+  diagnostics.statix,
 
   -- markdown
   formatting.yamlfix,
   formatting.taplo,
+
+  -- python
+  formatting.autopep8,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

@@ -9,11 +9,19 @@ local servers = {
   -- bash
   "bashls",
 
+  -- python
+  "jedi_language_server",
+
   -- lua stuff
   "lua_ls",
 
   -- c/c++
   "clangd",
+  "cmake",
+
+  -- nix
+  "statix",
+  "nil_ls",
 }
 
 for _, lsp in ipairs(servers) do

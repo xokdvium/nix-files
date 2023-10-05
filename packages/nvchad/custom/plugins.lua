@@ -50,25 +50,7 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        -- lua stuff
-        "lua-language-server",
-        "stylua",
-
-        -- shell
-        "bash-language-server",
-        "beautysh",
-        "shellcheck",
-
-        -- c/c++
-        "clangd",
-        "clang-format",
-
-        -- yaml
-        "yaml-language-server",
-        "yamlfix",
-
-        -- toml
-        "taplo",
+        -- methinks that this stuff should be manager by home-manager
       },
     },
   },

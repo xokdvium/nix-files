@@ -6,7 +6,7 @@
   outputs,
   ...
 }: let
-  inherit (inputs) nix-colors nix-index-database;
+  inherit (inputs) nix-colors;
   inherit (nix-colors) colorSchemes;
   inherit (nix-colors.lib-contrib {inherit pkgs;}) colorschemeFromPicture;
 in {
@@ -15,7 +15,6 @@ in {
       ../features/common.nix
 
       nix-colors.homeManagerModule
-      nix-index-database.hmModules.nix-index
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -27,20 +26,6 @@ in {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };
-  };
-
-  nix = {
-    package = lib.mkDefault pkgs.nix;
-    settings = {
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
-      warn-dirty = false;
-    };
-  };
-
-  programs = {
-    home-manager.enable = true;
-    git.enable = true;
-    nix-index-database.comma.enable = true;
   };
 
   systemd.user.startServices = "sd-switch";
