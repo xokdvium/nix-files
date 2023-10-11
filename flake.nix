@@ -22,47 +22,59 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    flake-utils,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    inherit (nixpkgs) lib;
+
+    hostConfigurations = {
+      nixosConfigurations = {
+        nanospark = nixpkgs.lib.nixosSystem {
+          modules = [./hosts/nanospark];
+          specialArgs = {inherit inputs outputs;};
+        };
+      };
+    };
+
+    homeManagerConfigurations = {
+      homeConfigurations = {
+        "sergeiz@nebulinx" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {inherit inputs outputs;};
+          modules = [./home/sergeiz/nebulinx.nix];
+        };
+
+        "xokdvium@nanospark" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {inherit inputs outputs;};
+          modules = [./home/xokdvium/nanospark.nix];
+        };
+      };
+    };
+
     systems = ["x86_64-linux" "aarch64-linux"];
-    forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
-    pkgsFor = nixpkgs.legacyPackages;
-  in {
-    homeManagerModules = import ./modules/home-manager;
-
-    overlays = import ./overlays {inherit inputs;};
-
-    packages = forEachSystem (pkgs: import ./packages {inherit pkgs;});
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
-
-    nixosConfigurations = {
-      nanospark = lib.nixosSystem {
-        modules = [./hosts/nanospark];
-        specialArgs = {inherit inputs outputs;};
-      };
-    };
-
-    homeConfigurations = {
-      "sergeiz@nebulinx" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home/sergeiz/nebulinx.nix];
-      };
-
-      "xokdvium@nanospark" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home/xokdvium/nanospark.nix];
-      };
-    };
-  };
+    attrsForEachSystem = flake-utils.lib.eachSystem systems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      packages = import ./packages {inherit pkgs;};
+      devShells = import ./shell.nix {inherit pkgs;};
+      formatter = pkgs.alejandra;
+    });
+  in
+    {
+      homeManagerModules = import ./modules/home-manager;
+      overlays = import ./overlays {inherit inputs;};
+      lib = import ./lib;
+    }
+    // attrsForEachSystem
+    // hostConfigurations
+    // homeManagerConfigurations;
 }
