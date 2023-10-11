@@ -7,7 +7,6 @@
   ];
 
   home.packages = with pkgs; [
-    bat
     thefuck
     navi
   ];
@@ -20,9 +19,6 @@
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
 
-    shellAliases = {
-    };
-
     plugins = [
       {
         name = "powerlevel10k-config";
@@ -30,6 +26,7 @@
         file = ".p10k.zsh";
       }
     ];
+
     zplug = {
       enable = true;
       plugins = [
@@ -40,9 +37,6 @@
         {
           name = "plugins/git";
           tags = ["from:oh-my-zsh"];
-        }
-        {
-          name = "fdellwing/zsh-bat";
         }
       ];
     };

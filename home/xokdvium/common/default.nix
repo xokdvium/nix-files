@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ../../global
+    ../../features/common.nix
   ];
 
   home = {

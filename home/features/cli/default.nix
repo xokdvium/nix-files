@@ -10,6 +10,7 @@ in {
     nix-index-database.hmModules.nix-index
 
     ./autojump
+    ./bat
     ./eza
     ./fzf
     ./git
@@ -30,6 +31,7 @@ in {
     qrcp # Transfer files to a phone via Wi-Fi
     hyperfine # Benchmarking utility
     ncdu # NCurses based disk usage
+    csvkit # Working with CSV in command line
   ];
 
   programs = {

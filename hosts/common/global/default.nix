@@ -6,6 +6,7 @@
   imports = [
     # Home Manager module
     inputs.home-manager.nixosModules.home-manager
+    inputs.stylix.nixosModules.stylix
 
     ./locale
     ./nix
