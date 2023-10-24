@@ -46,8 +46,6 @@
   git,
   gnugrep,
   gnupg,
-  haskell,
-  haskellPackages,
   newt,
   parted,
   symlinkJoin,

@@ -90,6 +90,11 @@
           modules = [./hosts/nanospark];
           specialArgs = {inherit inputs outputs;};
         };
+
+        nebulinx = lib.mkHostSystem {
+          inherit users;
+          host = hosts.nebulinx;
+        };
       };
 
       homeConfigurations = {

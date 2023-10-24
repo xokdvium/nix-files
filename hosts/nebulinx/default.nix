@@ -1,12 +1,10 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+_: {
   imports = [
     ../common
+    ../features/dewm/gnome.nix
+    ../features/crypto.nix
     ./hardware-configuration.nix
+    ./zfs.nix
   ];
 
   boot = {
@@ -15,4 +13,6 @@
       efi.canTouchEfiVariables = true;
     };
   };
+
+  home-manager.verbose = true;
 }
