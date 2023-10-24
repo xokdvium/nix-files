@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   services = {
     pcscd.enable = true;
     udev.packages = with pkgs; [

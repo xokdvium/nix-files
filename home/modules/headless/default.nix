@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+_: {
   imports = [
     # Headless systems still need to look pretty
     ../styling
@@ -20,6 +16,4 @@
     ./wormhole.nix
     ./zsh.nix
   ];
-
-  systemd.user.startServices = "sd-switch";
 }

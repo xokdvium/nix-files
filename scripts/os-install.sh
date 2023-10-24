@@ -149,17 +149,15 @@ format_disk() {
   # - 1: Root ZFS filesystem
   # - 2: Swap with configurable size
   # - 3: EFI System Partition
-  parted -s "${DISK}" -- mklabel gpt
-
-  parted -s "${DISK}" -- mkpart primary 512MiB -"${SWAPSIZE}"
-  parted -s "${DISK}" -- mkpart primary linux-swap -"${SWAPSIZE}" 100%
-  parted -s "${DISK}" -- mkpart ESP fat32 1MiB 512MiB
-
-  parted -s "${DISK}" -- name 1 "${PART_ROOT}"
-  parted -s "${DISK}" -- name 2 "${PART_SWAP}"
-  parted -s "${DISK}" -- name 3 "${PART_EFI}"
-
-  parted -s "${DISK}" -- set 3 esp on
+  parted -s "${DISK}" -- \
+    mklabel gpt \
+    mkpart primary 512MiB -"${SWAPSIZE}" \
+    mkpart primary linux-swap -"${SWAPSIZE}" 100% \
+    mount -F zfs tank/home/eschrock /mnt \
+    name 1 "${PART_ROOT}" \
+    name 2 "${PART_SWAP}" \
+    name 3 "${PART_EFI}" \
+    set 3 esp on
 
   # TODO: Maybe there's a better way than a hardcoded delay to achive this?
   # Wait for a bit to let udev catch up and generate /dev/disk/by-partlabel.
@@ -175,43 +173,66 @@ format_disk() {
     -O relatime=on \
     -O xattr=sa \
     -O mountpoint=none \
+    -O canmount=off \
     -O checksum=edonr \
     -R /mnt \
     -f \
     ${ZFS_ROOT} /dev/disk/by-partlabel/${PART_ROOT}*
 
   # Create the root dataset
-  zfs create -o mountpoint=/ ${ZFS_ROOT}/${ZFS_ROOT_VOL}
+  zfs create \
+    -o mountpoint=none \
+    -o canmount=off \
+    ${ZFS_ROOT}/${ZFS_ROOT_VOL}
 
   # Create datasets (subvolumes) in the root dataset
-  zfs create ${ZFS_ROOT}/${ZFS_ROOT_VOL}/home
-  zfs create -o atime=off ${ZFS_ROOT}/${ZFS_ROOT_VOL}/nix
-  zfs create ${ZFS_ROOT}/${ZFS_ROOT_VOL}/root
-  zfs create ${ZFS_ROOT}/${ZFS_ROOT_VOL}/usr
-  zfs create ${ZFS_ROOT}/${ZFS_ROOT_VOL}/var
+  zfs create \
+    -o mountpoint=legacy \
+    ${ZFS_ROOT}/${ZFS_ROOT_VOL}/home
+
+  zfs create \
+    -o atime=off  \
+    -o mountpoint=legacy \
+    ${ZFS_ROOT}/${ZFS_ROOT_VOL}/nix
+
+  zfs create \
+    -o mountpoint=legacy \
+    ${ZFS_ROOT}/${ZFS_ROOT_VOL}/root
 
   if [[ "${IMPERMANENCE}" = true ]]; then
-    zfs create ${ZFS_ROOT}/${ZFS_ROOT_VOL}/persistent
-    for i in "" /usr /var
-    do
-      zfs snapshot ${ZFS_ROOT}/${ZFS_ROOT_VOL}${i}@${EMPTYSNAP}
-    done
+    zfs create \
+      -o mountpoint=legacy \
+      ${ZFS_ROOT}/${ZFS_ROOT_VOL}/persistent
   fi
 
   mkswap /dev/disk/by-partlabel/${PART_SWAP} -L swap
   mkfs.fat -F 32 -n boot /dev/disk/by-partlabel/${PART_EFI}
 }
 
-wipe_filesystem
-format_disk
+mount_partitions() {
+  mount -t zfs ${ZFS_ROOT}/${ZFS_ROOT_VOL}/root /mnt
+
+  for i in /home /nix
+  do
+    mkdir -p /mnt${i}
+    mount -t zfs ${ZFS_ROOT}/${ZFS_ROOT_VOL}${i} /mnt${i}
+  done
+
+  mkdir -p /mnt/boot
+  mount /dev/disk/by-partlabel/${PART_EFI} /mnt/boot
+  swapon /dev/disk/by-partlabel/${PART_SWAP}
+
+  if [[ "${IMPERMANENCE}" = true ]]; then
+    mkdir -p /mnt/persistent
+    mount -t zfs ${ZFS_ROOT}/${ZFS_ROOT_VOL}/persistent /mnt/persistent
+  fi
+}
 
 set -x
 
-# Installation
-mkdir -p /mnt/boot
-mount /dev/disk/by-partlabel/${PART_EFI} /mnt/boot
-swapon /dev/disk/by-partlabel/${PART_SWAP}
-
+wipe_filesystem
+format_disk
+mount_partitions
 nixos-generate-config --root /mnt
 
 sed -i "s/imports\s*=\s*\[.*\];/imports = [ \.\/zfs\.nix ];/g" \

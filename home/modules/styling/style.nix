@@ -60,7 +60,7 @@ in {
   };
 
   stylix.opacity = let
-    alpha = 0.75;
+    alpha = 0.95;
   in {
     terminal = alpha;
     popups = alpha;

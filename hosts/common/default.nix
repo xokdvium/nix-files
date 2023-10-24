@@ -7,6 +7,8 @@ in {
     ./stylix.nix
     ./users.nix
     ./yubikey.nix
+    ./hostname.nix
+    ./fixes.nix
   ];
 
   nixpkgs.hostPlatform = system;

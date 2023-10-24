@@ -1,5 +1,6 @@
-{lib, ...}: {
+_: {
   imports = [
-    ../common.nix
+    ../common
+    ../features/crypto.nix
   ];
 }

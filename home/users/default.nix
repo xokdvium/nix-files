@@ -13,20 +13,12 @@ in {
     homeModules = [homeModule];
   });
 
-  sergeiz = mkUser (let
-    homeModule = _: {
-      stylix = {
-        autoEnable = false;
-        targets = {
-          kde.enable = false;
-          gtk.enable = false;
-        };
-      };
+  sergeiz =
+    mkUser
+    {
+      name = "sergeiz";
+      groups = ["wheel"];
+      optionalGroups = ["docker" "networkmanager"];
+      homeModules = [];
     };
-  in {
-    name = "sergeiz";
-    groups = ["wheel"];
-    optionalGroups = ["docker" "networkmanager"];
-    homeModules = [homeModule];
-  });
 }

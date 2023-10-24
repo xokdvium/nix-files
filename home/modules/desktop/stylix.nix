@@ -1,3 +1,3 @@
 {lib, ...}: {
-  stylix.autoEnable = lib.mkForce true;
+  stylix.autoEnable = lib.mkOverride 75 true;
 }
