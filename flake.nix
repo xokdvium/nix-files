@@ -31,6 +31,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = {
@@ -86,9 +93,9 @@
       overlays = import ./overlays {inherit inputs outputs;};
 
       nixosConfigurations = {
-        nanospark = lib.nixosSystem {
-          modules = [./hosts/nanospark];
-          specialArgs = {inherit inputs outputs;};
+        nanospark = lib.mkHostSystem {
+          inherit users;
+          host = hosts.nanospark;
         };
 
         nebulinx = lib.mkHostSystem {

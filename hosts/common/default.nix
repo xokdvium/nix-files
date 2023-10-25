@@ -6,7 +6,6 @@ in {
     ./nix.nix
     ./stylix.nix
     ./users.nix
-    ./yubikey.nix
     ./hostname.nix
     ./fixes.nix
   ];

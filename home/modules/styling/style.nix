@@ -42,7 +42,7 @@ in {
       emoji = mkStylixFont emoji;
 
       sizes = let
-        fontSize = 10;
+        fontSize = 11;
       in {
         terminal = lib.mkDefault fontSize;
         desktop = lib.mkDefault fontSize;
@@ -56,7 +56,7 @@ in {
 
     base16Scheme =
       lib.mkDefault
-      "${pkgs.base16-schemes}/share/themes/twilight.yaml";
+      "${pkgs.base16-schemes}/share/themes/dracula.yaml";
   };
 
   stylix.opacity = let

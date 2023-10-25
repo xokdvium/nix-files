@@ -10,5 +10,6 @@
     cryptsetup
     paperkey
     pinentry-curses
+    age
   ];
 }

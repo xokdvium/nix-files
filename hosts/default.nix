@@ -8,21 +8,8 @@
     ];
 
     homeModules = [
-      ../home/modules/desktop
-      ../home/modules/desktop/gnome/default.nix
-    ];
-  };
-
-  nanospark = lib.mkHostInfo {
-    system = "x86_64-linux";
-    hostname = "nanospark";
-
-    nixosModules = [
-      ./nanospark
-    ];
-
-    homeModules = [
-      ../home/modules/headless
+      ../home/modules/desktop/gnome
+      ./nebulinx/home.nix
     ];
   };
 

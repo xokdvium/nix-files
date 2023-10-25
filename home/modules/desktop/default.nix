@@ -4,6 +4,7 @@
     ../crypto
 
     ./alacritty.nix
+    ./firefox.nix
     ./stylix.nix
     ./zathura.nix
   ];

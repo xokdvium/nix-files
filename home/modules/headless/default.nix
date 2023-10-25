@@ -11,6 +11,7 @@ _: {
     ./eza.nix
     ./fzf.nix
     ./git.nix
+    ./impermanence.nix
     ./neovim.nix
     ./rbw.nix
     ./wormhole.nix

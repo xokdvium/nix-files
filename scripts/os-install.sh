@@ -78,7 +78,7 @@ PART_ROOT="rpool"
 
 ZFS_ROOT="rpool"
 ZFS_ROOT_VOL="nixos"
-EMPTYSNAP="sysinit"
+EMPTYSNAP="blank"
 IMPERMANENCE=true
 
 HWCFG="/mnt/etc/nixos/hardware-configuration.nix"
@@ -102,7 +102,7 @@ done
 print_banner
 
 read -rp "Choose a drive to install the system on (e.g. /dev/sda): " DISK
-read -rp "Please specify Swap size (e.g. 2GiB): " SWAPSIZE
+read -rp "Please specify Swap size (e.g. 16384) in MiB: " SWAPSIZE
 
 # TODO: Improve this selection
 if [ -n "${HOSTNAME}" ]; then
@@ -149,11 +149,16 @@ format_disk() {
   # - 1: Root ZFS filesystem
   # - 2: Swap with configurable size
   # - 3: EFI System Partition
-  parted -s "${DISK}" -- \
+  EFI_START=1
+  SWAP_START=512
+  MAIN_START=$((SWAP_START + SWAPSIZE))
+  MAIN_END="100%"
+  parted -a optimal -s "${DISK}" -- \
+    unit MiB \
     mklabel gpt \
-    mkpart primary 512MiB -"${SWAPSIZE}" \
-    mkpart primary linux-swap -"${SWAPSIZE}" 100% \
-    mount -F zfs tank/home/eschrock /mnt \
+    mkpart primary ${MAIN_START} ${MAIN_END} \
+    mkpart primary linux-swap ${SWAP_START} ${MAIN_START} \
+    mkpart ESP fat32 ${EFI_START} ${SWAP_START} \
     name 1 "${PART_ROOT}" \
     name 2 "${PART_SWAP}" \
     name 3 "${PART_EFI}" \
@@ -187,10 +192,6 @@ format_disk() {
 
   # Create datasets (subvolumes) in the root dataset
   zfs create \
-    -o mountpoint=legacy \
-    ${ZFS_ROOT}/${ZFS_ROOT_VOL}/home
-
-  zfs create \
     -o atime=off  \
     -o mountpoint=legacy \
     ${ZFS_ROOT}/${ZFS_ROOT_VOL}/nix
@@ -203,6 +204,8 @@ format_disk() {
     zfs create \
       -o mountpoint=legacy \
       ${ZFS_ROOT}/${ZFS_ROOT_VOL}/persistent
+
+    zfs snapshot ${ZFS_ROOT}/${ZFS_ROOT_VOL}/root@${EMPTYSNAP}
   fi
 
   mkswap /dev/disk/by-partlabel/${PART_SWAP} -L swap
@@ -211,13 +214,8 @@ format_disk() {
 
 mount_partitions() {
   mount -t zfs ${ZFS_ROOT}/${ZFS_ROOT_VOL}/root /mnt
-
-  for i in /home /nix
-  do
-    mkdir -p /mnt${i}
-    mount -t zfs ${ZFS_ROOT}/${ZFS_ROOT_VOL}${i} /mnt${i}
-  done
-
+  mkdir -p /mnt/nix
+  mount -t zfs ${ZFS_ROOT}/${ZFS_ROOT_VOL}/nix /mnt/nix
   mkdir -p /mnt/boot
   mount /dev/disk/by-partlabel/${PART_EFI} /mnt/boot
   swapon /dev/disk/by-partlabel/${PART_SWAP}
@@ -239,13 +237,16 @@ sed -i "s/imports\s*=\s*\[.*\];/imports = [ \.\/zfs\.nix ];/g" \
   ${HWCFG}
 
 tee -a ${ZFSCFG} <<EOF
-{ config, lib, pkgs, ... }:
-{
+{ config,
+  lib,
+  pkgs,
+  ...
+}: {
   networking.hostId = builtins.substring 0 8 (builtins.hashString "sha512" "${HOSTNAME}");
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = ["zfs"];
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  boot.kernelParams = [ "zfs.zfs_arc_max=${ZFS_ARCSIZE}" ];
-  boot.zfs.devNodes = "/dev/disk/by-partlabel";
+  boot.kernelParams = ["zfs.zfs_arc_max=${ZFS_ARCSIZE}"];
+  boot.zfs.devNodes = "/dev/disk/by-partuuid";
   services.zfs.trim.enable = true;
   services.zfs.autoScrub.enable = true;
 }

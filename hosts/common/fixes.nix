@@ -1,6 +1,5 @@
 # Here's my growing collection of various workarounds that cost my valueable
 # time and sanity
-
 _: {
   # Make home-manager not blow up during nixos-rebuild switch with systemd
   # errors
