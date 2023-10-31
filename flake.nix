@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # Manage my user configurations. Preferable to NixOS modules
     # because I might still use other distros
@@ -29,7 +31,25 @@
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
@@ -79,6 +99,11 @@
       };
 
       formatter = pkgs.alejandra;
+
+      devShells = rec {
+        bootstrap = import ./shell.nix {inherit pkgs;};
+        default = bootstrap;
+      };
     })
     // {
       homeManagerModules = import ./modules/home-manager;
@@ -86,14 +111,19 @@
       overlays = import ./overlays {inherit inputs outputs;};
 
       nixosConfigurations = {
-        nanospark = lib.nixosSystem {
-          modules = [./hosts/nanospark];
-          specialArgs = {inherit inputs outputs;};
+        nanospark = lib.mkHostSystem {
+          inherit users;
+          host = hosts.nanospark;
         };
 
         nebulinx = lib.mkHostSystem {
           inherit users;
           host = hosts.nebulinx;
+        };
+
+        vivobook = lib.mkHostSystem {
+          inherit users;
+          host = hosts.vivobook;
         };
       };
 
@@ -108,5 +138,7 @@
           host = hosts.nanospark;
         };
       };
+
+      lib = import ./lib {inherit inputs outputs;};
     };
 }

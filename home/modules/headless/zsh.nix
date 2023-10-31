@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   home.packages = with pkgs; [
@@ -21,5 +22,14 @@
       plugins = ["git" "thefuck"];
       theme = "robbyrussell";
     };
+
+    # FIXME: Hacky workaround to make Gnome accept session variables
+    envExtra = ''
+      EDITOR=${config.programs.helix.package}/bin/hx
+    '';
+  };
+
+  home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.persistence.enable {
+    files = [".zsh_history"];
   };
 }

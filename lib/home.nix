@@ -51,4 +51,10 @@
 
     homeModules = homeModules ++ builtins.attrValues outputs.homeManagerModules;
   };
+
+  genUsers = users: f: (
+    inputs.nixpkgs.lib.genAttrs
+    (builtins.attrNames users)
+    (name: f (builtins.getAttr name users))
+  );
 }

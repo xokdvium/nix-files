@@ -16,7 +16,11 @@
     };
 
     targets = {
-      grub.useImage = lib.mkDefault true;
+      grub = {
+        useImage = lib.mkDefault false;
+        enable = lib.mkDefault false;
+      };
+
       plymouth.blackBackground = lib.mkDefault true;
     };
   };

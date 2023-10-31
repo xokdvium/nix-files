@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{lib, ...}: {
+  imports = [
+    ./common
+  ];
+
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;

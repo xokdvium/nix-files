@@ -17,6 +17,7 @@ in rec {
     mkHomeDir
     mkHomeConfiguration
     mkUser
+    genUsers
     ;
 
   inherit

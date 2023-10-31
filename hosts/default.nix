@@ -2,27 +2,32 @@
   nebulinx = lib.mkHostInfo {
     system = "x86_64-linux";
     hostname = "nebulinx";
+    disk = "/dev/disk/by-id/ata-WDC_WD10JUCT-63CYNY0_WD-WXK1E1586NVZ";
+    secretsFile = ./nebulinx/secrets.yaml;
 
     nixosModules = [
       ./nebulinx
     ];
 
     homeModules = [
-      ../home/modules/desktop
-      ../home/modules/desktop/gnome/default.nix
+      ../home/modules/desktop/gnome
+      ./nebulinx/home.nix
     ];
   };
 
-  nanospark = lib.mkHostInfo {
+  vivobook = lib.mkHostInfo {
     system = "x86_64-linux";
-    hostname = "nanospark";
+    hostname = "vivobook";
+    disk = "/dev/disk/by-id/nvme-KINGSTON_OM8PDP3256B-AB1_50026B76856BE00C";
+    secretsFile = ./vivobook/secrets.yaml;
 
     nixosModules = [
-      ./nanospark
+      ./vivobook
     ];
 
     homeModules = [
-      ../home/modules/headless
+      ../home/modules/desktop/gnome
+      ./vivobook/home.nix
     ];
   };
 

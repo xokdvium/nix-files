@@ -31,8 +31,8 @@ in {
 
   stylix = {
     image = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/gp/wallhaven-gpd6v7.jpg";
-      sha256 = "sha256-vpIwHQo63rncbA2n9/pEpBtAVBpOBK5KvVyCqmB/vlw=";
+      url = "https://w.wallhaven.cc/full/ex/wallhaven-ex2dol.jpg";
+      sha256 = "sha256-rNOzyjLx3WXZbMicLkvVcVZD9/MSsvYUPC6WQ7BsKIs=";
     };
 
     fonts = with config.fontProfiles; {
@@ -42,7 +42,7 @@ in {
       emoji = mkStylixFont emoji;
 
       sizes = let
-        fontSize = 10;
+        fontSize = 11;
       in {
         terminal = lib.mkDefault fontSize;
         desktop = lib.mkDefault fontSize;
@@ -56,7 +56,7 @@ in {
 
     base16Scheme =
       lib.mkDefault
-      "${pkgs.base16-schemes}/share/themes/twilight.yaml";
+      "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
   };
 
   stylix.opacity = let

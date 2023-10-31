@@ -1,4 +1,17 @@
-{lib, ...}: {
+{
+  lib,
+  outputs,
+  ...
+}: {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+
+    overlays = builtins.attrValues outputs.overlays;
+  };
+
   nix = {
     gc = {
       automatic = lib.mkDefault true;

@@ -13,16 +13,16 @@
   in
     import nixpkgs {},
   ...
-}: {
-  default = pkgs.mkShell {
-    nativeBuildInputs = with pkgs; [
-      nix
-      home-manager
-      git
-      sops
-      gnupg
-    ];
+}:
+pkgs.mkShell {
+  nativeBuildInputs = with pkgs; [
+    nix
+    home-manager
+    git
+    sops
+    gnupg
+    ssh-to-pgp
+  ];
 
-    NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
-  };
+  NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
 }

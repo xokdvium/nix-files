@@ -3,7 +3,7 @@
     enable = true;
     publicKeys = [
       {
-        source = ../../pgp.txt;
+        source = ../../../secrets/keys/pgp.asc;
         trust = 5;
       }
     ];

@@ -1,15 +1,10 @@
 {
   lib,
   extraConfig,
-  modulesPath,
-  config,
-  pkgs,
+  outputs,
   ...
 }: let
-  genUsers = f:
-    lib.genAttrs (builtins.attrNames
-      extraConfig.users)
-    (name: f (builtins.getAttr name extraConfig.users));
+  genUsers = outputs.lib.genUsers extraConfig.users;
 in {
   imports = [
     ../common
@@ -19,8 +14,8 @@ in {
 
   boot = {
     kernelParams = ["copytoram"];
-    initrd.network.enable = false;
-    tmp.cleanOnBoot = true;
+    initrd.network.enable = lib.mkForce false;
+    tmp.cleanOnBoot = lib.mkForce true;
     kernel.sysctl = {
       "kernel.unprivileged_bpf_disabled" = 1;
     };
@@ -28,13 +23,13 @@ in {
 
   # Make sure networking is disabled in every way possible.
   networking = {
-    dhcpcd.enable = false;
-    dhcpcd.allowInterfaces = [];
-    interfaces = {};
-    firewall.enable = true;
-    useDHCP = false;
-    useNetworkd = false;
-    wireless.enable = false;
+    dhcpcd.enable = lib.mkForce false;
+    dhcpcd.allowInterfaces = lib.mkForce [];
+    interfaces = lib.mkForce {};
+    firewall.enable = lib.mkForce true;
+    useDHCP = lib.mkForce false;
+    useNetworkd = lib.mkForce false;
+    wireless.enable = lib.mkForce false;
     networkmanager.enable = lib.mkForce false;
   };
 

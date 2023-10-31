@@ -12,24 +12,39 @@
     (group: builtins.hasAttr group config.users.groups)
     groups;
 
-  genUsers = f:
-    lib.genAttrs (builtins.attrNames
-      extraConfig.users)
-    (name: f (builtins.getAttr name extraConfig.users));
+  genUsers = outputs.lib.genUsers extraConfig.users;
 in {
   programs.zsh.enable = true;
+  users = {
+    mutableUsers = false;
 
-  users.users =
-    genUsers
-    (user: {
-      isNormalUser = user.normalUser;
-      home = user.homePath;
+    users =
+      genUsers
+      (user: {
+        isNormalUser = user.normalUser;
+        home = user.homePath;
 
-      extraGroups =
-        user.groups
-        ++ ifTheyExist user.optionalGroups;
+        extraGroups =
+          user.groups
+          ++ ifTheyExist user.optionalGroups;
 
-      shell = lib.mkOverride 75 pkgs.zsh; # FIXME: Maybe move this somewhere else
+        shell = lib.mkOverride 75 pkgs.zsh; # FIXME: Maybe move this somewhere else
+        hashedPasswordFile = config.sops.secrets."passwords/${user.name}".path;
+      })
+      // {
+        root.hashedPasswordFile = config.sops.secrets."passwords/root".path;
+      };
+  };
+
+  sops.secrets =
+    lib.genAttrs (builtins.map (name: "passwords/${name}")
+      (
+        (builtins.attrNames extraConfig.users)
+        ++ ["root"]
+      ))
+    (_: {
+      sopsFile = extraConfig.host.secretsFile;
+      neededForUsers = true;
     });
 
   home-manager = {

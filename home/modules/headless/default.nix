@@ -11,9 +11,12 @@ _: {
     ./eza.nix
     ./fzf.nix
     ./git.nix
-    ./neovim.nix
+    ./helix.nix
+    ./impermanence.nix
     ./rbw.nix
+    ./tmux.nix
     ./wormhole.nix
     ./zsh.nix
+    ./visidata.nix
   ];
 }

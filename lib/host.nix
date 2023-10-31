@@ -10,8 +10,10 @@ in {
     homeModules ? [],
     nixosModules,
     hostname,
+    disk ? null,
+    secretsFile ? null,
   }: {
-    inherit system homeModules hostname;
+    inherit system homeModules hostname disk secretsFile;
 
     nixosModules =
       nixosModules

@@ -12,13 +12,4 @@ in {
     optionalGroups = ["docker" "networkmanager"];
     homeModules = [homeModule];
   });
-
-  sergeiz =
-    mkUser
-    {
-      name = "sergeiz";
-      groups = ["wheel"];
-      optionalGroups = ["docker" "networkmanager"];
-      homeModules = [];
-    };
 }
