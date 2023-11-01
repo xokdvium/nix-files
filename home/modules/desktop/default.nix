@@ -7,11 +7,11 @@
     ./bitwarden.nix
     ./discord.nix
     ./firefox.nix
-    ./libreoffice.nix
     ./stylix.nix
     ./telegram.nix
     ./tor-browser.nix
     ./zathura.nix
+    ./wireshark.nix
   ];
 
   home.packages = with pkgs; [

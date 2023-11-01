@@ -36,5 +36,16 @@
       pull = {rebase = true;};
       push = {autoSetupRemote = true;};
     };
+
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+        line-numbers = true;
+        side-by-side = true;
+        colorMoved = "default";
+        features = "coracias-caudatus";
+      };
+    };
   };
 }

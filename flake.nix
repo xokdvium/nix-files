@@ -26,7 +26,10 @@
 
     stylix.url = "github:danth/stylix";
     flake-utils.url = "github:numtide/flake-utils";
-    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     sops-nix = {
       url = "github:mic92/sops-nix";

@@ -9,7 +9,7 @@ in {
     name = "xokdvium";
     normalUser = true;
     groups = ["wheel"];
-    optionalGroups = ["docker" "networkmanager"];
+    optionalGroups = ["docker" "networkmanager" "wireshark"];
     homeModules = [homeModule];
   });
 }

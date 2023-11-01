@@ -4,13 +4,18 @@
   ...
 }: {
   imports = [
-    ../common
-    ../generic
-    ../features/dewm/gnome.nix
-    # Disk configuration and partitioning
-    ../disko/zfsroot.nix
+    ../../common
+
+    ../../features/dewm/gnome.nix
+    ../../features/quietboot.nix
+
+    ./zfsroot.nix
     inputs.disko.nixosModules.disko
   ];
+
+  extraOptions = {
+    immutableUsers = true;
+  };
 
   boot = {
     loader = {

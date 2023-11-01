@@ -7,9 +7,9 @@
   genUsers = outputs.lib.genUsers extraConfig.users;
 in {
   imports = [
-    ../common
-    ../features/dewm/gnome.nix
-    ../features/crypto.nix
+    ../../common
+    ../../features/dewm/gnome.nix
+    ../../features/crypto.nix
   ];
 
   boot = {
