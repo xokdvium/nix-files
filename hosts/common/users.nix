@@ -16,8 +16,6 @@
 in {
   programs.zsh.enable = true;
   users = {
-    mutableUsers = false;
-
     users =
       genUsers
       (user: {
@@ -29,23 +27,8 @@ in {
           ++ ifTheyExist user.optionalGroups;
 
         shell = lib.mkOverride 75 pkgs.zsh; # FIXME: Maybe move this somewhere else
-        hashedPasswordFile = config.sops.secrets."passwords/${user.name}".path;
-      })
-      // {
-        root.hashedPasswordFile = config.sops.secrets."passwords/root".path;
-      };
+      });
   };
-
-  sops.secrets =
-    lib.genAttrs (builtins.map (name: "passwords/${name}")
-      (
-        (builtins.attrNames extraConfig.users)
-        ++ ["root"]
-      ))
-    (_: {
-      sopsFile = extraConfig.host.secretsFile;
-      neededForUsers = true;
-    });
 
   home-manager = {
     extraSpecialArgs = {

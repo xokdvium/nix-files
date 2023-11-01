@@ -10,9 +10,9 @@ in {
   services.openssh = {
     enable = true;
     settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
+      PasswordAuthentication = lib.mkOverride 75 false;
+      KbdInteractiveAuthentication = lib.mkOverride 75 false;
+      PermitRootLogin = lib.mkOverride 75 "no";
     };
   };
 

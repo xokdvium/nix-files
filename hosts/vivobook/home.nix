@@ -1,3 +1,0 @@
-_: {
-  persistence.enable = true;
-}

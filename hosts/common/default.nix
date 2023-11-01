@@ -13,6 +13,8 @@ in {
     ./stylix.nix
     ./users.nix
     ./xkblayout.nix
+    ./swraid.nix
+    ./wireshark.nix
   ];
 
   nixpkgs.hostPlatform = system;

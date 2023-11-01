@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ../../../home/modules/desktop
+  ];
+
   xdg.desktopEntries = {
     yubikey-guide = {
       name = "yubikey-guide";

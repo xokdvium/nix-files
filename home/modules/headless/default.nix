@@ -18,5 +18,6 @@ _: {
     ./wormhole.nix
     ./zsh.nix
     ./visidata.nix
+    ./termshark.nix
   ];
 }
