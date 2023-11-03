@@ -12,7 +12,6 @@
 
     # Disk configuration and partitioning
     ./zfsroot.nix
-    ./wireguard.nix
 
     inputs.disko.nixosModules.disko
   ];
