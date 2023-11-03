@@ -9,6 +9,7 @@
     ../../features/dewm/gnome.nix
     ../../features/docker.nix
     ../../features/quietboot.nix
+    ../../features/crypto.nix
 
     # Disk configuration and partitioning
     ./zfsroot.nix
