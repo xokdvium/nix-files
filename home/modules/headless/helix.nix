@@ -36,6 +36,11 @@
           command = "${pkgs.nodePackages_latest.yaml-language-server}/bin/yaml-language-server";
           args = ["--stdio"];
         };
+
+        vscode-json-language-server = {
+          command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
+          args = ["--stdio"];
+        };
       };
 
       language = [
@@ -69,12 +74,20 @@
           name = "cmake";
           auto-format = true;
           language-servers = ["cmake-langugage-server"];
-          formatter = {command = "${pkgs.cmake-format}/bin/cmake-format";};
+          formatter = {
+            command = "${pkgs.cmake-format}/bin/cmake-format";
+            args = ["-"];
+          };
         }
         {
           name = "toml";
           auto-format = true;
           language-servers = ["taplo"];
+        }
+        {
+          name = "json";
+          auto-format = true;
+          language-servers = ["vscode-json-language-server"];
         }
       ];
     };
@@ -84,6 +97,12 @@
         mouse = false;
         auto-format = true;
         auto-save = true;
+
+        file-picker = {
+          hidden = false;
+          git-ignore = true;
+        };
+
         rulers = [
           80
           120
