@@ -15,7 +15,7 @@
   ];
 
   extraOptions = {
-    immutableUsers = true;
+    immutableUsers.enable = true;
   };
 
   boot = {

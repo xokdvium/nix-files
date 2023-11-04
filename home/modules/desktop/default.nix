@@ -12,6 +12,7 @@
     ./tor-browser.nix
     ./zathura.nix
     ./wireshark.nix
+    ./deluge.nix
   ];
 
   home.packages = with pkgs; [

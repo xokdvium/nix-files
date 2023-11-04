@@ -113,6 +113,13 @@
       nixosModules = import ./modules/nixos;
       overlays = import ./overlays {inherit inputs outputs;};
 
+      templates = {
+        cpp = {
+          path = ./templates/cpp;
+          description = "C++ project template";
+        };
+      };
+
       nixosConfigurations = {
         nanospark = lib.mkHostSystem {
           inherit users;
