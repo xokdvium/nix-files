@@ -141,8 +141,6 @@
       keys = {
         normal = {
           C-s = ":w";
-          y = "yank_main_selection_to_clipboard";
-          p = "paste_clipboard_before";
         };
       };
     };
