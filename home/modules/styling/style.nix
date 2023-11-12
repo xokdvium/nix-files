@@ -31,8 +31,8 @@ in {
 
   stylix = {
     image = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/ex/wallhaven-ex2dol.jpg";
-      sha256 = "sha256-rNOzyjLx3WXZbMicLkvVcVZD9/MSsvYUPC6WQ7BsKIs=";
+      url = "https://raw.githubusercontent.com/Gingeh/wallpapers/main/landscapes/shaded_landscape.png";
+      sha256 = "sha256-EZmkN1HxI00/uS7PYU+/NN4sBzNNP901WJEET1G92to=";
     };
 
     fonts = with config.fontProfiles; {
@@ -56,7 +56,10 @@ in {
 
     base16Scheme =
       lib.mkDefault
-      "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+      "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
+
+    cursor.package = pkgs.catppuccin-cursors.frappeDark;
+    cursor.name = "Catppuccin-Frappe-Dark-Cursors";
   };
 
   stylix.opacity = let
