@@ -13,6 +13,7 @@
     ./zathura.nix
     ./wireshark.nix
     ./deluge.nix
+    ./vscode.nix
   ];
 
   home.packages = with pkgs; [
