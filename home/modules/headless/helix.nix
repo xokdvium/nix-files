@@ -52,7 +52,12 @@
         }
         {
           name = "yaml";
-          file-types = ["yml" "yaml"];
+          file-types = [
+            "yml"
+            "yaml"
+            ".clang-format"
+            ".clang-tidy"
+          ];
           auto-format = true;
           language-servers = ["yaml-language-server"];
           formatter = {
@@ -88,6 +93,17 @@
           name = "json";
           auto-format = true;
           language-servers = ["vscode-json-language-server"];
+        }
+        {
+          name = "just";
+          comment-token = "#";
+          file-types = [
+            "justfile"
+          ];
+          indent = {
+            tab-width = 2;
+            unit = "  ";
+          };
         }
       ];
     };
