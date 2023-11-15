@@ -16,6 +16,7 @@
     ./vscode.nix
     ./cura.nix
     ./prusa-slicer.nix
+    ./freecad.nix
   ];
 
   home.packages = with pkgs; [
