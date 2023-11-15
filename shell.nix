@@ -19,6 +19,7 @@ pkgs.mkShell {
     sops
     gnupg
     ssh-to-pgp
+    just
   ];
 
   NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
