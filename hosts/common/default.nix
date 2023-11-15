@@ -15,6 +15,7 @@ in {
     ./xkblayout.nix
     ./swraid.nix
     ./wireshark.nix
+    ./binfmt.nix
   ];
 
   nixpkgs.hostPlatform = system;
