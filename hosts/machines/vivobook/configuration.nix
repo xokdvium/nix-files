@@ -9,6 +9,7 @@
     ../../features/dewm/gnome.nix
     ../../features/quietboot.nix
     ../../features/crypto.nix
+    ../../features/docker.nix
 
     ./zfsroot.nix
     inputs.disko.nixosModules.disko
