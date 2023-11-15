@@ -121,11 +121,6 @@
       };
 
       nixosConfigurations = {
-        nanospark = lib.mkHostSystem {
-          inherit users;
-          host = hosts.nanospark;
-        };
-
         nebulinx = lib.mkHostSystem {
           inherit users;
           host = hosts.nebulinx;
