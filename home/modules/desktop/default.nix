@@ -14,6 +14,8 @@
     ./wireshark.nix
     ./deluge.nix
     ./vscode.nix
+    ./cura.nix
+    ./prusa-slicer.nix
   ];
 
   home.packages = with pkgs; [
