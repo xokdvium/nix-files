@@ -17,15 +17,6 @@
   in
     lib.mkIf cfg.enable {
       home.persistence."/persistent/home/${config.home.username}" = {
-        directories = [
-          "Downloads"
-          "Music"
-          "Pictures"
-          "Documents"
-          "Videos"
-          "Work"
-        ];
-
         allowOther = true;
       };
     };

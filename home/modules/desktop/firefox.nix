@@ -21,6 +21,7 @@ in {
           bitwarden
           gopass-bridge
           videospeed
+          simplelogin
         ];
 
       search = {
