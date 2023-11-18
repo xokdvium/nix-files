@@ -8,6 +8,7 @@
     ./discord.nix
     ./firefox.nix
     ./stylix.nix
+    ./style.nix
     ./telegram.nix
     ./tor-browser.nix
     ./zathura.nix
@@ -17,6 +18,7 @@
     ./cura.nix
     ./prusa-slicer.nix
     ./freecad.nix
+    ./obsidian.nix
   ];
 
   home.packages = with pkgs; [

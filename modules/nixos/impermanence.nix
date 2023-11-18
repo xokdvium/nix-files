@@ -68,6 +68,12 @@ in {
 
         users = genUsers (_: {
           directories = [
+            "Downloads"
+            "Music"
+            "Pictures"
+            "Documents"
+            "Videos"
+            "Work"
             {
               directory = ".gnupg";
               mode = "0700";
