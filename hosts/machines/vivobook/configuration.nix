@@ -6,7 +6,7 @@
   imports = [
     ../../common
 
-    ../../features/dewn/hyprland.nix
+    ../../features/dewm/hyprland.nix
     ../../features/dewm/gnome.nix
     ../../features/quietboot.nix
     ../../features/crypto.nix
