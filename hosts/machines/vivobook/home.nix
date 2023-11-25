@@ -1,7 +1,10 @@
 _: {
   imports = [
     ../../../home/modules/desktop/gnome
+    ../../../home/modules/desktop/hyprland
   ];
 
-  persistence.enable = true;
+  extraOptions = {
+    persistence.enable = true;
+  };
 }

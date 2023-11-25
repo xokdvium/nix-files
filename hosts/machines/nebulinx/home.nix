@@ -5,7 +5,9 @@ in {
     ../../../home/modules/desktop/gnome
   ];
 
-  persistence.enable = true;
+  extraOptions = {
+    persistence.enable = true;
+  };
 
   home = {
     file.".config/monitors.xml".text = monitorsConfig;

@@ -1,8 +1,18 @@
-{lib, ...}: {
+{
+  lib,
+  outputs,
+  extraConfig,
+  ...
+}: let
+  genUsers = outputs.lib.genUsers extraConfig.users;
+in {
   imports = [
     ../../common
-    ../../features/crypto.nix
   ];
+
+  users.users = genUsers (_: {
+    initialPassword = "";
+  });
 
   networking.useDHCP = lib.mkDefault true;
 }

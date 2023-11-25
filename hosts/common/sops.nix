@@ -10,7 +10,7 @@
 
   # Impermanence bind mounts are not available at boot to sops-nix, so this is a
   # workaround
-  sops = lib.mkIf config.persistence.enable {
+  sops = lib.mkIf config.extraOptions.persistence.enable {
     gnupg.sshKeyPaths = [
       "/persistent/etc/ssh/ssh_host_rsa_key"
     ];

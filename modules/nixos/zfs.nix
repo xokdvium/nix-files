@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.zfsHost;
+  cfg = config.extraOptions.zfsHost;
 in {
   options = {
-    zfsHost = {
+    extraOptions.zfsHost = {
       enable = lib.mkEnableOption "zfsHost";
 
       arcSize = lib.mkOption {

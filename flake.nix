@@ -54,6 +54,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -88,6 +98,12 @@
           format = "iso";
           users = {inherit (users) xokdvium;};
           host = hosts.airgapped;
+        };
+
+        octoprint-vm = lib.mkHostImage {
+          format = "vm-nogui";
+          users = {inherit (users) xokdvium;};
+          host = hosts.octoprint-vm;
         };
       };
     in {

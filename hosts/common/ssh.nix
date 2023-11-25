@@ -22,7 +22,7 @@ in {
     ];
   });
 
-  environment.persistence."/persistent" = lib.mkIf config.persistence.enable {
+  environment.persistence."/persistent" = lib.mkIf config.extraOptions.persistence.enable {
     files = [
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"

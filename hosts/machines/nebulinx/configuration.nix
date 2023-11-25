@@ -13,22 +13,31 @@
 
     # Disk configuration and partitioning
     ./zfsroot.nix
-
+    ./nvidia.nix
     inputs.disko.nixosModules.disko
   ];
 
   extraOptions = {
     immutableUsers.enable = true;
+    persistence = {
+      enable = true;
+      wipeOnBoot = true;
+    };
+
+    zfsHost = {
+      enable = true;
+      arcSize = 4 * 1024 * 1024 * 1024; # 4 GiB
+    };
   };
 
   boot = {
     loader = {
       grub = {
         enable = true;
-        devices = ["nodev"];
         efiSupport = true;
         useOSProber = true;
         efiInstallAsRemovable = true;
+        devices = ["nodev"];
       };
     };
 
@@ -41,55 +50,19 @@
         "usb_storage"
         "sd_mod"
       ];
-
-      kernelModules = [];
     };
 
     kernelModules = ["kvm-amd"];
-    extraModulePackages = [];
   };
-
-  services.xserver.videoDrivers = [
-    "nvidia"
-  ];
 
   hardware = {
     enableAllFirmware = true;
     cpu.amd.updateMicrocode = true;
-
-    # https://nixos.wiki/wiki/Nvidia
     opengl = {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
     };
-
-    nvidia = {
-      modesetting.enable = false;
-
-      powerManagement = {
-        enable = false;
-        finegrained = false;
-      };
-
-      open = true;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
-  };
-
-  zfsHost = {
-    enable = true;
-    arcSize = 2147483648;
-  };
-
-  persistence = {
-    enable = true;
-    wipeOnBoot = true;
-  };
-
-  virtualisation.docker = {
-    enableNvidia = true;
   };
 
   system.stateVersion = "23.11";

@@ -6,6 +6,7 @@
   imports = [
     ../../common
 
+    ../../features/dewn/hyprland.nix
     ../../features/dewm/gnome.nix
     ../../features/quietboot.nix
     ../../features/crypto.nix
@@ -17,17 +18,25 @@
 
   extraOptions = {
     immutableUsers.enable = true;
+    persistence = {
+      enable = true;
+      wipeOnBoot = true;
+    };
+
+    zfsHost = {
+      enable = true;
+      arcSize = 1024 * 1024 * 1024; # 1 GiB
+    };
   };
 
   boot = {
     loader = {
+      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
-        devices = ["nodev"];
         efiSupport = true;
+        devices = ["nodev"];
       };
-
-      efi.canTouchEfiVariables = true;
     };
 
     initrd = {
@@ -39,12 +48,9 @@
         "usb_storage"
         "sd_mod"
       ];
-
-      kernelModules = [];
     };
 
     kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
   };
 
   powerManagement = {
@@ -68,16 +74,6 @@
         libvdpau-va-gl
       ];
     };
-  };
-
-  zfsHost = {
-    enable = true;
-    arcSize = 1073741824;
-  };
-
-  persistence = {
-    enable = true;
-    wipeOnBoot = true;
   };
 
   system.stateVersion = "23.11";

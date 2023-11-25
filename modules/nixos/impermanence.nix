@@ -38,7 +38,7 @@ in {
     inputs.impermanence.nixosModules.impermanence
   ];
 
-  options = {
+  options.extraOptions = {
     persistence = {
       enable = lib.mkEnableOption "persistence";
 
@@ -52,7 +52,7 @@ in {
   };
 
   config = let
-    cfg = config.persistence;
+    cfg = config.extraOptions.persistence;
   in
     lib.mkIf
     cfg.enable

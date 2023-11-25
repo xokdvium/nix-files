@@ -8,12 +8,12 @@
     inputs.impermanence.nixosModules.home-manager.impermanence
   ];
 
-  options = {
+  options.extraOptions = {
     persistence.enable = lib.mkEnableOption "persistence";
   };
 
   config = let
-    cfg = config.persistence;
+    cfg = config.extraOptions.persistence;
   in
     lib.mkIf cfg.enable {
       home.persistence."/persistent/home/${config.home.username}" = {

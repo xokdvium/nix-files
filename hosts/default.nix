@@ -3,4 +3,5 @@
   generic = import ./machines/generic {inherit lib;};
   vivobook = import ./machines/vivobook {inherit lib;};
   airgapped = import ./machines/airgapped {inherit lib;};
+  octoprint-vm = import ./machines/octoprint-vm {inherit lib;};
 }
