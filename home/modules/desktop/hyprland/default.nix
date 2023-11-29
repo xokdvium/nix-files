@@ -16,6 +16,14 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      env = [
+        "NIXOS_OZONE_WL,1"
+        "MOZ_ENABLE_WAYLAND,1"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+      ];
+
       bind = let
         wofi = "${config.programs.wofi.package}/bin/wofi";
         firefox = "${config.programs.firefox.package}/bin/firefox";
@@ -41,7 +49,7 @@ in {
       };
 
       decoration = let
-        opacity = 0.95;
+        opacity = config.stylix.opacity.applications;
       in {
         blur = {
           enabled = true;
