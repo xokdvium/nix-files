@@ -134,6 +134,11 @@
           path = ./templates/cpp;
           description = "C++ project template";
         };
+
+        ruby = {
+          path = ./templates/ruby;
+          description = "Ruby project template";
+        };
       };
 
       nixosConfigurations = {

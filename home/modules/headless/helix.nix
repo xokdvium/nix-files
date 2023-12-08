@@ -41,6 +41,11 @@
           command = "${pkgs.vscode-langservers-extracted}/bin/vscode-json-language-server";
           args = ["--stdio"];
         };
+
+        solargraph = {
+          command = "${pkgs.rubyPackages_3_3.solargraph}/bin/solargraph";
+          args = ["stdio"];
+        };
       };
 
       language = [
