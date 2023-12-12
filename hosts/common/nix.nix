@@ -1,8 +1,14 @@
 {
   lib,
   outputs,
+  inputs,
   ...
-}: {
+}: let
+  excludedFlakes = [
+    "nixpkgs-stable"
+    "nixpkgs-master"
+  ];
+in {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -30,5 +36,10 @@
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       ];
     };
+
+    registry =
+      lib.genAttrs
+      (builtins.filter (name: !builtins.elem name excludedFlakes) (builtins.attrNames inputs))
+      (name: {flake = inputs.${name};});
   };
 }
