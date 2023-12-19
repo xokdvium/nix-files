@@ -17,8 +17,9 @@ in {
   };
 
   users.users = genUsers (_: {
-    openssh.authorizedKeys.keys = [
-      (builtins.readFile ../../secrets/keys/ssh.pub)
+    openssh.authorizedKeys.keys = builtins.map builtins.readFile [
+      ../../secrets/keys/ssh.pub
+      ../../secrets/keys/nebulinx.pub
     ];
   });
 
