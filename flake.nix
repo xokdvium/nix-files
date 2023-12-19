@@ -100,10 +100,10 @@
           host = hosts.airgapped;
         };
 
-        octoprint-vm = lib.mkHostImage {
-          format = "vm-nogui";
-          users = {inherit (users) xokdvium;};
-          host = hosts.octoprint-vm;
+        julia = lib.mkHostImage {
+          format = "sd-aarch64";
+          users = {inherit (users) admin;};
+          host = hosts.julia;
         };
       };
     in {
