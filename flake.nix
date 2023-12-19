@@ -143,12 +143,12 @@
 
       nixosConfigurations = {
         nebulinx = lib.mkHostSystem {
-          inherit users;
+          users = {inherit (users) xokdvium;};
           host = hosts.nebulinx;
         };
 
         vivobook = lib.mkHostSystem {
-          inherit users;
+          users = {inherit (users) xokdvium;};
           host = hosts.vivobook;
         };
       };
