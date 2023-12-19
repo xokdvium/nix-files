@@ -5,4 +5,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v23
-      - run: nix flake check --no-build
+      - run: nix flake check
