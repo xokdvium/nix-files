@@ -1,3 +1,4 @@
+# https://myme.no/posts/2022-12-01-nixos-on-raspberrypi.html
 {
   lib,
   outputs,

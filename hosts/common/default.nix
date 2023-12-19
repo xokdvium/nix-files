@@ -18,6 +18,5 @@ in {
     ./binfmt.nix
   ];
 
-  nixpkgs.hostPlatform = system;
   system.stateVersion = "23.11";
 }
