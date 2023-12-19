@@ -12,4 +12,12 @@ in {
     optionalGroups = ["docker" "networkmanager" "wireshark"];
     homeModules = [homeModule];
   });
+
+  admin = mkUser {
+    name = "admin";
+    normalUser = true;
+    groups = ["wheel"];
+    optionalGroups = ["networkmanager"];
+    homeModules = [];
+  };
 }

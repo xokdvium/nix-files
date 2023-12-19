@@ -5,4 +5,4 @@ lib.makeOverridable ({system}:
       hostname = "generic";
       nixosModules = [./configuration.nix];
       homeModules = [./home.nix];
-    }) {system = "x86_64-linux";}
+    }) {system = "aarch64-linux";}
