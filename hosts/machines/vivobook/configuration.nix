@@ -14,6 +14,7 @@
 
     ./zfsroot.nix
     inputs.disko.nixosModules.disko
+    inputs.nixos-hardware.nixosModules.asus-battery
   ];
 
   extraOptions = {
@@ -73,6 +74,11 @@
         vaapiVdpau
         libvdpau-va-gl
       ];
+    };
+
+    asus.battery = {
+      chargeUpto = 75;
+      enableChargeUptoScript = true;
     };
   };
 
