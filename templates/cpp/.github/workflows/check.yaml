@@ -1,8 +1,15 @@
 on: [pull_request, push]
 jobs:
-  check-linux:
+  lint:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v23
-      - run: nix flake check
+      - uses: cachix/install-nix-action@v24
+      - name: Formatting
+        run: |
+          nix fmt
+          nix build ".#all-formats"
+      - name: Static analysis
+        run: |
+          nix flake check
+          nix build ".#all-lints"
