@@ -77,6 +77,25 @@
     hosts = import ./hosts {inherit lib;};
     users = import ./home/users {inherit lib;};
     systems = ["x86_64-linux" "aarch64-linux"];
+    images = {
+      installer = {
+        format = "install-iso";
+        users = {inherit (users) xokdvium;};
+        host = hosts.generic;
+      };
+
+      airgapped = {
+        format = "iso";
+        users = {inherit (users) xokdvium;};
+        host = hosts.airgapped;
+      };
+
+      julia = {
+        format = "sd-aarch64";
+        users = {inherit (users) admin;};
+        host = hosts.julia;
+      };
+    };
   in
     flake-utils.lib.eachSystem systems (system: let
       pkgs = import nixpkgs {
@@ -86,31 +105,14 @@
 
       packages = import ./packages {inherit pkgs;};
       scripts = import ./scripts {inherit inputs outputs pkgs;};
-
-      images = {
-        installer = lib.mkHostImage {
-          format = "install-iso";
-          users = {inherit (users) xokdvium;};
-          host = hosts.generic;
-        };
-
-        airgapped = lib.mkHostImage {
-          format = "iso";
-          users = {inherit (users) xokdvium;};
-          host = hosts.airgapped;
-        };
-
-        julia = lib.mkHostImage {
-          format = "sd-aarch64";
-          users = {inherit (users) admin;};
-          host = hosts.julia;
-        };
-      };
     in {
       packages =
         packages
         // scripts
-        // images;
+        // {
+          installer = lib.mkHostImage images.installer;
+          airgapped = lib.mkHostImage images.airgapped;
+        };
 
       apps = rec {
         switch = lib.mkApp "${scripts.switch}/bin/switch";
@@ -166,5 +168,10 @@
       };
 
       lib = import ./lib {inherit inputs outputs;};
+    }
+    // {
+      packages.aarch64-linux = {
+        julia = lib.mkHostImage images.julia;
+      };
     };
 }

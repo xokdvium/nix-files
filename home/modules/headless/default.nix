@@ -19,5 +19,6 @@ _: {
     ./zsh.nix
     ./visidata.nix
     ./termshark.nix
+    ./starship.nix
   ];
 }
