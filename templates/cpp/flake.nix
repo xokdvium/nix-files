@@ -61,6 +61,7 @@
             ninja
             clang-tools
             act
+            just
           ];
         };
     in {
@@ -74,6 +75,7 @@
           all-checks
           all-formats
           all-lints
+          format-all
           ;
       };
 
