@@ -464,6 +464,21 @@
         "type": "github"
       }
     },
+    "lint-nix": {
+      "locked": {
+        "lastModified": 1685612071,
+        "narHash": "sha256-0D0eeifUc3yLZN36r09BH1THMnk7S5L+kEECbJ2VW5Q=",
+        "owner": "xc-jp",
+        "repo": "lint.nix",
+        "rev": "61738b3c5ec356894ff5e9550dea049ed4d2b66c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xc-jp",
+        "repo": "lint.nix",
+        "type": "github"
+      }
+    },
     "nh": {
       "inputs": {
         "nixpkgs": [
@@ -725,6 +740,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "impermanence": "impermanence",
+        "lint-nix": "lint-nix",
         "nh": "nh",
         "nix-index-database": "nix-index-database",
         "nixos-generators": "nixos-generators",

@@ -66,6 +66,7 @@
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    lint-nix.url = "github:xc-jp/lint.nix";
   };
 
   outputs = {
@@ -107,6 +108,10 @@
 
       packages = import ./packages {inherit pkgs;};
       scripts = import ./scripts {inherit inputs outputs pkgs;};
+      lints = import ./lints.nix {
+        inherit (inputs) lint-nix;
+        inherit pkgs;
+      };
     in {
       packages =
         packages
@@ -114,6 +119,15 @@
         // {
           installer = lib.mkHostImage images.installer;
           airgapped = lib.mkHostImage images.airgapped;
+        }
+        // {
+          inherit
+            (lints)
+            all-checks
+            all-formats
+            all-lints
+            format-all
+            ;
         };
 
       apps = rec {
@@ -170,10 +184,5 @@
       };
 
       lib = import ./lib {inherit inputs outputs;};
-    }
-    // {
-      packages.aarch64-linux = {
-        julia = lib.mkHostImage images.julia;
-      };
     };
 }
