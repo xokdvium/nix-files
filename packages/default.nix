@@ -4,4 +4,5 @@ in {
   yubikey-guide = callPackage ./yubikey-guide.nix {};
   yk-scripts = callPackage ./yk-scripts.nix {};
   gpg-scripts = callPackage ./gpg-scripts.nix {};
+  zeronsd = callPackage ./zeronsd.nix {};
 }

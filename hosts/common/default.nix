@@ -16,6 +16,7 @@ in {
     ./swraid.nix
     ./wireshark.nix
     ./binfmt.nix
+    ./zerotier.nix
   ];
 
   system.stateVersion = "23.11";
