@@ -11,6 +11,7 @@
     ../../features/quietboot.nix
     ../../features/crypto.nix
     ../../features/docker.nix
+    ../../features/zerotier
 
     ./zfsroot.nix
     inputs.disko.nixosModules.disko
