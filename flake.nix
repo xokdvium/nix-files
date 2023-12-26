@@ -169,6 +169,11 @@
           users = {inherit (users) xokdvium;};
           host = hosts.vivobook;
         };
+
+        borg = lib.mkHostSystem {
+          users = {inherit (users) xokdvium;};
+          host = hosts.borg;
+        };
       };
 
       homeConfigurations = {
