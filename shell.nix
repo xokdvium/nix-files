@@ -21,6 +21,7 @@ pkgs.mkShell {
     ssh-to-pgp
     just
     act
+    dig
   ];
 
   NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
