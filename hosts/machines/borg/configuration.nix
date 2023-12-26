@@ -1,13 +1,28 @@
-{modulesPath, ...}: {
+{
+  modulesPath,
+  lib,
+  ...
+}: {
   imports = [
     ../../common
 
     ../../features/zerotier
     ../../features/zerotier/zeronsd.nix
+    ../../features/zerotier/zeronsd.nix
 
     ./networking.nix
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
+
+  extraOptions = {
+    immutableUsers.enable = true;
+  };
+
+  services.openssh = {
+    settings = {
+      PermitRootLogin = lib.mkForce "yes";
+    };
+  };
 
   networking = {
     domain = "firstbyte.club";
@@ -38,6 +53,5 @@
     fsType = "ext4";
   };
 
-  security.sudo.wheelNeedsPassword = false;
   system.stateVersion = "23.11";
 }
