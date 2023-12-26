@@ -19,6 +19,9 @@
     ./prusa-slicer.nix
     ./freecad.nix
     ./obsidian.nix
+    ./helix.nix
+    ./termshark.nix
+    ./visidata.nix
   ];
 
   home.packages = with pkgs; [

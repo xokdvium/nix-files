@@ -1,6 +1,4 @@
-{extraConfig, ...}: let
-  inherit (extraConfig.host) system;
-in {
+_: {
   imports = [
     ./fixes.nix
     ./home-manager.nix
@@ -14,8 +12,6 @@ in {
     ./users.nix
     ./xkblayout.nix
     ./swraid.nix
-    ./wireshark.nix
-    ./binfmt.nix
   ];
 
   system.stateVersion = "23.11";

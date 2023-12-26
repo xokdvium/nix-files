@@ -17,8 +17,6 @@ _: {
     ./tmux.nix
     ./wormhole.nix
     ./zsh.nix
-    ./visidata.nix
-    ./termshark.nix
     ./starship.nix
   ];
 }
