@@ -10,6 +10,8 @@
     ../../features/docker.nix
     ../../features/quietboot.nix
     ../../features/crypto.nix
+    ../../features/zerotier
+    ../../features/zerotier/zeronsd.nix
 
     # Disk configuration and partitioning
     ./zfsroot.nix
