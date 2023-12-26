@@ -31,4 +31,9 @@ in {
       };
     };
   };
+
+  networking.firewall = {
+    enable = true;
+    allowedUDPPorts = [53];
+  };
 }
