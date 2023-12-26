@@ -4,4 +4,5 @@
   vivobook = import ./machines/vivobook {inherit lib;};
   airgapped = import ./machines/airgapped {inherit lib;};
   julia = import ./machines/julia {inherit lib;};
+  borg = import ./machines/borg {inherit lib;};
 }
