@@ -8,7 +8,6 @@
     ../../features/crypto.nix
     ../../features/zerotier
     ../../features/binfmt.nix
-    ../../features/zerotier/zeronsd.nix
 
     # Disk configuration and partitioning
     ./zfsroot.nix
