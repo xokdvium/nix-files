@@ -109,7 +109,7 @@ in {
       in
         lib.concatLines (map mkHomePersist users);
 
-      fileSystems."/persistent" = {
+      fileSystems."/persistent" = lib.mkIf (config.extraOptions.zfsHost.enable) {
         neededForBoot = true;
       };
 
