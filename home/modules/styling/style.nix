@@ -65,7 +65,7 @@ in {
   stylix.opacity = let
     alpha = 0.95;
   in {
-    terminal = alpha;
+    terminal = 1.0;
     popups = alpha;
     desktop = alpha;
     applications = alpha;
