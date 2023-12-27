@@ -20,4 +20,12 @@ in {
     optionalGroups = ["networkmanager"];
     homeModules = [];
   };
+
+  builder = mkUser {
+    name = "builder";
+    normalUser = true;
+    groups = [];
+    optionalGroups = [];
+    homeModules = [];
+  };
 }

@@ -15,6 +15,10 @@
     inputs.disko.nixosModules.disko
   ];
 
+  nix.settings.trusted-users = [
+    "builder"
+  ];
+
   extraOptions = {
     immutableUsers.enable = true;
     persistence = {
