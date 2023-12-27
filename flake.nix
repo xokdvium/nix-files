@@ -161,7 +161,7 @@
 
       nixosConfigurations = {
         nebulinx = lib.mkHostSystem {
-          users = {inherit (users) xokdvium;};
+          users = {inherit (users) xokdvium builder;};
           host = hosts.nebulinx;
         };
 
