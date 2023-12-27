@@ -66,24 +66,36 @@ in {
           "/etc/machine-id"
         ];
 
-        users = genUsers (_: {
-          directories = [
-            "Downloads"
-            "Music"
-            "Pictures"
-            "Documents"
-            "Videos"
-            "Work"
-            {
-              directory = ".gnupg";
-              mode = "0700";
-            }
-            {
-              directory = ".ssh";
-              mode = "0700";
-            }
-          ];
-        });
+        users =
+          (genUsers (_: {
+            directories = [
+              "Downloads"
+              "Music"
+              "Pictures"
+              "Documents"
+              "Videos"
+              "Work"
+              {
+                directory = ".gnupg";
+                mode = "0700";
+              }
+              {
+                directory = ".ssh";
+                mode = "0700";
+              }
+            ];
+          }))
+          // {
+            root = {
+              home = "/root";
+              directories = [
+                {
+                  directory = ".ssh";
+                  mode = "0700";
+                }
+              ];
+            };
+          };
       };
 
       system.activationScripts.persistent-dirs.text = let
