@@ -25,6 +25,9 @@ in {
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes" "repl-flake"];
       sandbox = true;
+      trusted-users = [
+        "@wheel"
+      ];
 
       substituters = [
         "https://hyprland.cachix.org/"

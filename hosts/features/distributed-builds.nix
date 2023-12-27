@@ -17,5 +17,9 @@
         publicHostKey = builtins.readFile ../../secrets/keys/nebulinx-host.base64;
       }
     ];
+
+    extraOptions = ''
+      builders-use-substitutes = true
+    '';
   };
 }

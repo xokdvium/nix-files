@@ -1,23 +1,20 @@
 # https://myme.no/posts/2022-12-01-nixos-on-raspberrypi.html
-{
-  lib,
-  outputs,
-  extraConfig,
-  ...
-}: let
-  genUsers = outputs.lib.genUsers extraConfig.users;
-in {
+{lib, ...}: {
   imports = [
     ../../common
+    ../../features/zerotier
+
     ./klipper.nix
     ./octoprint.nix
   ];
 
-  users = {
-    mutableUsers = true;
-    users = genUsers (_: {
-      initialPassword = "";
-    });
+  extraOptions = {
+    immutableUsers.enable = true;
+  };
+
+  boot.loader = {
+    grub.enable = false;
+    generic-extlinux-compatible.enable = true;
   };
 
   networking = {
@@ -32,5 +29,10 @@ in {
       interfaces = ["wlan0"];
       enable = true;
     };
+  };
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
+    fsType = "ext4";
   };
 }
