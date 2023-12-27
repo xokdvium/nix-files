@@ -16,6 +16,9 @@
 
   extraOptions = {
     immutableUsers.enable = true;
+    persistence = {
+      enable = true;
+    };
   };
 
   services.openssh = {
