@@ -93,10 +93,10 @@
         host = hosts.airgapped;
       };
 
-      julia = {
+      aarch64-basic = {
         format = "sd-aarch64";
         users = {inherit (users) admin;};
-        host = hosts.julia;
+        host = hosts.aarch64-basic;
       };
     };
   in
@@ -119,6 +119,9 @@
         // {
           installer = lib.mkHostImage images.installer;
           airgapped = lib.mkHostImage images.airgapped;
+        }
+        // lib.attrsets.optionalAttrs (system == "aarch64-linux") {
+          aarch64-basic = lib.mkHostImage images.aarch64-basic;
         }
         // {
           inherit
@@ -173,6 +176,11 @@
         borg = lib.mkHostSystem {
           users = {inherit (users) xokdvium;};
           host = hosts.borg;
+        };
+
+        julia = lib.mkHostSystem {
+          users = {inherit (users) admin;};
+          host = hosts.julia;
         };
       };
 
