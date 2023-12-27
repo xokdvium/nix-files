@@ -32,6 +32,23 @@
     };
   };
 
+  services = {
+    xserver.displayManager.gdm.autoSuspend = false;
+  };
+
+  # https://discourse.nixos.org/t/why-is-my-new-nixos-install-suspending/19500
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+        if (action.id == "org.freedesktop.login1.suspend" ||
+            action.id == "org.freedesktop.login1.suspend-multiple-sessions" ||
+            action.id == "org.freedesktop.login1.hibernate" ||
+            action.id == "org.freedesktop.login1.hibernate-multiple-sessions")
+        {
+            return polkit.Result.NO;
+        }
+    });
+  '';
+
   boot = {
     loader = {
       grub = {
