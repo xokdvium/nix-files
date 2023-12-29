@@ -182,6 +182,11 @@
           users = {inherit (users) admin;};
           host = hosts.julia;
         };
+
+        kitkat = lib.mkHostSystem {
+          users = {inherit (users) xokdvium;};
+          host = hosts.kitkat;
+        };
       };
 
       homeConfigurations = {

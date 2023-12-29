@@ -6,4 +6,5 @@
   aarch64-basic = import ./machines/aarch64-basic {inherit lib;};
   borg = import ./machines/borg {inherit lib;};
   julia = import ./machines/julia {inherit lib;};
+  kitkat = import ./machines/kitkat {inherit lib;};
 }

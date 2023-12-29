@@ -12,6 +12,12 @@ in {
   ];
 
   sdImage.compressImage = false;
+  services.openssh = {
+    settings = {
+      PermitRootLogin = lib.mkForce "yes";
+    };
+  };
+
   users = {
     mutableUsers = true;
     users = genUsers (_: {
