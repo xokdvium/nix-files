@@ -4,6 +4,7 @@ keys:
   - &nebulinx 0D00A7D80E5D328F1B4E6A4AB83AF36F31276991
   - &borg 24CBF34513A2A7D5E19E6EE188DD38BB36A4F3FA
   - &julia 9CC0328F8A2D75951716F9179F8AE705349C5C95
+  - &kitkat 8EC8405746EB536D9C81B57846F81E4FB129E645
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
@@ -13,3 +14,4 @@ creation_rules:
           - *nebulinx
           - *borg
           - *julia
+          - *kitkat
