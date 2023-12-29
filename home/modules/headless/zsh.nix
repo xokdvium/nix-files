@@ -22,11 +22,6 @@
         enable = true;
         plugins = ["git" "thefuck"];
       };
-
-      # FIXME: Hacky workaround to make Gnome accept session variables
-      envExtra = ''
-        EDITOR=${config.programs.helix.package}/bin/hx
-      '';
     };
   };
 

@@ -1,4 +1,8 @@
-_: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.helix = {
     enable = true;
     settings = {
@@ -58,4 +62,9 @@ _: {
   stylix.targets.helix = {
     enable = true;
   };
+
+  # FIXME: Hacky workaround to make Gnome accept session variables
+  programs.zsh.envExtra = ''
+    EDITOR=${config.programs.helix.package}/bin/hx
+  '';
 }
