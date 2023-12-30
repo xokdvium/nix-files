@@ -46,6 +46,10 @@
           command = "${pkgs.rubyPackages_3_3.solargraph}/bin/solargraph";
           args = ["stdio"];
         };
+
+        rust-analyzer = {
+          command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+        };
       };
 
       language = [
@@ -108,6 +112,14 @@
           indent = {
             tab-width = 2;
             unit = "  ";
+          };
+        }
+        {
+          name = "rust";
+          language-servers = ["rust-analyzer"];
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.rustfmt}";
           };
         }
       ];
