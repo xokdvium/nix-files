@@ -160,6 +160,11 @@
           path = ./templates/ruby;
           description = "Ruby project template";
         };
+
+        rust = {
+          path = ./templates/rust;
+          description = "Rust project template";
+        };
       };
 
       nixosConfigurations = {

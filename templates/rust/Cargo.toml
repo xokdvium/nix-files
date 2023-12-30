@@ -1,0 +1,8 @@
+# FIXME: Change the name and description of the package
+[package]
+name = "nix-files-rust-template"
+version = "0.1.0"
+edition = "2021"
+description = "A simple nix based rust project template"
+
+[dependencies]
