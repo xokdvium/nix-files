@@ -12,6 +12,7 @@
     ../../features/crypto.nix
     ../../features/docker.nix
     ../../features/zerotier
+    ../../features/dnscrypt.nix
     ../../features/distributed-builds.nix
 
     ./zfsroot.nix
