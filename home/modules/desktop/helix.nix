@@ -118,9 +118,6 @@
           name = "rust";
           language-servers = ["rust-analyzer"];
           auto-format = true;
-          formatter = {
-            command = "${pkgs.rustfmt}";
-          };
         }
         {
           name = "ruby";
