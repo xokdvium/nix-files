@@ -19,7 +19,7 @@
         overlays = [];
       };
 
-      lints = inputs.lint-nix.lib.lint-nix {
+      lints = inputs.lint-nix.lib.lint-nix rec {
         inherit pkgs;
         src = ./.;
 
@@ -29,7 +29,7 @@
         formatters = {
           rustfmt = {
             ext = ".rs";
-            cmd = "${pkgs.rustfmt}/bin/rustfmt $filename";
+            cmd = "${pkgs.rustfmt}/bin/rustfmt --config-path ${src} $filename";
           };
         };
       };

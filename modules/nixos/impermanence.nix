@@ -115,7 +115,7 @@ in {
 
       boot.initrd =
         lib.mkIf
-        cfg.wipeOnBoot
+        (cfg.wipeOnBoot && config.extraOptions.zfsHost.enable)
         {
           systemd = {
             enable = true;
