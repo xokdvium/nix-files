@@ -9,6 +9,7 @@
     ../../features/zerotier
     ../../features/zerotier/zeronsd.nix
     ../../features/zerotier/zeronsd.nix
+    ../../features/dnscrypt.nix
 
     ./networking.nix
     (modulesPath + "/profiles/qemu-guest.nix")

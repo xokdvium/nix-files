@@ -2,4 +2,4 @@
 target/
 .vscode/
 .direnv/
-result
+/result

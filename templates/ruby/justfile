@@ -1,8 +1,3 @@
-rebuild:
-  # NOTE: Bypass pesky home-manager errors
-  rm -I ~/.mozilla/firefox/xokdvium/*.backup || true
-  sudo nixos-rebuild switch --flake "{{justfile_directory()}}"
-
 run-workflows:
   act -P ubuntu-22.04=ghcr.io/catthehacker/ubuntu:runner-22.04
 

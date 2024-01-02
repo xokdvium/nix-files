@@ -122,6 +122,14 @@
             command = "${pkgs.rustfmt}";
           };
         }
+        {
+          name = "ruby";
+          language-servers = ["solargraph"];
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.rubyfmt}";
+          };
+        }
       ];
     };
 
