@@ -12,6 +12,7 @@ _: {
     ./users.nix
     ./xkblayout.nix
     ./swraid.nix
+    ./man.nix
   ];
 
   system.stateVersion = "23.11";
