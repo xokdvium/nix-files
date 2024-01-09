@@ -17,13 +17,11 @@ in {
   };
 
   users.users = genUsers (_: {
-    openssh.authorizedKeys.keys = builtins.map builtins.readFile [
-      ../../secrets/keys/ssh.pub
-      ../../secrets/keys/nebulinx.pub
-      ../../secrets/keys/nebulinx-root.pub
-      ../../secrets/keys/vivobook.pub
-      ../../secrets/keys/vivobook-root.pub
-    ];
+    openssh.authorizedKeys.keys = let
+      directory = ../../secrets/user-keys;
+    in
+      builtins.map (file: builtins.readFile (directory + "/${file}"))
+      (builtins.attrNames (lib.attrsets.filterAttrs (n: v: v == "regular") (builtins.readDir directory)));
   });
 
   environment.persistence."/persistent" = lib.mkIf config.extraOptions.persistence.enable {

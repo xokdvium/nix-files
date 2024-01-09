@@ -31,6 +31,8 @@
     zfsHost = {
       enable = true;
       arcSize = 4 * 1024 * 1024 * 1024; # 4 GiB
+      snapshots.enable = true;
+      replication.enable = true;
     };
   };
 
