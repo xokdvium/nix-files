@@ -117,6 +117,9 @@
         {
           name = "rust";
           language-servers = ["rust-analyzer"];
+          formatter = {
+            command = "${pkgs.rustfmt}/bin/rustfmt";
+          };
           auto-format = true;
         }
         {
@@ -124,7 +127,7 @@
           language-servers = ["solargraph"];
           auto-format = true;
           formatter = {
-            command = "${pkgs.rubyfmt}";
+            command = "${pkgs.rubyfmt}/bin/rubyfmt";
           };
         }
       ];

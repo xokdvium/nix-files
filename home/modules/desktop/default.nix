@@ -22,6 +22,7 @@
     ./helix.nix
     ./termshark.nix
     ./visidata.nix
+    ./okular.nix
   ];
 
   home.packages = with pkgs; [
