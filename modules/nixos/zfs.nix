@@ -15,8 +15,21 @@ in {
         default = 1024 * 1024 * 1024; # 1GiB
       };
 
-      snapshots.enable = lib.mkEnableOption "snapshots";
-      replication.enable = lib.mkEnableOption "replication";
+      snapshots = {
+        enable = lib.mkEnableOption "snapshots";
+        enableDebug = lib.mkEnableOption "enableDebug";
+      };
+
+      replication = {
+        enable = lib.mkEnableOption "replication";
+        enableDebug = lib.mkEnableOption "enableDebug";
+
+        deleteOldSnapshots = lib.mkOption {
+          type = lib.types.bool;
+          description = "Delete target snapshots that are not present locally";
+          default = true;
+        };
+      };
     };
   };
 
@@ -49,12 +62,13 @@ in {
 
       sanoid = lib.mkIf cfg.snapshots.enable {
         enable = true;
-        extraArgs = [
+        extraArgs = lib.optionals (cfg.snapshots.enableDebug) [
           "--verbose"
           "--debug"
         ];
+
         datasets = let
-          monthlyCount = 6;
+          monthlyCount = 12;
           hourlyCount = 48;
           dailyCount = 31;
         in {
@@ -71,11 +85,18 @@ in {
 
       syncoid = lib.mkIf cfg.replication.enable {
         enable = true;
-        commonArgs = [
-          "--no-sync-snap"
-          "--dumpsnaps"
-          "--debug"
-        ];
+        commonArgs =
+          [
+            "--no-sync-snap"
+          ]
+          ++ lib.optionals (cfg.replication.enableDebug) [
+            "--dumpsnaps"
+            "--debug"
+          ]
+          ++ lib.optionals (cfg.replication.deleteOldSnapshots) [
+            "--delete-target-snapshots"
+          ];
+
         sshKey = config.sops.secrets."syncoid/private-key".path;
 
         commands = {
