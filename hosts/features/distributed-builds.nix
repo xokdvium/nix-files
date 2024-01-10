@@ -9,7 +9,7 @@ _: {
         threads = 8;
         hostKeyFile = ../../secrets/host-keys/nebulinx-host.base64;
       in {
-        hostName = "nebulinx.jawphungy.corp";
+        hostName = "nebulinx.jawphungy.home.arpa";
         systems = ["x86_64-linux" "aarch64-linux"];
         protocol = "ssh-ng";
         maxJobs = threads;
