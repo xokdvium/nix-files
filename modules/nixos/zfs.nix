@@ -86,12 +86,10 @@ in {
       syncoid = lib.mkIf cfg.replication.enable {
         enable = true;
         commonArgs =
-          [
-            "--no-sync-snap"
-          ]
+          []
           ++ lib.optionals (cfg.replication.enableDebug) [
-            "--dumpsnaps"
             "--debug"
+            "--dumpsnaps"
           ]
           ++ lib.optionals (cfg.replication.deleteOldSnapshots) [
             "--delete-target-snapshots"
