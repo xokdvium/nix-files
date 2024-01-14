@@ -2,6 +2,7 @@
   lib,
   outputs,
   inputs,
+  config,
   ...
 }: let
   excludedFlakes = [

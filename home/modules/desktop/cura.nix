@@ -5,7 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    cura
+    # FIXME: Currently broken on unstable
+    # cura
   ];
 
   home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.extraOptions.persistence.enable {
