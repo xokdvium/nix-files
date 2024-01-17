@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: {
+{lib, ...}: {
   programs.git = {
     enable = true;
 
@@ -28,7 +24,7 @@
       lg = "${pretty_log_cmd}";
     };
 
-    userEmail = lib.mkDefault "xokdvium@proton.me";
+    userEmail = lib.mkDefault "serjtsimmerman@gmail.com";
     userName = lib.mkDefault "Sergei Zimmerman";
 
     extraConfig = {

@@ -4,7 +4,7 @@
   ...
 }: let
   networkId = "a09acf023353c355";
-  domain = "jawphungy.home.arpa";
+  domain = "jawphugy.home.arpa";
 in {
   sops.secrets.zerotier-api-token = {
     sopsFile = ./secrets.yaml;

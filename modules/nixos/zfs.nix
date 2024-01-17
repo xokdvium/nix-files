@@ -100,7 +100,7 @@ in {
         commands = {
           "backup2aeronas" = {
             source = "rpool/nixos/persistent";
-            target = "syncoid@aeronas.jawphungy.home.arpa:stank/backups/machines/${config.networking.hostName}";
+            target = "syncoid@aeronas.jawphugy.home.arpa:stank/backups/machines/${config.networking.hostName}";
             sendOptions = "--raw";
             recursive = true;
             # FIXME: Do proper host key checking

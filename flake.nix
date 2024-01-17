@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     # Manage my user configurations. Preferable to NixOS modules
@@ -13,18 +13,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Cool cli wrapper for flakes
     nh = {
-      url = "github:viperML/nh";
+      url = "github:viperml/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-index-database = {
-      url = "github:Mic92/nix-index-database";
+      url = "github:mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-utils.url = "github:numtide/flake-utils";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -141,7 +144,10 @@
       formatter = pkgs.alejandra;
 
       devShells = rec {
-        bootstrap = import ./shell.nix {inherit pkgs;};
+        bootstrap = import ./shell.nix {
+          inherit pkgs;
+          inherit (inputs.nh.packages.${system}) nh;
+        };
         default = bootstrap;
       };
     })
@@ -191,6 +197,11 @@
         kitkat = lib.mkHostSystem {
           users = {inherit (users) xokdvium;};
           host = hosts.kitkat;
+        };
+
+        dino = lib.mkHostSystem {
+          users = {inherit (users) xokdvium;};
+          host = hosts.dino;
         };
       };
 

@@ -14,4 +14,7 @@ _: {
   # upstreamed possibly? Or at least properly documented in an unrelated source
   # file
   programs.xfconf.enable = true;
+
+  # NOTE: This is required for home-manager
+  programs.dconf.enable = true;
 }
