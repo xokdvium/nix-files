@@ -83,8 +83,30 @@ in {
         };
       };
 
-      syncoid = lib.mkIf cfg.replication.enable {
+      syncoid = lib.mkIf cfg.replication.enable (let
+        permissions = [
+          "change-key"
+          "compression"
+          "create"
+          "mount"
+          "mountpoint"
+          "receive"
+          "rollback"
+          "bookmark"
+          "hold"
+          "send"
+          "snapshot"
+          "destroy"
+        ];
+      in {
         enable = true;
+
+        # FIXME: Just give all permissions in the world. This is due to the syncoid erroring out
+        # on sync snapshot deletion: cannot destroy snapshots: permission denied.
+        # TODO: Find the smallest list of permissions without this bug
+        localSourceAllow = permissions;
+        localTargetAllow = permissions;
+
         commonArgs =
           []
           ++ lib.optionals (cfg.replication.enableDebug) [
@@ -107,7 +129,7 @@ in {
             extraArgs = ["--sshoption=StrictHostKeyChecking=off"];
           };
         };
-      };
+      });
     };
   };
 }
