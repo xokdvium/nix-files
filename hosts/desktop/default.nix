@@ -1,6 +1,7 @@
 _: {
   imports = [
-    ./wireshark.nix
     ../common
+    ./wireshark.nix
+    ./v2raya.nix
   ];
 }

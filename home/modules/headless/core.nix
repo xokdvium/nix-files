@@ -1,7 +1,4 @@
 {
-  outputs,
-  pkgs,
-  lib,
   config,
   extraConfig,
   ...
@@ -10,7 +7,7 @@
   user = builtins.getAttr config.home.username users;
 in {
   imports = [
-    ../../../hosts/common/nix.nix
+    ../../../hosts/base/nix.nix
   ];
 
   home = {

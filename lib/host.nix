@@ -26,7 +26,7 @@ in {
   mkHostSystem = {
     modules ? [],
     host,
-    users,
+    users ? {},
   }: let
     extraConfig = {inherit host users;};
   in

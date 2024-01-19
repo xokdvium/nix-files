@@ -82,7 +82,7 @@
     lib = nixpkgs.lib.extend (_: _: import ./lib {inherit inputs outputs;});
     hosts = import ./hosts {inherit lib;};
     users = import ./home/users {inherit lib;};
-    systems = ["x86_64-linux" "aarch64-linux"];
+
     images = {
       installer = {
         format = "install-iso";
@@ -102,6 +102,8 @@
         host = hosts.aarch64-basic;
       };
     };
+
+    systems = ["x86_64-linux" "aarch64-linux"];
   in
     flake-utils.lib.eachSystem systems (system: let
       pkgs = import nixpkgs {
@@ -205,17 +207,7 @@
         };
       };
 
-      homeConfigurations = {
-        "sergeiz@nebulinx" = lib.mkHomeConfiguration {
-          user = users.sergeiz;
-          host = hosts.nebulinx;
-        };
-
-        "xokdvium@nanospark" = lib.mkHomeConfiguration {
-          user = users.xokdvium;
-          host = hosts.nanospark;
-        };
-      };
+      homeConfigurations = {};
 
       lib = import ./lib {inherit inputs outputs;};
     };
