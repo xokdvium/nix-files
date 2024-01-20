@@ -6,8 +6,6 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
-    # Manage my user configurations. Preferable to NixOS modules
-    # because I might still use other distros
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -186,24 +184,9 @@
           host = hosts.vivobook;
         };
 
-        borg = lib.mkHostSystem {
-          users = {inherit (users) xokdvium;};
-          host = hosts.borg;
-        };
-
         julia = lib.mkHostSystem {
           users = {inherit (users) admin;};
           host = hosts.julia;
-        };
-
-        kitkat = lib.mkHostSystem {
-          users = {inherit (users) xokdvium;};
-          host = hosts.kitkat;
-        };
-
-        dino = lib.mkHostSystem {
-          users = {inherit (users) xokdvium;};
-          host = hosts.dino;
         };
       };
 
