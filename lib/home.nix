@@ -9,6 +9,7 @@
     modules ? [],
     user,
     host,
+    additionalSpecialArgs ? {},
   }:
     inputs.home-manager.lib.homeManagerConfiguration (let
       inherit (inputs) nixpkgs;
@@ -30,7 +31,7 @@
         ];
 
       pkgs = nixpkgs.legacyPackages.${host.system};
-      extraSpecialArgs = {inherit inputs outputs extraConfig;};
+      extraSpecialArgs = {inherit inputs outputs extraConfig;} // additionalSpecialArgs;
     });
 
   mkUser = {

@@ -33,6 +33,7 @@ in {
   home-manager = {
     extraSpecialArgs = {
       inherit inputs outputs extraConfig;
+      homeModulesPath = "${inputs.self}/home/modules";
     };
 
     users = genUsers (

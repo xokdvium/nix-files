@@ -27,13 +27,14 @@ in {
     modules ? [],
     host,
     users ? {},
+    additionalSpecialArgs ? {},
   }: let
     extraConfig = {inherit host users;};
   in
     lib.nixosSystem {
       inherit (host) system;
       modules = modules ++ host.nixosModules;
-      specialArgs = {inherit inputs outputs extraConfig;};
+      specialArgs = {inherit inputs outputs extraConfig;} // additionalSpecialArgs;
     };
 
   mkHostImage = {
