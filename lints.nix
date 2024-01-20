@@ -32,7 +32,7 @@ lint-nix.lib.lint-nix rec {
 
     alejandra = {
       ext = ".nix";
-      cmd = "${pkgs.alejandra}/bin/alejandra";
+      cmd = "${pkgs.alejandra}/bin/alejandra --quiet";
       stdin = true;
     };
 
