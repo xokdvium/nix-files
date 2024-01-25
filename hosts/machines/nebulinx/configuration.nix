@@ -21,20 +21,29 @@
     "builder"
   ];
 
-  xokdvium.nixos = {
-    immutableUsers.enable = true;
-    persistence = {
-      enable = true;
-      wipeOnBoot = true;
+  xokdvium = {
+    common = {
+      style = {
+        enable = true;
+        preset = "spaceduck";
+      };
     };
 
-    zfsHost = {
-      enable = true;
-      arcSize = 4 * 1024 * 1024 * 1024; # 4 GiB
-      snapshots.enable = true;
-      replication = {
+    nixos = {
+      immutableUsers.enable = true;
+      persistence = {
         enable = true;
-        enableDebug = true;
+        wipeOnBoot = true;
+      };
+
+      zfsHost = {
+        enable = true;
+        arcSize = 4 * 1024 * 1024 * 1024; # 4 GiB
+        snapshots.enable = true;
+        replication = {
+          enable = true;
+          enableDebug = true;
+        };
       };
     };
   };

@@ -22,10 +22,6 @@
     gvfs.enable = true;
   };
 
-  stylix.targets = {
-    gnome.enable = lib.mkForce false;
-  };
-
   environment.gnome.excludePackages =
     (with pkgs; [
       gnome-tour

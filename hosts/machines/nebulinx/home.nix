@@ -12,7 +12,10 @@ _: {
     };
 
     common = {
-      style.preset = "spaceduck";
+      style = {
+        enable = true;
+        preset = "spaceduck";
+      };
     };
   };
 
