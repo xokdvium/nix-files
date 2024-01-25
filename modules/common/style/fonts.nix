@@ -1,5 +1,20 @@
-{pkgs, ...}: {
-  fontProfiles = {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.xokdvium.common.style;
+in {
+  options.xokdvium.common.style = {
+    fonts.enable = lib.mkOption {
+      description = "Enable fonts styling";
+      default = cfg.enable;
+      type = lib.types.bool;
+    };
+  };
+
+  config.fontProfiles = lib.mkIf cfg.fonts.enable {
     enable = true;
 
     monospace = {

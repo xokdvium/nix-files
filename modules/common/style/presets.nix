@@ -20,6 +20,30 @@
         sha256 = "sha256-vpE+21/RQIKlIg/xWLZCt1C7yPDKCSmDQoQeJGCKiQ8=";
       };
     };
+
+    catppuccin-frappe = {
+      base16 = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
+      image = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/kx/wallhaven-kxre6q.png";
+        sha256 = "sha256-vpE+21/RQIKlIg/xWLZCt1C7yPDKCSmDQoQeJGCKiQ8=";
+      };
+    };
+
+    atelier-lakeside = {
+      base16 = "${pkgs.base16-schemes}/share/themes/atelier-lakeside.yaml";
+      image = pkgs.fetchurl {
+        url = "https://r4.wallpaperflare.com/wallpaper/410/867/750/vector-forest-sunset-forest-sunset-forest-wallpaper-b3abc35d0d699b056fa6b247589b18a8.jpg";
+        sha256 = "sha256-8ytn00rZUiJxgtjXqTxtR7qusokxjY68u+UiWuwD8Bs=";
+      };
+    };
+
+    spaceduck = {
+      base16 = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
+      image = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/6d/wallhaven-6d5k6x.jpg";
+        sha256 = "sha256-+xl4H3UiVmMRNvMhIlaLdVTYYqnSyCTSX2UOTGsDQ8c=";
+      };
+    };
   };
 in {
   options.xokdvium.common.style = {

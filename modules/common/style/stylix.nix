@@ -9,8 +9,18 @@
       inherit (profile) package;
       name = profile.family;
     };
+
+  cfg = config.xokdvium.common.style;
 in {
-  stylix = {
+  options.xokdvium.common.style = {
+    stylix.enable = lib.mkOption {
+      description = "Enable fonts styling";
+      default = cfg.enable;
+      type = lib.types.bool;
+    };
+  };
+
+  config.stylix = lib.mkIf cfg.stylix.enable {
     fonts = with config.fontProfiles; {
       serif = mkStylixFont regular;
       sansSerif = mkStylixFont regular;

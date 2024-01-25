@@ -18,10 +18,16 @@ in {
     ./gnome
   ];
 
-  config.xokdvium.home = {
-    headless.enable = true;
-    crypto.enable = true;
-    editors.enable = true;
+  config.xokdvium = {
+    home = {
+      headless.enable = true;
+      crypto.enable = true;
+      editors.enable = true;
+    };
+
+    common = {
+      style.enable = true;
+    };
   };
 
   options.xokdvium.home.desktop = {

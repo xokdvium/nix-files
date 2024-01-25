@@ -11,4 +11,8 @@ _: {
       style.preset = "catppuccin-mocha";
     };
   };
+
+  home = {
+    stateVersion = "23.11";
+  };
 }

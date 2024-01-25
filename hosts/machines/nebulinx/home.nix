@@ -12,7 +12,7 @@ _: {
     };
 
     common = {
-      style.preset = "catppuccin-mocha";
+      style.preset = "spaceduck";
     };
   };
 
