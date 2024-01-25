@@ -1,4 +1,9 @@
-{outputs, ...}: let
+{
+  outputs,
+  config,
+  lib,
+  ...
+}: let
   inherit (outputs.lib) mkHomeCategoryEnableOption;
 in {
   imports = [
@@ -18,17 +23,20 @@ in {
     ./gnome
   ];
 
-  config.xokdvium = {
-    home = {
-      headless.enable = true;
-      crypto.enable = true;
-      editors.enable = true;
-    };
+  config.xokdvium = let
+    cfg = config.xokdvium.home.desktop;
+  in
+    lib.mkIf cfg.enable {
+      home = {
+        headless.enable = true;
+        crypto.enable = true;
+        editors.enable = true;
+      };
 
-    common = {
-      style.enable = true;
+      common = {
+        style.enable = true;
+      };
     };
-  };
 
   options.xokdvium.home.desktop = {
     enable = mkHomeCategoryEnableOption "desktop";
