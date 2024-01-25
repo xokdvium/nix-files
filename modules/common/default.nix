@@ -1,2 +1,3 @@
 {
+  style = import ./style;
 }

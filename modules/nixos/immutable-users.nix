@@ -6,9 +6,9 @@
   ...
 }: let
   genUsers = outputs.lib.genUsers extraConfig.users;
-  cfg = config.extraOptions.immutableUsers;
+  cfg = config.xokdvium.nixos.immutableUsers;
 in {
-  options.extraOptions.immutableUsers = {
+  options.xokdvium.nixos.immutableUsers = {
     enable = lib.mkEnableOption "immutableUsers";
   };
 

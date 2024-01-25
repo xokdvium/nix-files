@@ -24,7 +24,7 @@ in {
       (builtins.attrNames (lib.attrsets.filterAttrs (n: v: v == "regular") (builtins.readDir directory)));
   });
 
-  environment.persistence."/persistent" = lib.mkIf config.extraOptions.persistence.enable {
+  environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
     files = [
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"

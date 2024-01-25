@@ -1,0 +1,5 @@
+[default]
+extend-ignore-re = [
+  '''-----BEGIN PGP PUBLIC KEY BLOCK-----[\S\s]*-----END PGP PUBLIC KEY BLOCK-----''',
+  '''-----BEGIN PGP MESSAGE-----[\S\s]*-----END PGP MESSAGE-----''',
+]

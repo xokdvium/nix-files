@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ../../home/modules/styling/style.nix
     inputs.stylix.nixosModules.stylix
   ];
 

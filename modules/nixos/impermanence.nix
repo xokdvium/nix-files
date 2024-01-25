@@ -38,7 +38,7 @@ in {
     inputs.impermanence.nixosModules.impermanence
   ];
 
-  options.extraOptions = {
+  options.xokdvium.nixos = {
     persistence = {
       enable = lib.mkEnableOption "persistence";
 
@@ -52,7 +52,7 @@ in {
   };
 
   config = let
-    cfg = config.extraOptions.persistence;
+    cfg = config.xokdvium.nixos.persistence;
   in
     lib.mkIf
     cfg.enable
@@ -109,13 +109,13 @@ in {
       in
         lib.concatLines (map mkHomePersist users);
 
-      fileSystems."/persistent" = lib.mkIf (config.extraOptions.zfsHost.enable) {
+      fileSystems."/persistent" = lib.mkIf (config.xokdvium.nixos.zfsHost.enable) {
         neededForBoot = true;
       };
 
       boot.initrd =
         lib.mkIf
-        (cfg.wipeOnBoot && config.extraOptions.zfsHost.enable)
+        (cfg.wipeOnBoot && config.xokdvium.nixos.zfsHost.enable)
         {
           systemd = {
             enable = true;

@@ -21,7 +21,7 @@
     inputs.nixos-hardware.nixosModules.asus-battery
   ];
 
-  extraOptions = {
+  xokdvium.nixos = {
     immutableUsers.enable = true;
     persistence = {
       enable = true;

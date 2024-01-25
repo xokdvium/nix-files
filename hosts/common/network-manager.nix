@@ -8,7 +8,7 @@
     wireless.enable = lib.mkOverride 75 false;
   };
 
-  environment.persistence."/persistent" = lib.mkIf config.extraOptions.persistence.enable {
+  environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
     directories = ["/etc/NetworkManager"];
   };
 }

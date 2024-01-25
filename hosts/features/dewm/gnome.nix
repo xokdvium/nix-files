@@ -10,7 +10,12 @@
   services = {
     xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
+      displayManager = {
+        defaultSession = "gnome-xorg";
+        gdm = {
+          enable = true;
+        };
+      };
       desktopManager.gnome.enable = true;
     };
 

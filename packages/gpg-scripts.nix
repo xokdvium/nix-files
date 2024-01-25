@@ -283,7 +283,7 @@
         name 2 public
     '';
 
-    # Note that we can't use bash's nice ${foo} string substition here
+    # Note that we can't use bash's nice ${foo} string substitution here
     # because it conflicts with Nix's string interpolation.
 
     gpg-backup-format-drive = writeShellScriptBin "gpg-backup-format-drive" ''
@@ -315,7 +315,7 @@
         # Clean.
         echo "done."
       else
-        echo "Your $GNUPGHOME GPG directory has uncommited changes."
+        echo "Your $GNUPGHOME GPG directory has uncommitted changes."
         echo "Please resolve them and then run this command again."
         exit 2
       fi
@@ -357,7 +357,7 @@
         else
 
           # Dirty.
-          echo "Your backup git repo has uncommited changes. Please resolve them"
+          echo "Your backup git repo has uncommitted changes. Please resolve them"
           echo "and then run this command again."
           echo
           echo "For your convenience, the offline backup directory is still mounted"

@@ -21,7 +21,7 @@
     "builder"
   ];
 
-  extraOptions = {
+  xokdvium.nixos = {
     immutableUsers.enable = true;
     persistence = {
       enable = true;

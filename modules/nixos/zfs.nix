@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.extraOptions.zfsHost;
+  cfg = config.xokdvium.nixos.zfsHost;
 in {
   options = {
-    extraOptions.zfsHost = {
+    xokdvium.nixos.zfsHost = {
       enable = lib.mkEnableOption "zfsHost";
 
       arcSize = lib.mkOption {
@@ -72,7 +72,7 @@ in {
           hourlyCount = 48;
           dailyCount = 31;
         in {
-          "rpool/nixos/persistent" = lib.mkIf config.extraOptions.persistence.enable {
+          "rpool/nixos/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
             autosnap = true;
             autoprune = true;
             recursive = true;

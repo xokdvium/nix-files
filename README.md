@@ -1,7 +1,7 @@
 # ❄️ Xokdvium's NixOS flake
 
 > [!WARNING]  
-> This README is currenty very heavy WIP
+> This README is currently very heavy WIP
 
 This repository contains my personal flake. It builds my development machines and deploys part of my infrastructure
 
@@ -16,7 +16,7 @@ This way I can get my development environment up and running on any distribution
 
 ## 🔧 Development
 
-This flake provies a `devShell` and `direnv` configuration.
+This flake provides a `devShell` and `direnv` configuration.
 The latter is most convenient (if you have `nix-direnv` installed):
 
 ```bash

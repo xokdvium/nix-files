@@ -11,12 +11,15 @@ in rec {
   home = callLib ./home.nix;
   host = callLib ./host.nix;
   utils = callLib ./utils.nix;
+  lints = callLib ./lints.nix;
 
   inherit
     (home)
     mkHomeDir
     mkHomeConfiguration
     mkUser
+    mkHomeCategoryModuleEnableOption
+    mkHomeCategoryEnableOption
     genUsers
     ;
 

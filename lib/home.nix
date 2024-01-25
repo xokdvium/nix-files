@@ -2,7 +2,9 @@
   inputs,
   outputs,
   ...
-}: rec {
+}: let
+  lib = inputs.nixpkgs.lib;
+in rec {
   mkHomeDir = user: "/home/${user}";
 
   mkHomeConfiguration = {
@@ -58,4 +60,26 @@
     (builtins.attrNames users)
     (name: f (builtins.getAttr name users))
   );
+
+  mkHomeCategoryModuleEnableOption = config: {
+    category,
+    name,
+    autoEnable ? true,
+  }:
+    lib.mkOption {
+      description = "Enable home module ${name} from ${category} category";
+      type = lib.types.bool;
+      default = config.xokdvium.home.${category}.enable && autoEnable;
+    };
+
+  # NOTE: Such a category can look something like:
+  # options.xokdvium.home.headless = {
+  #   enable = mkHomeCategoryEnableOption "headless";
+  # }
+  mkHomeCategoryEnableOption = name:
+    lib.mkOption {
+      description = "Enable all home modules ${name} category";
+      type = lib.types.bool;
+      default = false;
+    };
 }

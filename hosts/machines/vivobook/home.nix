@@ -4,7 +4,7 @@ _: {
     ../../../home/modules/desktop/hyprland
   ];
 
-  extraOptions = {
+  xokdvium.nixos = {
     persistence.enable = true;
   };
 }

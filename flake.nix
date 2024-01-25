@@ -79,7 +79,7 @@
     inherit (self) outputs;
     lib = nixpkgs.lib.extend (_: _: import ./lib {inherit inputs outputs;});
     hosts = import ./hosts {inherit lib;};
-    users = import ./home/users {inherit lib;};
+    users = import ./hosts/users {inherit lib;};
 
     images = {
       installer = {
@@ -110,15 +110,10 @@
       };
 
       packages = import ./packages {inherit pkgs;};
-      scripts = import ./scripts {inherit inputs outputs pkgs;};
-      lints = import ./lints.nix {
-        inherit (inputs) lint-nix;
-        inherit pkgs;
-      };
+      lints = lib.lints pkgs ./.;
     in {
       packages =
         packages
-        // scripts
         // {
           installer = lib.mkHostImage images.installer;
           airgapped = lib.mkHostImage images.airgapped;
@@ -126,20 +121,7 @@
         // lib.attrsets.optionalAttrs (system == "aarch64-linux") {
           aarch64-basic = lib.mkHostImage images.aarch64-basic;
         }
-        // {
-          inherit
-            (lints)
-            all-checks
-            all-formats
-            all-lints
-            format-all
-            ;
-        };
-
-      apps = rec {
-        switch = lib.mkApp "${scripts.switch}/bin/switch";
-        default = switch;
-      };
+        // lints;
 
       formatter = pkgs.alejandra;
 

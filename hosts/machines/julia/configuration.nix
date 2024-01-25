@@ -8,7 +8,7 @@
     ./octoprint.nix
   ];
 
-  extraOptions = {
+  xokdvium.nixos = {
     immutableUsers.enable = true;
   };
 

@@ -1,15 +1,23 @@
-_: let
-  monitorsConfig = builtins.readFile ./monitors.xml;
-in {
-  imports = [
-    ../../../home/modules/desktop/gnome
-  ];
+_: {
+  xokdvium = {
+    home = {
+      persistence.enable = true;
+      desktop = {
+        enable = true;
+      };
 
-  extraOptions = {
-    persistence.enable = true;
+      editors = {
+        vscode.enable = true;
+      };
+    };
+
+    common = {
+      style.preset = "catppuccin-mocha";
+    };
   };
 
   home = {
-    file.".config/monitors.xml".text = monitorsConfig;
+    file.".config/monitors.xml".text = builtins.readFile ./monitors.xml;
+    stateVersion = "23.11";
   };
 }
