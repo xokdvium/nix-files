@@ -1,10 +1,14 @@
 _: {
-  imports = [
-    ../../../home/modules/desktop/gnome
-    ../../../home/modules/desktop/hyprland
-  ];
+  xokdvium = {
+    home = {
+      persistence.enable = true;
+      desktop = {
+        enable = true;
+      };
+    };
 
-  xokdvium.nixos = {
-    persistence.enable = true;
+    common = {
+      style.preset = "catppuccin-mocha";
+    };
   };
 }
