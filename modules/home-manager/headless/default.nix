@@ -16,6 +16,7 @@ in {
     ./starship.nix
     ./zellij.nix
     ./yazi.nix
+    ./atuin.nix
   ];
 
   options.xokdvium.home.headless = {

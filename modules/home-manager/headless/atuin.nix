@@ -10,18 +10,17 @@
     ;
 in {
   options.xokdvium.home.headless = {
-    fzf.enable = mkHomeCategoryModuleEnableOption config {
-      name = "fzf";
+    atuin.enable = mkHomeCategoryModuleEnableOption config {
+      name = "atuin";
       category = "headless";
-      autoEnable = false;
     };
   };
 
   config = let
-    cfg = config.xokdvium.home.headless.fzf;
+    cfg = config.xokdvium.home.headless.atuin;
   in
     lib.mkIf cfg.enable {
-      programs.fzf = {
+      programs.atuin = {
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
