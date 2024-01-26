@@ -27,8 +27,6 @@ in {
       programs.firefox = {
         enable = true;
         profiles.${config.home.username} = {
-          bookmarks = {};
-
           extensions = let
             addons = inputs.firefox-addons.packages.${system};
           in
@@ -37,6 +35,7 @@ in {
               bitwarden
               videospeed
               simplelogin
+              linkding-extension
             ];
 
           search = {
