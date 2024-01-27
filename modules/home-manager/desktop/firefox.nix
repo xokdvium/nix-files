@@ -14,9 +14,13 @@
     ;
 in {
   options.xokdvium.home.desktop = {
-    firefox.enable = mkHomeCategoryModuleEnableOption config {
-      name = "firefox";
-      category = "desktop";
+    firefox = {
+      enable = mkHomeCategoryModuleEnableOption config {
+        name = "firefox";
+        category = "desktop";
+      };
+
+      staticBookmarks = lib.mkEnableOption "staticBookmarks";
     };
   };
 
@@ -37,6 +41,29 @@ in {
               simplelogin
               linkding-extension
             ];
+
+          bookmarks = lib.mkIf cfg.staticBookmarks [
+            {
+              name = "tools";
+              toolbar = true;
+              bookmarks = [
+                {
+                  name = "miniflux";
+                  tags = ["rss"];
+                  keyword = "rss";
+                  url = "https://rss.aeronas.ru/";
+                }
+                {
+                  name = "linkding";
+                  url = "https://linkding.aeronas.ru/";
+                }
+              ];
+            }
+          ];
+
+          settings = {
+            "signon.rememberSignons" = false;
+          };
 
           search = {
             engines = {
