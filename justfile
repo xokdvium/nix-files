@@ -3,6 +3,7 @@ files_to_clean := "~/.mozilla/firefox/xokdvium/*.backup /home/xokdvium/.zsh_hist
 alias f := format
 alias l := lint
 alias sw := switch
+alias lsw := local-switch
 
 _cleanup_backups:
   @rm -rf {{files_to_clean}}
@@ -15,6 +16,12 @@ remote-switch host url build_host="localhost":
     --flake "{{justfile_directory()}}#{{host}}" \
     --target-host {{url}} \
     --build-host {{build_host}} \
+    --log-format internal-json |& nom --json
+
+local-switch *FLAGS: _cleanup_backups
+  @sudo nixos-rebuild switch \
+    --flake "{{justfile_directory()}}" \
+    --builders "" \
     --log-format internal-json |& nom --json
 
 collect-garbage:

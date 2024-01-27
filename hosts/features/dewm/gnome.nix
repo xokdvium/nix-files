@@ -1,12 +1,7 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./common
   ];
-
   services = {
     xserver = {
       enable = true;
@@ -16,10 +11,20 @@
           enable = true;
         };
       };
-      desktopManager.gnome.enable = true;
+      desktopManager.gnome = {
+        enable = true;
+        extraGSettingsOverrides = ''
+          [org.gnome.desktop.peripherals.touchpad]
+          tap-to-click=true
+        '';
+      };
     };
 
     gvfs.enable = true;
+  };
+
+  stylix.targets = {
+    gnome.enable = true;
   };
 
   environment.gnome.excludePackages =

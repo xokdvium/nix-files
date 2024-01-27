@@ -13,14 +13,5 @@
       followSystem = lib.mkForce false;
       autoImport = lib.mkForce false;
     };
-
-    targets = {
-      grub = {
-        useImage = lib.mkDefault false;
-        enable = lib.mkDefault false;
-      };
-
-      plymouth.blackBackground = lib.mkDefault true;
-    };
   };
 }

@@ -21,18 +21,27 @@
     inputs.nixos-hardware.nixosModules.asus-battery
   ];
 
-  xokdvium.nixos = {
-    immutableUsers.enable = true;
-    persistence = {
-      enable = true;
-      wipeOnBoot = true;
+  xokdvium = {
+    common = {
+      style = {
+        enable = true;
+        preset = "catppuccin-mocha";
+      };
     };
 
-    zfsHost = {
-      enable = true;
-      arcSize = 1024 * 1024 * 1024; # 1 GiB
-      snapshots.enable = true;
-      replication.enable = true;
+    nixos = {
+      immutableUsers.enable = true;
+      persistence = {
+        enable = true;
+        wipeOnBoot = true;
+      };
+
+      zfsHost = {
+        enable = true;
+        arcSize = 1024 * 1024 * 1024; # 1 GiB
+        snapshots.enable = true;
+        replication.enable = true;
+      };
     };
   };
 
