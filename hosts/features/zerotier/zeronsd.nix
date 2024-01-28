@@ -32,6 +32,8 @@ in {
     };
   };
 
+  # FIXME: Open this port only on the zerotier interface.
+  # Produce interface name via pkgs.runCommand in case networkId changes.
   networking.firewall = {
     enable = true;
     allowedUDPPorts = [53];

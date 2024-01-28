@@ -7,6 +7,4 @@ _: {
     ./swraid.nix
     ./man.nix
   ];
-
-  system.stateVersion = "23.11";
 }

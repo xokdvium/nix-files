@@ -17,6 +17,8 @@ in {
     ./zellij.nix
     ./yazi.nix
     ./atuin.nix
+    ./bottom.nix
+    ./dev-tools.nix
   ];
 
   options.xokdvium.home.headless = {

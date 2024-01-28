@@ -12,7 +12,6 @@ in {
 
   home = {
     homeDirectory = user.homePath;
-    stateVersion = "23.11";
   };
 
   systemd.user.startServices = "sd-switch";

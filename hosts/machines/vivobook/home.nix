@@ -7,6 +7,8 @@ _: {
         atuin = {
           noShellHistory = true;
         };
+
+        dev-tools.enable = true;
       };
 
       desktop = {
@@ -25,7 +27,7 @@ _: {
     common = {
       style = {
         enable = true;
-        preset = "catppuccin-mocha";
+        preset = "spaceduck";
       };
     };
   };

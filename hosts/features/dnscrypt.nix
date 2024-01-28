@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   address4 = "127.0.0.1";
   address6 = "::1";
   logDir = "/var/log/dnscrypt-proxy";
@@ -20,8 +15,7 @@ in {
     dnscrypt-proxy2 = {
       enable = true;
       upstreamDefaults = true;
-      settings = let
-      in {
+      settings = {
         listen_addresses = ["${address4}:53" "[${address6}]:53"];
         sources.public-resolvers = {
           urls = [

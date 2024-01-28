@@ -22,7 +22,7 @@
 
     services.zerotier-systemd-manager = {
       description = "Update zerotier per-interface DNS settings";
-      wants = ["zerotierone.target"];
+      wants = ["zerotierone.target" "network-online.target"];
       after = ["zerotierone.target"];
       serviceConfig = {
         Type = "oneshot";

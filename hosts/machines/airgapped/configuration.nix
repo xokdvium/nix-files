@@ -12,6 +12,15 @@ in {
     ../../features/crypto.nix
   ];
 
+  xokdvium = {
+    common = {
+      style = {
+        enable = true;
+        preset = "catppuccin-mocha";
+      };
+    };
+  };
+
   boot = {
     kernelParams = ["copytoram"];
     initrd.network.enable = lib.mkForce false;
@@ -33,5 +42,9 @@ in {
     networkmanager.enable = lib.mkForce false;
   };
 
-  users.users = genUsers (_: {initialPassword = "";});
+  users.users = genUsers (_: {initialPassword = "hunter2";});
+
+  # NOTE: This does not really matter since this system is not supposed to
+  # run any persistent services. The same as home.nix
+  system.stateVersion = "24.05";
 }

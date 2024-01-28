@@ -5,6 +5,11 @@
 }: {
   virtualisation.docker = {
     enable = true;
+    autoPrune = {
+      enable = true;
+      dates = "hourly";
+      flags = ["--all"];
+    };
   };
 
   environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {

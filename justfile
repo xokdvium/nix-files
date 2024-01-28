@@ -21,8 +21,7 @@ remote-switch host url build_host="localhost":
 local-switch *FLAGS: _cleanup_backups
   @sudo nixos-rebuild switch \
     --flake "{{justfile_directory()}}" \
-    --builders "" \
-    --log-format internal-json |& nom --json
+    --builders ""
 
 collect-garbage:
   @nh clean all

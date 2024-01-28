@@ -1,5 +1,5 @@
 # Here's my growing collection of various workarounds that cost my valuable
-# time and sanity
+# time and sanity.
 _: {
   # Make home-manager not blow up during nixos-rebuild switch with systemd
   # errors
@@ -12,9 +12,12 @@ _: {
   # returns a non-zero exit code
   # What boggles my mind is why this is necessary.... Maybe something can be
   # upstreamed possibly? Or at least properly documented in an unrelated source
-  # file
+  # file.
   programs.xfconf.enable = true;
 
-  # NOTE: This is required for home-manager
+  # NOTE: This is required for home-manager.
   programs.dconf.enable = true;
+
+  # Disable flaky service which causes rebuild failures.
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
