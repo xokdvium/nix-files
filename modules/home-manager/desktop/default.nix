@@ -20,6 +20,7 @@ in {
     ./freecad.nix
     ./obsidian.nix
     ./okular.nix
+    ./matrix-clients.nix
     ./gnome
   ];
 
