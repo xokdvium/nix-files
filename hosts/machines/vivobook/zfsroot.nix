@@ -87,6 +87,12 @@ in {
             options.mountpoint = "legacy";
             mountpoint = "/persistent";
           };
+
+          "nixos/state" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/state";
+          };
         };
       };
     };
