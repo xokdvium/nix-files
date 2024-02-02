@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{config, ...}: let
   additionalVariables = {
     WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -20,10 +16,6 @@ in {
     nvidia = {
       open = false;
       modesetting.enable = true;
-      powerManagement = {
-        enable = true;
-        finegrained = false;
-      };
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };

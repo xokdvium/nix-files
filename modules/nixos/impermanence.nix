@@ -109,8 +109,9 @@ in {
       in
         lib.concatLines (map mkHomePersist users);
 
-      fileSystems."/persistent" = lib.mkIf (config.xokdvium.nixos.zfsHost.enable) {
-        neededForBoot = true;
+      fileSystems = lib.mkIf (config.xokdvium.nixos.zfsHost.enable) {
+        "/persistent".neededForBoot = true;
+        "/state".neededForBoot = true;
       };
 
       boot.initrd =

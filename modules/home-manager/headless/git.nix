@@ -1,4 +1,5 @@
 {
+  pkgs,
   outputs,
   config,
   lib,
@@ -52,6 +53,9 @@ in {
           init = {defaultBranch = "main";};
           pull = {rebase = true;};
           push = {autoSetupRemote = true;};
+          core = {
+            fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
+          };
         };
 
         delta = {

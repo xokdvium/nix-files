@@ -9,11 +9,13 @@ in {
     xokdvium.nixos.zfsHost = {
       enable = lib.mkEnableOption "zfsHost";
 
-      arcSize = lib.mkOption {
+      arcSize = lib.mkOption (let
+        gibibyte = 1024 * 1024 * 1024;
+      in {
         type = lib.types.int;
         description = "Size of ZFS adaptive replacement cache in bytes";
-        default = 1024 * 1024 * 1024; # 1GiB
-      };
+        default = gibibyte;
+      });
 
       snapshots = {
         enable = lib.mkEnableOption "snapshots";
@@ -71,8 +73,8 @@ in {
           monthlyCount = 12;
           hourlyCount = 48;
           dailyCount = 31;
-        in {
-          "rpool/nixos/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
+
+          snapshotSettings = {
             autosnap = true;
             autoprune = true;
             recursive = true;
@@ -80,6 +82,9 @@ in {
             hourly = hourlyCount;
             daily = dailyCount;
           };
+        in {
+          "rpool/nixos/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
+          "rpool/nixos/state" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
         };
       };
 
@@ -131,5 +136,19 @@ in {
         };
       });
     };
+
+    boot.kernelPatches = [
+      {
+        name = "enable RT_FULL";
+        patch = null;
+        extraConfig = ''
+          PREEMPT y
+          PREEMPT_BUILD y
+          PREEMPT_VOLUNTARY n
+          PREEMPT_COUNT y
+          PREEMPTION y
+        '';
+      }
+    ];
   };
 }

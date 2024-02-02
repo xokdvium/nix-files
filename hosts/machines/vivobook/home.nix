@@ -6,6 +6,7 @@ _: {
       headless = {
         atuin = {
           noShellHistory = true;
+          autoSync = true;
         };
 
         dev-tools.enable = true;

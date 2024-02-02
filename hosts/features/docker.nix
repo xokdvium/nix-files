@@ -12,7 +12,7 @@
     };
   };
 
-  environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
+  environment.persistence."/state" = lib.mkIf config.xokdvium.nixos.persistence.enable {
     directories = ["/var/lib/docker"];
   };
 }

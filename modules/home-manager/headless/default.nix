@@ -16,7 +16,7 @@ in {
     ./starship.nix
     ./zellij.nix
     ./yazi.nix
-    ./atuin.nix
+    ./atuin
     ./bottom.nix
     ./dev-tools.nix
   ];

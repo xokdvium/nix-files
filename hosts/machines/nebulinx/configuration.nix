@@ -31,14 +31,18 @@
 
     nixos = {
       immutableUsers.enable = true;
+      autoUpdate.enable = true;
+
       persistence = {
         enable = true;
         wipeOnBoot = true;
       };
 
-      zfsHost = {
+      zfsHost = let
+        gibibyte = 1024 * 1024 * 1024;
+      in {
         enable = true;
-        arcSize = 4 * 1024 * 1024 * 1024; # 4 GiB
+        arcSize = 8 * gibibyte;
         snapshots.enable = true;
         replication = {
           enable = true;

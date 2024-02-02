@@ -2,7 +2,6 @@
   lib,
   outputs,
   inputs,
-  config,
   ...
 }: let
   excludedFlakes = [
@@ -28,9 +27,9 @@ in {
       sandbox = true;
 
       substituters = [
+        "https://cache.nixos.org/"
         "https://hyprland.cachix.org/"
         "https://helix.cachix.org/"
-        "https://cache.nixos.org/"
         "https://nixpkgs-wayland.cachix.org"
         "https://nixpkgs-update.cachix.org/"
       ];

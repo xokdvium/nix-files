@@ -33,13 +33,9 @@ in {
 
           oh-my-zsh = {
             enable = true;
-            plugins = ["git" "thefuck"];
+            plugins = ["git"];
           };
         };
-      };
-
-      home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-        files = [".zsh_history"];
       };
     };
 }
