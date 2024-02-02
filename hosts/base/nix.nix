@@ -5,8 +5,6 @@
   ...
 }: let
   excludedFlakes = [
-    "nixpkgs-stable"
-    "nixpkgs-master"
   ];
 in {
   nixpkgs = {
