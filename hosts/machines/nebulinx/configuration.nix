@@ -12,7 +12,6 @@
     ../../features/crypto.nix
     ../../features/zerotier
     ../../features/binfmt.nix
-    ../../features/clamav.nix
     ../../features/dnscrypt.nix
 
     # Disk configuration and partitioning

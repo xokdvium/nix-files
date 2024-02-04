@@ -14,7 +14,6 @@
     ../../features/zerotier
     ../../features/dnscrypt.nix
     ../../features/distributed-builds.nix
-    ../../features/clamav.nix
 
     ./zfsroot.nix
     inputs.disko.nixosModules.disko
