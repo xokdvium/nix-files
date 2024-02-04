@@ -3,18 +3,26 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../../../home/modules/headless
-  ];
+  xokdvium = {
+    home = {
+      headless.enable = true;
+    };
 
-  stylix.autoEnable = false;
+    common = {
+      style.enable = true;
+    };
+  };
+
   programs.eza = {
     icons = lib.mkForce false;
   };
 
-  home.packages = with pkgs; [
-    libraspberrypi
-    wget
-    htop
-  ];
+  home = {
+    packages = with pkgs; [
+      libraspberrypi
+      wget
+      htop
+    ];
+    stateVersion = "24.05";
+  };
 }

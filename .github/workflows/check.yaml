@@ -5,6 +5,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v24
-      - run: nix fmt
-      # - run: nix flake check -L
-      - run: nix build ".#all-checks" -L
+      - uses: docker/setup-qemu-action@v3
+        with:
+          platforms: aarch64
+      - run: nix run nixpkgs#just check

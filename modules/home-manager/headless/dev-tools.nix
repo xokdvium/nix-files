@@ -38,6 +38,7 @@ in {
         btop # btop - really cool top
         glow # glow - terminal .md reader
         distrobox # - to run non-nix based containers
+        ripgrep # rg - better grep
       ];
     };
 }

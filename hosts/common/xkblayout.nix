@@ -1,7 +1,7 @@
 _: {
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us,ru";
-    xkbVariant = ",";
-    xkbOptions = "grp:alt_shift_toggle";
+    variant = ",";
+    options = "grp:alt_shift_toggle";
   };
 }

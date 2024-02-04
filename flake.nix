@@ -22,6 +22,7 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     flake-utils.url = "github:numtide/flake-utils";
@@ -59,9 +60,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-eval-jobs = {
+      url = "github:nix-community/nix-eval-jobs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-eval-jobs.follows = "nix-eval-jobs";
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -118,8 +125,9 @@
         }
         // lib.attrsets.optionalAttrs (system == "aarch64-linux") {
           aarch64-basic = lib.mkHostImage images.aarch64-basic;
-        }
-        // lints;
+        };
+
+      legacyPackages = {} // lints;
 
       formatter = pkgs.alejandra;
 

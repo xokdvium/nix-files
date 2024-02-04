@@ -26,8 +26,6 @@ in {
   };
 
   networking = {
-    useDHCP = lib.mkDefault true;
-
     interfaces = {
       eth0.useDHCP = true;
       wlan0.useDHCP = true;
@@ -37,5 +35,9 @@ in {
       interfaces = ["wlan0"];
       enable = true;
     };
+  };
+
+  system = {
+    stateVersion = "24.05";
   };
 }

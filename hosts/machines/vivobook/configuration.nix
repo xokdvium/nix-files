@@ -66,7 +66,9 @@
       ];
     };
 
+    # FIXME: Currently latest kernel is broken.
     kernelModules = ["kvm-intel"];
+    kernelPackages = pkgs.linuxPackages_6_5;
   };
 
   powerManagement = {
