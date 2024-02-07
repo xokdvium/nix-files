@@ -94,9 +94,7 @@
       ];
     };
 
-    # FIXME: Currently latest kernel is broken.
     kernelModules = ["kvm-amd"];
-    kernelPackages = pkgs.linuxPackages_6_5;
   };
 
   hardware = {
