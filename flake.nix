@@ -19,12 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    base16.url = "github:SenchoPens/base16.nix";
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-      inputs.base16.follows = "base16";
     };
 
     flake-utils.url = "github:numtide/flake-utils";
