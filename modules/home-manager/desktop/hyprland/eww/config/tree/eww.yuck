@@ -1,0 +1,7 @@
+(include "widgets/time.yuck")
+
+(defwindow time
+  :monitor 0
+  :geometry (geometry :x "1.25%" :y "1.25%" :width "7.5%" :height "5.0%" :anchor "top right")
+  :stacking "fg" :exclusive true :focusable false :windowtype "dock"
+  (widget-clock))

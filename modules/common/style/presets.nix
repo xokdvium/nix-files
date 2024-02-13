@@ -44,6 +44,14 @@
         sha256 = "sha256-+xl4H3UiVmMRNvMhIlaLdVTYYqnSyCTSX2UOTGsDQ8c=";
       };
     };
+
+    helios = {
+      base16 = "${pkgs.base16-schemes}/share/themes/helios.yaml";
+      image = pkgs.fetchurl {
+        url = "https://r4.wallpaperflare.com/wallpaper/71/196/981/digital-art-minimalism-nature-hills-wallpaper-88f64d4860b08ca8d02c41def8f2349a.jpg";
+        sha256 = "sha256-0skcwkVzZ3VdLImlMUT9sab3631vTttKk8LupTqM71Q=";
+      };
+    };
   };
 in {
   options.xokdvium.common.style = {
@@ -62,7 +70,7 @@ in {
       else namedPresets.${cfg.preset};
   in {
     stylix = {
-      base16Scheme = preset.base16;
+      base16Scheme = lib.mkIf (!builtins.isNull preset.base16) preset.base16;
       image = preset.image;
     };
   };

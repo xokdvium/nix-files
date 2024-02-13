@@ -15,6 +15,7 @@ _: {
       desktop = {
         enable = true;
         gnome.enable = true;
+        hyprland.enable = true;
         firefox = {
           staticBookmarks = true;
         };
@@ -28,7 +29,7 @@ _: {
     common = {
       style = {
         enable = true;
-        preset = "spaceduck";
+        preset = "helios";
       };
     };
   };

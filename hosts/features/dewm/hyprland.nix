@@ -3,11 +3,13 @@ _: {
     ./common
   ];
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm = {
+  services = {
+    xserver = {
       enable = true;
-      wayland = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
   };
 

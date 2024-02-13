@@ -15,6 +15,7 @@ _: {
       desktop = {
         enable = true;
         gnome.enable = true;
+        hyprland.enable = true;
         firefox = {
           staticBookmarks = true;
         };

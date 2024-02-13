@@ -8,6 +8,7 @@
     ../../desktop
 
     ../../features/dewm/gnome.nix
+    ../../features/dewm/hyprland.nix
     ../../features/docker.nix
     ../../features/quietboot.nix
     ../../features/crypto.nix
@@ -37,7 +38,7 @@
     common = {
       style = {
         enable = true;
-        preset = "spaceduck";
+        preset = "helios";
       };
     };
 

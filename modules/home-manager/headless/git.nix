@@ -66,7 +66,7 @@ in {
           enable = true;
           options = {
             navigate = true;
-            line-numbers = true;
+            # line-numbers = true;
             side-by-side = true;
             colorMoved = "default";
             features = "coracias-caudatus";

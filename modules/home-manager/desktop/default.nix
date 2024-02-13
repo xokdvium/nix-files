@@ -22,6 +22,7 @@ in {
     ./okular.nix
     ./matrix-clients.nix
     ./gnome
+    ./hyprland
   ];
 
   config.xokdvium = let

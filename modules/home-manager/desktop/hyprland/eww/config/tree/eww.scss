@@ -1,0 +1,18 @@
+@import "colors.scss";
+@import "misc.scss";
+
+* {
+  background-color: $background;
+  color: $foreground;
+}
+
+.genwin {
+  border: $border-size solid;
+  border-color: $cyan;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+.time {
+  @extend .genwin;
+}

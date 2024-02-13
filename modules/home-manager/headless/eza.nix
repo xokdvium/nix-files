@@ -24,6 +24,8 @@ in {
         enable = true;
         enableAliases = true;
         icons = lib.mkDefault true;
+        git = true;
+        extraOptions = ["--group-directories-first"];
       };
     };
 }

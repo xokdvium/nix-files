@@ -1,5 +1,5 @@
 {
-  pkgs,
+  config,
   lib,
   ...
 }: let
@@ -9,25 +9,32 @@
   makeMoveToWorkspaceBind = indexes:
     map (index: "SUPER_SHIFT,${index},movetoworkspace,${index}") indexes;
 in {
-  wayland.windowManager.hyprland = {
-    settings = {
-      bind =
-        (makeWorkspaceBind workspaceIndices)
-        ++ (makeMoveToWorkspaceBind workspaceIndices)
-        ++ [
-          "ALT,h,movefocus,l"
-          "ALT,l,movefocus,r"
-          "ALT,k,movefocus,u"
-          "ALT,j,movefocus,d"
-          "CTRL_ALT,h,movewindow,l"
-          "CTRL_ALT,l,movewindow,r"
-          "CTRL_ALT,k,movewindow,u"
-          "CTRL_ALT,j,movewindow,d"
-        ];
+  config = let
+    cfg = config.xokdvium.home.desktop.hyprland;
+  in
+    lib.mkIf cfg.enable {
+      wayland.windowManager.hyprland = {
+        settings = {
+          bind =
+            (makeWorkspaceBind workspaceIndices)
+            ++ (makeMoveToWorkspaceBind workspaceIndices)
+            ++ [
+              "SUPER,h,movefocus,l"
+              "SUPER,l,movefocus,r"
+              "SUPER,k,movefocus,u"
+              "SUPER,j,movefocus,d"
+              "CTRL_ALT,h,movewindow,l"
+              "CTRL_ALT,l,movewindow,r"
+              "CTRL_ALT,k,movewindow,u"
+              "CTRL_ALT,j,movewindow,d"
+              "SUPER,f,togglefloating"
+              "SUPER,s,fullscreen"
+            ];
 
-      bindm = [
-        "CTRL,mouse:272,resizewindow"
-      ];
+          bindm = [
+            "ALT,mouse:272,movewindow"
+          ];
+        };
+      };
     };
-  };
 }
