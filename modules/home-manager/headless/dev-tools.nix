@@ -39,6 +39,8 @@ in {
         glow # glow - terminal .md reader
         distrobox # - to run non-nix based containers
         ripgrep # rg - better grep
+        file # - show what's in the file
+        gptfdisk # - working with disks
       ];
     };
 }
