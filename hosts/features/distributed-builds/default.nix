@@ -9,7 +9,7 @@ in {
     buildMachines = [
       (let
         threads = 8;
-        hostKeyFile = ../../secrets/host-keys/nebulinx-host.base64;
+        hostKeyFile = ../../../secrets/host-keys/nebulinx-host.base64;
       in {
         hostName = nebulinxHost;
         systems = ["x86_64-linux" "aarch64-linux"];
