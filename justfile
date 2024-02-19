@@ -4,6 +4,7 @@ alias f := format
 alias l := lint
 alias sw := switch
 alias lsw := local-switch
+alias r := run-workflows
 
 _cleanup_backups:
   @rm -rf {{files_to_clean}}
