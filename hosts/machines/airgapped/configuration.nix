@@ -1,6 +1,7 @@
 {
   lib,
   extraConfig,
+  pkgs,
   outputs,
   ...
 }: let
@@ -23,7 +24,11 @@ in {
 
   boot = {
     kernelParams = ["copytoram"];
-    initrd.network.enable = lib.mkForce false;
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd = {
+      network.enable = lib.mkForce false;
+      systemd.enable = lib.mkForce false;
+    };
     tmp.cleanOnBoot = lib.mkForce true;
     kernel.sysctl = {
       "kernel.unprivileged_bpf_disabled" = 1;

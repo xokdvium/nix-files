@@ -2,6 +2,7 @@
   lib,
   outputs,
   extraConfig,
+  pkgs,
   ...
 }: let
   genUsers = outputs.lib.genUsers extraConfig.users;
@@ -15,4 +16,9 @@ in {
   });
 
   networking.useDHCP = lib.mkDefault true;
+
+  boot = {
+    initrd.systemd.enable = lib.mkForce false;
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 }

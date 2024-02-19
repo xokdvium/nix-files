@@ -3,6 +3,7 @@
   lib,
   outputs,
   extraConfig,
+  pkgs,
   ...
 }: let
   genUsers = outputs.lib.genUsers extraConfig.users;
@@ -23,6 +24,10 @@ in {
     users = genUsers (_: {
       initialPassword = "";
     });
+  };
+
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking = {

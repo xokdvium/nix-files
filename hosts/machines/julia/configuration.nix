@@ -1,5 +1,5 @@
 # https://myme.no/posts/2022-12-01-nixos-on-raspberrypi.html
-_: {
+{pkgs, ...}: {
   imports = [
     ../../common
     ../../features/zerotier
@@ -12,9 +12,12 @@ _: {
     immutableUsers.enable = true;
   };
 
-  boot.loader = {
-    grub.enable = false;
-    generic-extlinux-compatible.enable = true;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_rpi3;
+    loader = {
+      grub.enable = false;
+      generic-extlinux-compatible.enable = true;
+    };
   };
 
   networking = {
