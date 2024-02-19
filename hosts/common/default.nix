@@ -6,5 +6,7 @@ _: {
     ./xkblayout.nix
     ./swraid.nix
     ./man.nix
+    ./chaotic.nix
+    ./initrd-systemd.nix
   ];
 }

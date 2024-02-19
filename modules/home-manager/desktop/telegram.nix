@@ -22,7 +22,7 @@ in {
   in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [
-        telegram-desktop
+        telegram-desktop_git
       ];
 
       home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {

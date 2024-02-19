@@ -19,6 +19,8 @@ in {
     ./atuin
     ./bottom.nix
     ./dev-tools.nix
+    ./chaotic.nix
+    ./jj.nix
   ];
 
   options.xokdvium.home.headless = {

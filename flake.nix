@@ -73,6 +73,12 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
     lint-nix.url = "github:xc-jp/lint.nix";
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs = {

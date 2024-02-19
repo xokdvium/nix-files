@@ -2,7 +2,6 @@
   inputs,
   outputs,
   lib,
-  pkgs,
   config,
   extraConfig,
   ...
@@ -23,9 +22,7 @@
       "sysroot.mount"
     ];
 
-    path = with pkgs; [
-      zfs
-    ];
+    path = [config.boot.zfs.package];
 
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";

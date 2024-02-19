@@ -11,6 +11,9 @@ _cleanup_backups:
 switch *FLAGS: _cleanup_backups
   @nh os switch {{justfile_directory()}} {{FLAGS}}
 
+boot *FLAGS: _cleanup_backups
+  @nh os boot {{justfile_directory()}} {{FLAGS}}
+
 remote-switch host url build_host="localhost":
   @nixos-rebuild switch \
     --flake "{{justfile_directory()}}#{{host}}" \
