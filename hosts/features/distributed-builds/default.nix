@@ -1,4 +1,6 @@
-_: {
+_: let
+  nebulinxHost = "nebulinx.jawphugy.home.arpa";
+in {
   nix = {
     distributedBuilds = true;
 
@@ -9,7 +11,7 @@ _: {
         threads = 8;
         hostKeyFile = ../../secrets/host-keys/nebulinx-host.base64;
       in {
-        hostName = "nebulinx.jawphugy.home.arpa";
+        hostName = nebulinxHost;
         systems = ["x86_64-linux" "aarch64-linux"];
         protocol = "ssh-ng";
         maxJobs = threads;
@@ -23,5 +25,10 @@ _: {
     extraOptions = ''
       builders-use-substitutes = true
     '';
+
+    settings = {
+      substituters = [nebulinxHost];
+      trusted-public-keys = ["nebulinx:xUFzx0S3iFRiyWANCv+tlfMmuH0iv5Gs91dQ/NDniME="];
+    };
   };
 }

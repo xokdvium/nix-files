@@ -1,4 +1,9 @@
-{inputs, ...}: {
+{
+  inputs,
+  extraConfig,
+  config,
+  ...
+}: {
   imports = [
     ../../desktop
 
@@ -17,9 +22,16 @@
     inputs.disko.nixosModules.disko
   ];
 
-  nix.settings.trusted-users = [
-    "builder"
-  ];
+  sops.secrets."binary-cache/private" = {
+    sopsFile = extraConfig.host.secretsFile;
+  };
+
+  nix = {
+    settings.trusted-users = ["builder"];
+    extraOptions = ''
+      secret-key-files = ${config.sops.secrets."binary-cache/private".path}
+    '';
+  };
 
   xokdvium = {
     common = {

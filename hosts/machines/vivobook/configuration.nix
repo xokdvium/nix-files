@@ -13,7 +13,7 @@
     ../../features/docker.nix
     ../../features/zerotier
     ../../features/dnscrypt.nix
-    ../../features/distributed-builds.nix
+    ../../features/distributed-builds
     ../../features/cachyos.nix
 
     ./zfsroot.nix
