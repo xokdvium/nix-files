@@ -24,9 +24,6 @@ in {
       programs.jujutsu = {
         enable = true;
         package = pkgs.jujutsu_git;
-        enableBashIntegration = false;
-        enableFishIntegration = false;
-        enableZshIntegration = false;
         settings = {
           user = let
             gitConf = config.programs.git;

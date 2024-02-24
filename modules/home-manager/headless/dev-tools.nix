@@ -35,7 +35,6 @@ in {
         tokei # tokei - count lines of code
         sd # sd - better sed
         grex # grex - to battle regex
-        btop # btop - really cool top
         glow # glow - terminal .md reader
         distrobox_git # - to run non-nix based containers
         ripgrep # rg - better grep

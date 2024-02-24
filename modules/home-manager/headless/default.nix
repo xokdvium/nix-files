@@ -21,6 +21,7 @@ in {
     ./dev-tools.nix
     ./chaotic.nix
     ./jj.nix
+    ./btop.nix
   ];
 
   options.xokdvium.home.headless = {
