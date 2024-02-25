@@ -79,12 +79,27 @@
       inputs.home-manager.follows = "home-manager";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    attic = {
+      url = "github:zhaofengli/attic";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    project-templates = {
+      url = "github:xokdvium/project-templates";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.lint-nix.follows = "lint-nix";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     flake-utils,
+    project-templates,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -149,23 +164,7 @@
       homeManagerModules = import ./modules/home-manager;
       nixosModules = import ./modules/nixos;
       overlays = import ./overlays {inherit inputs outputs;};
-
-      templates = {
-        cpp = {
-          path = ./templates/cpp;
-          description = "C++ project template";
-        };
-
-        ruby = {
-          path = ./templates/ruby;
-          description = "Ruby project template";
-        };
-
-        rust = {
-          path = ./templates/rust;
-          description = "Rust project template";
-        };
-      };
+      templates = project-templates.templates;
 
       nixosConfigurations = {
         nebulinx = lib.mkHostSystem {

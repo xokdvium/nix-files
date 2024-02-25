@@ -22,6 +22,7 @@ in {
     ./chaotic.nix
     ./jj.nix
     ./btop.nix
+    ./attic.nix
   ];
 
   options.xokdvium.home.headless = {

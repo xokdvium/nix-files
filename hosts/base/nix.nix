@@ -30,6 +30,7 @@ in {
         "https://helix.cachix.org/"
         "https://nixpkgs-wayland.cachix.org"
         "https://nixpkgs-update.cachix.org/"
+        "https://attic.aeronas.ru/lp4a"
       ];
 
       trusted-public-keys = [
@@ -37,6 +38,7 @@ in {
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "nixpkgs-update.cachix.org-1:6y6Z2JdoL3APdu6/+Iy8eZX2ajf09e4EE9SnxSML1W8="
+        "lp4a:Om07le0y+rXgyAo7tM2gWoWVKok18uqrxI7GB9DLtIE="
       ];
     };
 

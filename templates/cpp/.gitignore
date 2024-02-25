@@ -1,6 +1,0 @@
-.cache/
-build/
-.vscode/
-.direnv/
-compile_commands.json
-/result
