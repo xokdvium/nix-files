@@ -96,12 +96,13 @@ in {
       };
 
       system.activationScripts.persistent-dirs.text = let
-        mkHomePersist = user:
+        mkHomeDir = dir: user:
           lib.optionalString user.createHome ''
-            mkdir -p /persistent/${user.home}
-            chown ${user.name}:${user.group} /persistent/${user.home}
-            chmod ${user.homeMode} /persistent/${user.home}
+            mkdir -p /${dir}/${user.home}
+            chown ${user.name}:${user.group} /${dir}/${user.home}
+            chmod ${user.homeMode} /${dir}/${user.home}
           '';
+        mkHomePersist = user: ((mkHomeDir "persistent" user) + (mkHomeDir "state" user));
         users = lib.attrValues config.users.users;
       in
         lib.concatLines (map mkHomePersist users);

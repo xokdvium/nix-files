@@ -11,26 +11,22 @@
     ;
 in {
   options.xokdvium.home.desktop = {
-    matrix-clients.enable = mkHomeCategoryModuleEnableOption config {
-      name = "matrix-clients";
+    ferdium.enable = mkHomeCategoryModuleEnableOption config {
+      name = "ferdium";
       category = "desktop";
     };
   };
 
   config = let
-    cfg = config.xokdvium.home.desktop.matrix-clients;
+    cfg = config.xokdvium.home.desktop.ferdium;
   in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [
-        cinny-desktop
-        gomuks
+        ferdium
       ];
 
       home.persistence."/state/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-        directories = [
-          ".local/share/gomuks"
-          ".local/share/cinny"
-        ];
+        directories = [".config/Ferdium"];
       };
     };
 }

@@ -21,6 +21,7 @@ in {
     ./obsidian.nix
     ./okular.nix
     ./matrix-clients.nix
+    ./ferdium.nix
     ./gnome
   ];
 
