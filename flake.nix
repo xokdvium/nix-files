@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nh = {
-      url = "github:viperml/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-index-database = {
       url = "github:mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

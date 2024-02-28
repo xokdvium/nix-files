@@ -18,13 +18,6 @@ in
       };
     in
       import nixpkgs {},
-    nh ? let
-      nh = fetchTarballFromGithub {
-        owner = "viperml";
-        repo = "nh";
-      };
-    in
-      pkgs.callPackage "${nh}/package.nix" {},
     ...
   }:
     pkgs.mkShell {
