@@ -20,7 +20,7 @@ in {
       enableZfsPatch = lib.mkOption {
         description = "Enable Mic92 make-atuin-on-zfs-fast-again patch which disables db sync";
         type = lib.types.bool;
-        default = true;
+        default = false;
       };
 
       noShellHistory = lib.mkEnableOption "noShellHistory";
