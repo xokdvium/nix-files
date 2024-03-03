@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.helix.languages = {
     language-server.clangd = {
-      command = "${pkgs.clang-tools_16}/bin/clangd";
+      command = "${pkgs.clang-tools_17}/bin/clangd";
       args = ["--header-insertion=never"];
     };
 
@@ -9,7 +9,7 @@
       {
         name = "cpp";
         auto-format = true;
-        language-servers = ["clangd"];
+        language-servers = ["clangd" "typos-lsp"];
       }
     ];
   };

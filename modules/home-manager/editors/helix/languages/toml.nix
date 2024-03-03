@@ -9,7 +9,7 @@
       {
         name = "toml";
         auto-format = true;
-        language-servers = ["taplo"];
+        language-servers = ["taplo" "typos-lsp"];
       }
     ];
   };

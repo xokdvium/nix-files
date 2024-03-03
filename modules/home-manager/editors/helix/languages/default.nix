@@ -10,4 +10,6 @@ map (file: import file {inherit pkgs;}) [
   ./rust.nix
   ./yaml.nix
   ./toml.nix
+  ./markdown.nix
+  ./typos.nix
 ]

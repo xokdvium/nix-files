@@ -11,6 +11,7 @@ _: {
           tab-width = 2;
           unit = "  ";
         };
+        language-servers = ["typos-lsp"];
       }
     ];
   };

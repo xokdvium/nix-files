@@ -15,7 +15,7 @@
           ".clang-tidy"
         ];
         auto-format = true;
-        language-servers = ["yaml-language-server"];
+        language-servers = ["yaml-language-server" "typos-lsp"];
         formatter = {
           command = "${pkgs.yamlfmt}/bin/yamlfmt";
           args = ["-"];

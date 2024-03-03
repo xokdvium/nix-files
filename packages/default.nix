@@ -6,4 +6,5 @@ in {
   gpg-scripts = callPackage ./gpg-scripts.nix {};
   zeronsd = callPackage ./zeronsd.nix {};
   zerotier-systemd-manager = callPackage ./zerotier-systemd-manager.nix {};
+  typos-lsp = callPackage ./typos-lsp.nix {};
 }

@@ -8,7 +8,7 @@
       {
         name = "bash";
         auto-format = true;
-        language-servers = ["bash-language-server"];
+        language-servers = ["bash-language-server" "typos-lsp"];
       }
     ];
   };

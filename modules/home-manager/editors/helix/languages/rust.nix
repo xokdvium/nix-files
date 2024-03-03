@@ -7,7 +7,7 @@
     language = [
       {
         name = "rust";
-        language-servers = ["rust-analyzer"];
+        language-servers = ["rust-analyzer" "typos-lsp"];
         formatter = {
           command = "${pkgs.rustfmt}/bin/rustfmt";
         };

@@ -9,7 +9,7 @@
       {
         name = "json";
         auto-format = true;
-        language-servers = ["vscode-json-language-server"];
+        language-servers = ["vscode-json-language-server" "typos-lsp"];
       }
     ];
   };

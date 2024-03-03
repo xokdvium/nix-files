@@ -8,7 +8,7 @@
     language = [
       {
         name = "ruby";
-        language-servers = ["solargraph"];
+        language-servers = ["solargraph" "typos-lsp"];
         auto-format = true;
         formatter = {
           command = "${pkgs.rubyfmt}/bin/rubyfmt";

@@ -8,7 +8,7 @@
       {
         name = "cmake";
         auto-format = true;
-        language-servers = ["cmake-language-server"];
+        language-servers = ["cmake-language-server" "typos-lsp"];
         formatter = {
           command = "${pkgs.cmake-format}/bin/cmake-format";
           args = ["-"];

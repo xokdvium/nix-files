@@ -4,7 +4,7 @@ This repository contains my personal flake. It builds my development machines an
 
 If you don't know what nix, nixos and flakes are then please take a look at [introduction-to-flakes](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes/)
 by [ryan4yin](https://github.com/ryan4yin/). Basically it's a functional package manager on steroids which empowers to user to build whatever they want. This flake leverages this power to configure
-my machines in a declarative way. Flakes have locked dependencies which ensures that my system configuration is reproducible and works out of the box. 
+my machines in a declarative way. Flakes have locked dependencies which ensures that my system configuration is reproducible and works out of the box.
 
 ## 🧬 Structure
 
@@ -33,6 +33,7 @@ All files can be formatted and checked with the following command:
 ## 🚀 Deployment
 
 You can view all targets by running `just -l`:
+
 ```bash
 ❯ just --list
 Available recipes:
@@ -85,7 +86,7 @@ Basic resources:
 - Search for [packages](https://search.nixos.org/packages) and NixOS [options](https://search.nixos.org/options)
 - Home Manager options interactive [search](https://mipmip.github.io/home-manager-option-search/)
 
-I would like to highlight some of the amazing resources that guided me along my nix journey: 
+I would like to highlight some of the amazing resources that guided me along my nix journey:
 
 - For getting me started: [nix-starter-configs](https://github.com/Misterio77/nix-starter-configs/)
 - Finally making heads and tails of flakes: [introduction-to-flakes](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes/)
