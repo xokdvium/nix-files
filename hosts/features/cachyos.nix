@@ -4,6 +4,6 @@
       pkgs.linuxPackages_cachyos;
   in {
     kernelPackages = kernel;
-    zfs.enableUnstable = true;
+    zfs.package = pkgs.zfs_unstable;
   };
 }
