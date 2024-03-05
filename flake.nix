@@ -178,7 +178,10 @@
         };
       };
 
-      homeConfigurations = {};
+      nixConfig = {
+        extra-substituters = ["https://attic.aeronas.ru/private/"];
+        extra-trusted-public-keys = ["private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU="];
+      };
 
       lib = import ./lib {inherit inputs outputs;};
     };
