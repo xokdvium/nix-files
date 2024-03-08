@@ -123,6 +123,9 @@
     };
 
     systems = ["x86_64-linux" "aarch64-linux"];
+    additionalSpecialArgs = {
+      hostModulesPath = "${self}/hosts";
+    };
   in
     flake-utils.lib.eachSystem systems (system: let
       pkgs = import nixpkgs {
@@ -165,16 +168,13 @@
         nebulinx = lib.mkHostSystem {
           users = {inherit (users) xokdvium builder;};
           host = hosts.nebulinx;
+          inherit additionalSpecialArgs;
         };
 
         vivobook = lib.mkHostSystem {
           users = {inherit (users) xokdvium;};
           host = hosts.vivobook;
-        };
-
-        julia = lib.mkHostSystem {
-          users = {inherit (users) admin;};
-          host = hosts.julia;
+          inherit additionalSpecialArgs;
         };
       };
 

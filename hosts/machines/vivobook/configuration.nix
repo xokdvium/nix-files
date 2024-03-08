@@ -1,25 +1,27 @@
 {
   inputs,
   pkgs,
+  hostModulesPath,
   ...
 }: {
-  imports = [
-    ../../desktop
-
-    ../../features/dewm/hyprland.nix
-    ../../features/dewm/gnome.nix
-    ../../features/quietboot.nix
-    ../../features/crypto.nix
-    ../../features/docker.nix
-    ../../features/zerotier
-    ../../features/dnscrypt.nix
-    ../../features/distributed-builds
-    ../../features/cachyos.nix
-
-    ./zfsroot.nix
-    inputs.disko.nixosModules.disko
-    inputs.nixos-hardware.nixosModules.asus-battery
-  ];
+  imports =
+    map (v: hostModulesPath + "/${v}") [
+      "desktop"
+      "features/dewm/hyprland.nix"
+      "features/dewm/gnome.nix"
+      "features/quietboot.nix"
+      "features/crypto.nix"
+      "features/docker.nix"
+      "features/zerotier"
+      "features/dnscrypt.nix"
+      "features/distributed-builds"
+      "features/cachyos.nix"
+    ]
+    ++ [
+      ./zfsroot.nix
+      inputs.disko.nixosModules.disko
+      inputs.nixos-hardware.nixosModules.asus-battery
+    ];
 
   xokdvium = {
     common = {

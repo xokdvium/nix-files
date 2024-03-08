@@ -2,25 +2,27 @@
   inputs,
   extraConfig,
   config,
+  hostModulesPath,
   ...
 }: {
-  imports = [
-    ../../desktop
-
-    ../../features/dewm/gnome.nix
-    ../../features/docker.nix
-    ../../features/quietboot.nix
-    ../../features/crypto.nix
-    ../../features/zerotier
-    ../../features/binfmt.nix
-    ../../features/dnscrypt.nix
-    ../../features/cachyos.nix
-
-    # Disk configuration and partitioning
-    ./zfsroot.nix
-    ./nvidia.nix
-    inputs.disko.nixosModules.disko
-  ];
+  imports =
+    map (v: hostModulesPath + "/${v}") [
+      "desktop"
+      "features/dewm/gnome.nix"
+      "features/docker.nix"
+      "features/quietboot.nix"
+      "features/crypto.nix"
+      "features/zerotier"
+      "features/binfmt.nix"
+      "features/dnscrypt.nix"
+      "features/cachyos.nix"
+      "features/gaming.nix"
+    ]
+    ++ [
+      ./zfsroot.nix
+      ./nvidia.nix
+      inputs.disko.nixosModules.disko
+    ];
 
   sops.secrets."binary-cache/private" = {
     sopsFile = extraConfig.host.secretsFile;
