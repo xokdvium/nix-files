@@ -27,7 +27,7 @@
     common = {
       style = {
         enable = true;
-        preset = "spaceduck";
+        preset = "catppuccin-mocha";
       };
     };
 

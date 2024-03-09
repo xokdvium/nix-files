@@ -15,7 +15,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:xokdvium/stylix/dev/init-yazi";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
