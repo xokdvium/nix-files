@@ -29,7 +29,7 @@
     script = wipeScript;
   };
 
-  genUsers = outputs.lib.genUsers extraConfig.users;
+  genNormalUsers = outputs.lib.genUsers (lib.filterAttrs (_: v: v.normalUser) extraConfig.users);
 in {
   imports = [
     inputs.impermanence.nixosModules.impermanence
@@ -64,7 +64,7 @@ in {
         ];
 
         users =
-          (genUsers (_: {
+          (genNormalUsers (_: {
             directories = [
               "Downloads"
               "Music"
@@ -103,7 +103,7 @@ in {
             chmod ${user.homeMode} /${dir}/${user.home}
           '';
         mkHomePersist = user: ((mkHomeDir "persistent" user) + (mkHomeDir "state" user));
-        users = lib.attrValues config.users.users;
+        users = builtins.filter (user: user.isNormalUser) (lib.attrValues config.users.users);
       in
         lib.concatLines (map mkHomePersist users);
 

@@ -118,5 +118,9 @@
     };
   };
 
+  users = {
+    groups.builder = {};
+  };
+
   system.stateVersion = "23.11";
 }

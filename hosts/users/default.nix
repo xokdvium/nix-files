@@ -19,8 +19,10 @@ in {
 
   builder = mkUser {
     name = "builder";
-    normalUser = true;
+    normalUser = false;
+    group = "builder";
     groups = [];
+    homePath = "/var/empty";
     optionalGroups = [];
     homeModules = [];
   };

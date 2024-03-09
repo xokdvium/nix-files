@@ -13,6 +13,7 @@
     groups;
 
   genUsers = outputs.lib.genUsers extraConfig.users;
+  genNormalUsers = outputs.lib.genUsers (lib.filterAttrs (_: v: v.normalUser) extraConfig.users);
 in {
   programs.zsh.enable = true;
   users = {
@@ -20,8 +21,10 @@ in {
       genUsers
       (user: {
         isNormalUser = user.normalUser;
+        isSystemUser = !user.normalUser;
         home = user.homePath;
-
+        uid = user.uid;
+        group = lib.mkIf (!builtins.isNull user.group) user.group;
         extraGroups =
           user.groups
           ++ ifTheyExist user.optionalGroups;
@@ -35,7 +38,7 @@ in {
       inherit inputs outputs extraConfig;
     };
 
-    users = genUsers (
+    users = genNormalUsers (
       user: {
         imports = user.homeModules ++ extraConfig.host.homeModules;
         home.username = user.name;

@@ -40,6 +40,8 @@ in rec {
     name,
     homePath ? mkHomeDir name,
     groups ? [],
+    group ? null,
+    uid ? null,
     optionalGroups ? [],
     normalUser ? true,
     homeModules ? [],
@@ -50,6 +52,8 @@ in rec {
       optionalGroups
       homePath
       normalUser
+      group
+      uid
       ;
 
     homeModules = homeModules ++ builtins.attrValues outputs.homeManagerModules;
