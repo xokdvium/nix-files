@@ -23,6 +23,8 @@ in {
     ./jj.nix
     ./btop.nix
     ./attic.nix
+    ./nurl.nix
+    ./nix-melt.nix
   ];
 
   options.xokdvium.home.headless = {

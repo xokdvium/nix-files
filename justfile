@@ -28,6 +28,7 @@ run-workflows:
 
 check:
   @nix build ".#all-checks" -L
+  @nix flake check
 
 check-format:
   @nix build ".#all-formats" -L
