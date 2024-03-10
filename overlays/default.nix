@@ -5,4 +5,5 @@
   hyprland-master = import ./hyprland.nix {inherit inputs;};
   nixpkgs-wayland = inputs.nixpkgs-wayland.overlay;
   attic = inputs.attic.overlays.default;
+  nix-vscode-extensions = inputs.nix-vscode-extensions.overlays.default;
 }

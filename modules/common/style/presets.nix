@@ -40,8 +40,8 @@
     spaceduck = {
       base16 = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
       image = pkgs.fetchurl {
-        url = "https://w.wallhaven.cc/full/6d/wallhaven-6d5k6x.jpg";
-        sha256 = "sha256-+xl4H3UiVmMRNvMhIlaLdVTYYqnSyCTSX2UOTGsDQ8c=";
+        url = "https://w.wallhaven.cc/full/9d/wallhaven-9dzr8w.png";
+        sha256 = "sha256-fgfzyAXnajnHOJ/HD/n+piDwmdTGrwcKzlMyhjVC0bQ=";
       };
     };
   };

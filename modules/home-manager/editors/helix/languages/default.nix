@@ -12,4 +12,5 @@ map (file: import file {inherit pkgs;}) [
   ./toml.nix
   ./markdown.nix
   ./typos.nix
+  ./python.nix
 ]

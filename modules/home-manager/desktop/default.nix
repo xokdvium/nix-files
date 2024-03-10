@@ -22,6 +22,7 @@ in {
     ./okular.nix
     ./matrix-clients.nix
     ./ferdium.nix
+    ./wezterm.nix
     ./gnome
   ];
 
