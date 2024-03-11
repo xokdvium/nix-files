@@ -1458,16 +1458,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1710192662,
+        "lastModified": 1710193282,
         "narHash": "sha256-cwyXYYxkp+OaUKjfth2ASZvRcvZhAMy0hjl6TSvXW1g=",
-        "owner": "xokdvium",
+        "owner": "danth",
         "repo": "stylix",
-        "rev": "0c51054b4d58eb64d108a8d2fe466fb1c86c2ba1",
+        "rev": "32a796929226869542b29c0031848f6dc392a3bd",
         "type": "github"
       },
       "original": {
-        "owner": "xokdvium",
-        "ref": "dev/init-yazi",
+        "owner": "danth",
         "repo": "stylix",
         "type": "github"
       }
