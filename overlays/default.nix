@@ -7,4 +7,5 @@
   attic = inputs.attic.overlays.default;
   nix-vscode-extensions = inputs.nix-vscode-extensions.overlays.default;
   nixd-main = import ./nixd-main.nix {inherit inputs;};
+  yazi-main = inputs.yazi.overlays.default;
 }
