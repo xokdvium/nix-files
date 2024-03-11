@@ -6,4 +6,5 @@
   nixpkgs-wayland = inputs.nixpkgs-wayland.overlay;
   attic = inputs.attic.overlays.default;
   nix-vscode-extensions = inputs.nix-vscode-extensions.overlays.default;
+  nixd-main = import ./nixd-main.nix {inherit inputs;};
 }
