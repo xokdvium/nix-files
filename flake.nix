@@ -114,110 +114,112 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
   };
 
   outputs =
     {
       self,
-      nixpkgs,
-      flake-utils,
-      project-templates,
       treefmt-nix,
+      flake-parts,
+      project-templates,
+      nixpkgs,
       ...
     }@inputs:
-    let
-      inherit (self) outputs;
-      lib = nixpkgs.lib.extend (_: _: import ./lib { inherit inputs outputs; });
-      hosts = import ./hosts { inherit lib; };
-      users = import ./hosts/users { inherit lib; };
-
-      images = {
-        installer = {
-          format = "install-iso";
-          users = {
-            inherit (users) xokdvium;
-          };
-          host = hosts.generic;
-        };
-
-        airgapped = {
-          format = "iso";
-          users = {
-            inherit (users) xokdvium;
-          };
-          host = hosts.airgapped;
-        };
-      };
-
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-      additionalSpecialArgs = {
-        hostModulesPath = "${self}/hosts";
-      };
-    in
-    flake-utils.lib.eachSystem systems (
-      system:
+    flake-parts.lib.mkFlake { inherit inputs; } (
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = builtins.attrValues outputs.overlays;
-        };
+        inherit (self) outputs;
+        lib = nixpkgs.lib.extend (_: _: import ./lib { inherit inputs outputs; });
+        hosts = import ./hosts { inherit lib; };
+        users = import ./hosts/users { inherit lib; };
 
-        packages = import ./packages { inherit pkgs; };
-        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+        additionalSpecialArgs = {
+          hostModulesPath = "${self}/hosts";
+        };
       in
       {
-        packages = packages // {
-          installer = lib.mkHostImage images.installer;
-          airgapped = lib.mkHostImage images.airgapped;
-        };
+        imports = [ treefmt-nix.flakeModule ];
 
-        formatter = treefmtEval.config.build.wrapper;
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
 
-        checks = {
-          formatting = treefmtEval.config.build.check self;
-        };
+        flake = {
+          lib = import ./lib { inherit inputs outputs; };
+          homeManagerModules = import ./modules/home-manager;
+          nixosModules = import ./modules/nixos;
+          overlays = import ./overlays { inherit inputs outputs; };
+          templates = project-templates.templates;
 
-        devShells = rec {
-          bootstrap = import ./shell.nix {
-            inherit pkgs;
-            inherit (inputs.nh.packages.${system}) nh;
+          nixosConfigurations = {
+            nebulinx = lib.mkHostSystem {
+              users = {
+                inherit (users) xokdvium builder;
+              };
+              host = hosts.nebulinx;
+              inherit additionalSpecialArgs;
+            };
+
+            vivobook = lib.mkHostSystem {
+              users = {
+                inherit (users) xokdvium;
+              };
+              host = hosts.vivobook;
+              inherit additionalSpecialArgs;
+            };
           };
-          default = bootstrap;
         };
+
+        perSystem =
+          {
+            pkgs,
+            inputs',
+            system,
+            ...
+          }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              overlays = builtins.attrValues outputs.overlays;
+            };
+
+            imports = [ ./treefmt.nix ];
+            devShells = rec {
+              bootstrap = import ./shell.nix {
+                inherit pkgs;
+                inherit (inputs'.nh.packages) nh;
+              };
+              default = bootstrap;
+            };
+
+            packages = (import ./packages { inherit pkgs; }) // {
+              installer = lib.mkHostImage {
+                format = "install-iso";
+                host = hosts.generic;
+                users = {
+                  inherit (users) xokdvium;
+                };
+              };
+
+              airgapped = lib.mkHostImage {
+                format = "iso";
+                users = {
+                  inherit (users) xokdvium;
+                };
+                host = hosts.airgapped;
+              };
+            };
+          };
       }
     )
     // {
-      homeManagerModules = import ./modules/home-manager;
-      nixosModules = import ./modules/nixos;
-      overlays = import ./overlays { inherit inputs outputs; };
-      templates = project-templates.templates;
-
-      nixosConfigurations = {
-        nebulinx = lib.mkHostSystem {
-          users = {
-            inherit (users) xokdvium builder;
-          };
-          host = hosts.nebulinx;
-          inherit additionalSpecialArgs;
-        };
-
-        vivobook = lib.mkHostSystem {
-          users = {
-            inherit (users) xokdvium;
-          };
-          host = hosts.vivobook;
-          inherit additionalSpecialArgs;
-        };
-      };
-
       nixConfig = {
         extra-substituters = [ "https://attic.aeronas.ru/private/" ];
         extra-trusted-public-keys = [ "private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU=" ];
       };
-
-      lib = import ./lib { inherit inputs outputs; };
     };
 }
