@@ -4,9 +4,11 @@
   config,
   outputs,
   ...
-}: let
-  genUsers = outputs.lib.genUsers (extraConfig.users // {root.name = "root";});
-in {
+}:
+let
+  genUsers = outputs.lib.genUsers (extraConfig.users // { root.name = "root"; });
+in
+{
   services.openssh = {
     enable = true;
     settings = {
@@ -17,11 +19,13 @@ in {
   };
 
   users.users = genUsers (_: {
-    openssh.authorizedKeys.keys = let
-      directory = ../../secrets/user-keys;
-    in
-      builtins.map (file: builtins.readFile (directory + "/${file}"))
-      (builtins.attrNames (lib.attrsets.filterAttrs (n: v: v == "regular") (builtins.readDir directory)));
+    openssh.authorizedKeys.keys =
+      let
+        directory = ../../secrets/user-keys;
+      in
+      builtins.map (file: builtins.readFile (directory + "/${file}")) (
+        builtins.attrNames (lib.attrsets.filterAttrs (_n: v: v == "regular") (builtins.readDir directory))
+      );
   });
 
   environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {

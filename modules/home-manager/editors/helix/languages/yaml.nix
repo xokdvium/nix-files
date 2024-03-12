@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix.languages = {
     language-server.yaml-language-server = {
       command = "${pkgs.nodePackages_latest.yaml-language-server}/bin/yaml-language-server";
-      args = ["--stdio"];
+      args = [ "--stdio" ];
     };
 
     language = [
@@ -15,10 +16,13 @@
           ".clang-tidy"
         ];
         auto-format = true;
-        language-servers = ["yaml-language-server" "typos-lsp"];
+        language-servers = [
+          "yaml-language-server"
+          "typos-lsp"
+        ];
         formatter = {
           command = "${pkgs.yamlfmt}/bin/yamlfmt";
-          args = ["-"];
+          args = [ "-" ];
         };
       }
     ];

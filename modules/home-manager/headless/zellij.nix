@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     zellij.enable = mkHomeCategoryModuleEnableOption config {
       name = "zellij";
@@ -16,9 +15,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.zellij;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.zellij;
+    in
     lib.mkIf cfg.enable {
       programs.zellij = {
         enable = true;

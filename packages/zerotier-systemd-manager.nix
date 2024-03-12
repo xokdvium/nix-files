@@ -15,13 +15,13 @@ buildGoModule rec {
   };
 
   vendorHash = "sha256-40e/FFzHbWo0+bZoHQWzM7D60VUEr+ipxc5Tl0X9E2A=";
-  nativeBuildInputs = [];
-  buildInputs = [];
+  nativeBuildInputs = [ ];
+  buildInputs = [ ];
 
   meta = with lib; {
     description = "Manages systemd per-interface DNS resolution for zeronsd ";
     homepage = "https://github.com/zerotier/zerotier-systemd-manager";
     license = licenses.bsd3;
-    maintainers = [];
+    maintainers = [ ];
   };
 }

@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     btop.enable = mkHomeCategoryModuleEnableOption config {
       name = "btop";
@@ -16,9 +15,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.btop;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.btop;
+    in
     lib.mkIf cfg.enable {
       programs.btop = {
         enable = true;

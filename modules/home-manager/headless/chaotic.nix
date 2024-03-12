@@ -1,5 +1,4 @@
-{inputs, ...}: {
-  imports = [
-    inputs.chaotic.homeManagerModules.default
-  ];
+{ inputs, ... }:
+{
+  imports = [ inputs.chaotic.homeManagerModules.default ];
 }

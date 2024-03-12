@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     starship.enable = mkHomeCategoryModuleEnableOption config {
       name = "starship";
@@ -16,9 +15,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.starship;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.starship;
+    in
     lib.mkIf cfg.enable {
       programs.starship = {
         enable = true;

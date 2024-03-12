@@ -1,14 +1,21 @@
+{ ... }:
+let
+  workspaceIndices = [
+    "1"
+    "2"
+    "3"
+    "4"
+    "5"
+    "6"
+    "7"
+    "8"
+    "9"
+  ];
+  makeWorkspaceBind = indexes: map (index: "SUPER,${index},workspace,${index}") indexes;
+  makeMoveToWorkspaceBind =
+    indexes: map (index: "SUPER_SHIFT,${index},movetoworkspace,${index}") indexes;
+in
 {
-  pkgs,
-  lib,
-  ...
-}: let
-  workspaceIndices = ["1" "2" "3" "4" "5" "6" "7" "8" "9"];
-  makeWorkspaceBind = indexes:
-    map (index: "SUPER,${index},workspace,${index}") indexes;
-  makeMoveToWorkspaceBind = indexes:
-    map (index: "SUPER_SHIFT,${index},movetoworkspace,${index}") indexes;
-in {
   wayland.windowManager.hyprland = {
     settings = {
       bind =
@@ -25,9 +32,7 @@ in {
           "CTRL_ALT,j,movewindow,d"
         ];
 
-      bindm = [
-        "CTRL,mouse:272,resizewindow"
-      ];
+      bindm = [ "CTRL,mouse:272,resizewindow" ];
     };
   };
 }

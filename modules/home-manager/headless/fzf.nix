@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     fzf.enable = mkHomeCategoryModuleEnableOption config {
       name = "fzf";
@@ -17,9 +16,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.fzf;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.fzf;
+    in
     lib.mkIf cfg.enable {
       programs.fzf = {
         enable = true;

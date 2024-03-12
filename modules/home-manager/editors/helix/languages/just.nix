@@ -4,14 +4,12 @@ _: {
       {
         name = "just";
         comment-token = "#";
-        file-types = [
-          "justfile"
-        ];
+        file-types = [ "justfile" ];
         indent = {
           tab-width = 2;
           unit = "  ";
         };
-        language-servers = ["typos-lsp"];
+        language-servers = [ "typos-lsp" ];
       }
     ];
   };

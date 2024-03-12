@@ -4,10 +4,12 @@
   lib,
   outputs,
   ...
-}: let
+}:
+let
   genUsers = outputs.lib.genUsers extraConfig.users;
   cfg = config.xokdvium.nixos.immutableUsers;
-in {
+in
+{
   options.xokdvium.nixos.immutableUsers = {
     enable = lib.mkEnableOption "immutableUsers";
   };
@@ -16,28 +18,26 @@ in {
     users = {
       mutableUsers = lib.mkDefault false;
 
-      users = let
-        sopsSecrets = config.sops.secrets;
-      in (
-        genUsers
-        (user: {
-          hashedPasswordFile = sopsSecrets."passwords/${user.name}".path;
-        })
-        // {
-          root.hashedPasswordFile = sopsSecrets."passwords/root".path;
-        }
-      );
+      users =
+        let
+          sopsSecrets = config.sops.secrets;
+        in
+        (
+          genUsers (user: {
+            hashedPasswordFile = sopsSecrets."passwords/${user.name}".path;
+          })
+          // {
+            root.hashedPasswordFile = sopsSecrets."passwords/root".path;
+          }
+        );
     };
 
     sops.secrets =
-      lib.genAttrs (builtins.map (name: "passwords/${name}")
-        (
-          (builtins.attrNames extraConfig.users)
-          ++ ["root"]
-        ))
-      (_: {
-        sopsFile = extraConfig.host.secretsFile;
-        neededForUsers = true;
-      });
+      lib.genAttrs
+        (builtins.map (name: "passwords/${name}") ((builtins.attrNames extraConfig.users) ++ [ "root" ]))
+        (_: {
+          sopsFile = extraConfig.host.secretsFile;
+          neededForUsers = true;
+        });
   };
 }

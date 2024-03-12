@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix.languages = {
     language-server.cmake-language-server = {
       command = "${pkgs.cmake-language-server}/bin/cmake-language-server";
@@ -8,10 +9,13 @@
       {
         name = "cmake";
         auto-format = true;
-        language-servers = ["cmake-language-server" "typos-lsp"];
+        language-servers = [
+          "cmake-language-server"
+          "typos-lsp"
+        ];
         formatter = {
           command = "${pkgs.cmake-format}/bin/cmake-format";
-          args = ["-"];
+          args = [ "-" ];
         };
       }
     ];

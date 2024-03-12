@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  imports = [
-    ./common
-  ];
+{ pkgs, ... }:
+{
+  imports = [ ./common ];
   services = {
     xserver = {
       enable = true;
@@ -28,9 +27,7 @@
   };
 
   environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-tour
-    ])
+    (with pkgs; [ gnome-tour ])
     ++ (with pkgs.gnome; [
       gnome-music
       gnome-terminal

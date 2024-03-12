@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     okular.enable = mkHomeCategoryModuleEnableOption config {
       name = "okular";
@@ -17,12 +16,9 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.okular;
-  in
-    lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        okular
-      ];
-    };
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.okular;
+    in
+    lib.mkIf cfg.enable { home.packages = with pkgs; [ okular ]; };
 }

@@ -4,17 +4,15 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.programs.magic-wormhole;
-in {
+in
+{
   options.programs.magic-wormhole = {
     enable = lib.mkEnableOption "magic-wormhole";
-    package = lib.mkPackageOption pkgs "magic-wormhole" {};
+    package = lib.mkPackageOption pkgs "magic-wormhole" { };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = [
-      cfg.package
-    ];
-  };
+  config = mkIf cfg.enable { home.packages = [ cfg.package ]; };
 }

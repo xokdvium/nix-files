@@ -1,5 +1,1 @@
-{inputs, ...}: (
-  final: prev: {
-    nixd = inputs.nixd.packages.${prev.system}.nixd;
-  }
-)
+{ inputs, ... }: (_final: prev: { nixd = inputs.nixd.packages.${prev.system}.nixd; })

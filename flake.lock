@@ -1247,9 +1247,7 @@
         "flake-utils": [
           "flake-utils"
         ],
-        "lint-nix": [
-          "lint-nix"
-        ],
+        "lint-nix": "lint-nix",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -1279,7 +1277,6 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "impermanence": "impermanence",
-        "lint-nix": "lint-nix",
         "nix-eval-jobs": "nix-eval-jobs",
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",
@@ -1291,6 +1288,7 @@
         "project-templates": "project-templates",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
+        "treefmt-nix": "treefmt-nix_2",
         "wezterm": "wezterm",
         "yazi": "yazi"
       }
@@ -1544,6 +1542,26 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "rev": "2961375283668d867e64129c22af532de8e77734",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1710088047,
+        "narHash": "sha256-eSqKs6ZCsX9xJyNYLeMDMrxzIDsYtaWClfZCOp0ok6Y=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "720322c5352d7b7bd2cb3601a9176b0e91d1de7d",
         "type": "github"
       },
       "original": {

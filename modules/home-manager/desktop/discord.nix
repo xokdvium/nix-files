@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     discord.enable = mkHomeCategoryModuleEnableOption config {
       name = "discord";
@@ -17,12 +16,9 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.discord;
-  in
-    lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        discord
-      ];
-    };
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.discord;
+    in
+    lib.mkIf cfg.enable { home.packages = with pkgs; [ discord ]; };
 }

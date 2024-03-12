@@ -3,10 +3,12 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.stylix;
   colors = config.lib.stylix.colors;
-in {
+in
+{
   imports = [
     ../.
     ./wofi.nix
@@ -24,21 +26,21 @@ in {
         "XDG_SESSION_DESKTOP,Hyprland"
       ];
 
-      bind = let
-        wofi = "${config.programs.wofi.package}/bin/wofi";
-        firefox = "${config.programs.firefox.package}/bin/firefox";
-        terminal = "${config.programs.alacritty.package}/bin/alacritty";
-      in [
-        "SUPER,Return,exec,${terminal}"
-        "SUPER,d,exec,${wofi} -S run"
-        "SUPER,b,exec,${firefox}"
-        "SUPER,q,killactive"
-        "SUPER,v,togglefloating"
-      ];
+      bind =
+        let
+          wofi = "${config.programs.wofi.package}/bin/wofi";
+          firefox = "${config.programs.firefox.package}/bin/firefox";
+          terminal = "${config.programs.alacritty.package}/bin/alacritty";
+        in
+        [
+          "SUPER,Return,exec,${terminal}"
+          "SUPER,d,exec,${wofi} -S run"
+          "SUPER,b,exec,${firefox}"
+          "SUPER,q,killactive"
+          "SUPER,v,togglefloating"
+        ];
 
-      exec = [
-        "${pkgs.swaybg}/bin/swaybg -i ${cfg.image} --mode fill"
-      ];
+      exec = [ "${pkgs.swaybg}/bin/swaybg -i ${cfg.image} --mode fill" ];
 
       general = {
         "col.active_border" = lib.mkForce "rgb(${colors.base0C})";
@@ -48,18 +50,20 @@ in {
         border_size = 2;
       };
 
-      decoration = let
-        opacity = config.stylix.opacity.applications;
-      in {
-        blur = {
-          enabled = true;
-        };
+      decoration =
+        let
+          opacity = config.stylix.opacity.applications;
+        in
+        {
+          blur = {
+            enabled = true;
+          };
 
-        rounding = 12;
-        active_opacity = opacity;
-        inactive_opacity = opacity;
-        "col.shadow" = lib.mkForce "rgb(${colors.base01})";
-      };
+          rounding = 12;
+          active_opacity = opacity;
+          inactive_opacity = opacity;
+          "col.shadow" = lib.mkForce "rgb(${colors.base01})";
+        };
 
       input = {
         touchpad = {

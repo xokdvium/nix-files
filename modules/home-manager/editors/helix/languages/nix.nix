@@ -1,14 +1,18 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix.languages = {
     language-server = {
       nil = {
         command = "${pkgs.nil}/bin/nil";
-        args = ["--stdio"];
+        args = [ "--stdio" ];
       };
 
       statix = {
         command = "${pkgs.statix}/bin/statix";
-        args = ["check" "--stdin"];
+        args = [
+          "check"
+          "--stdin"
+        ];
       };
 
       nixd = {
@@ -20,8 +24,15 @@
       {
         name = "nix";
         auto-format = true;
-        formatter = {command = "${pkgs.alejandra}/bin/alejandra";};
-        language-servers = ["nixd" "nil" "statix" "typos-lsp"];
+        formatter = {
+          command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt-rfc-style";
+        };
+        language-servers = [
+          "nixd"
+          "nil"
+          "statix"
+          "typos-lsp"
+        ];
       }
     ];
   };

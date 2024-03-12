@@ -4,12 +4,12 @@
   extraConfig,
   pkgs,
   ...
-}: let
+}:
+let
   genUsers = outputs.lib.genUsers extraConfig.users;
-in {
-  imports = [
-    ../../common
-  ];
+in
+{
+  imports = [ ../../common ];
 
   users.users = genUsers (_: {
     initialPassword = "";

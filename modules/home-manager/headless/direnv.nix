@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     direnv.enable = mkHomeCategoryModuleEnableOption config {
       name = "direnv";
@@ -16,9 +15,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.direnv;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.direnv;
+    in
     lib.mkIf cfg.enable {
       programs.direnv = {
         enable = true;
@@ -27,10 +27,8 @@ in {
         nix-direnv.enable = true;
       };
 
-      home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-        directories = [
-          ".local/share/direnv"
-        ];
-      };
+      home.persistence."/persistent/home/${config.home.username}" =
+        lib.mkIf config.xokdvium.home.persistence.enable
+          { directories = [ ".local/share/direnv" ]; };
     };
 }

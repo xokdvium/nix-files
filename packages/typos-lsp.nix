@@ -1,7 +1,4 @@
-{
-  rustPlatform,
-  fetchFromGitHub,
-}:
+{ rustPlatform, fetchFromGitHub }:
 rustPlatform.buildRustPackage rec {
   pname = "typos-lsp";
   version = "0.1.15";

@@ -1,6 +1,8 @@
-{extraConfig, ...}: let
+{ extraConfig, ... }:
+let
   inherit (extraConfig.host) disk;
-in {
+in
+{
   disko.devices = {
     disk.main = {
       device = disk;

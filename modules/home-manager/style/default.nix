@@ -1,5 +1,4 @@
-{inputs, ...}: {
-  imports = [
-    inputs.stylix.homeManagerModules.stylix
-  ];
+{ inputs, ... }:
+{
+  imports = [ inputs.stylix.homeManagerModules.stylix ];
 }

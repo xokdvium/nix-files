@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     telegram.enable = mkHomeCategoryModuleEnableOption config {
       name = "telegram";
@@ -17,16 +16,15 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.telegram;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.telegram;
+    in
     lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        telegram-desktop_git
-      ];
+      home.packages = with pkgs; [ telegram-desktop_git ];
 
-      home.persistence."/state/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-        directories = [".local/share/TelegramDesktop"];
-      };
+      home.persistence."/state/home/${config.home.username}" =
+        lib.mkIf config.xokdvium.home.persistence.enable
+          { directories = [ ".local/share/TelegramDesktop" ]; };
     };
 }

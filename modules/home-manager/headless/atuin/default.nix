@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     atuin = {
       enable = mkHomeCategoryModuleEnableOption config {
@@ -28,9 +27,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.atuin;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.atuin;
+    in
     lib.mkIf cfg.enable {
       programs = {
         atuin = {
@@ -40,9 +40,11 @@ in {
           # https://github.com/Mic92/dotfiles/blob/main/home-manager/pkgs/atuin/default.nix
           # Very cursed patch, but this should help make zfs desktop performance better.
           # But on the other hand this may result in database corruptions :(
-          package = lib.mkIf cfg.enableZfsPatch (pkgs.atuin.overrideAttrs (_old: {
-            patches = [./0001-make-atuin-on-zfs-fast-again.patch];
-          }));
+          package = lib.mkIf cfg.enableZfsPatch (
+            pkgs.atuin.overrideAttrs (_old: {
+              patches = [ ./0001-make-atuin-on-zfs-fast-again.patch ];
+            })
+          );
 
           settings = {
             auto_sync = cfg.autoSync;
@@ -56,8 +58,8 @@ in {
         bash.historyFile = lib.mkIf cfg.noShellHistory "/dev/null";
       };
 
-      home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-        directories = [".local/share/atuin"];
-      };
+      home.persistence."/persistent/home/${config.home.username}" =
+        lib.mkIf config.xokdvium.home.persistence.enable
+          { directories = [ ".local/share/atuin" ]; };
     };
 }

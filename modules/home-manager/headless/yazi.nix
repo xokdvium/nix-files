@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     yazi.enable = mkHomeCategoryModuleEnableOption config {
       name = "yazi";
@@ -16,9 +15,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.yazi;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.yazi;
+    in
     lib.mkIf cfg.enable {
       programs.yazi = {
         enable = true;

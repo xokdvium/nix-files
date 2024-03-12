@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix.languages = {
     language = [
       {
@@ -6,7 +7,7 @@
         auto-format = true;
         formatter = {
           command = "${pkgs.black}/bin/black";
-          args = ["-"];
+          args = [ "-" ];
         };
       }
     ];

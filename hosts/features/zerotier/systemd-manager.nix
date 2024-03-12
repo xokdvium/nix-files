@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     resolved = {
       enable = true;
@@ -13,7 +14,7 @@
 
     timers."zerotier-systemd-manager" = {
       description = "Update zerotier per-interface DNS settings";
-      wantedBy = ["timers.target"];
+      wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "1min";
         OnUnitActiveSec = "1min";
@@ -22,8 +23,11 @@
 
     services.zerotier-systemd-manager = {
       description = "Update zerotier per-interface DNS settings";
-      wants = ["zerotierone.target" "network-online.target"];
-      after = ["zerotierone.target"];
+      wants = [
+        "zerotierone.target"
+        "network-online.target"
+      ];
+      after = [ "zerotierone.target" ];
       serviceConfig = {
         Type = "oneshot";
         User = "root";

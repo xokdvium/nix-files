@@ -4,15 +4,12 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
-  imports = [
-    inputs.nix-index-database.hmModules.nix-index
-  ];
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
+  imports = [ inputs.nix-index-database.hmModules.nix-index ];
 
   options.xokdvium.home.headless = {
     comma.enable = mkHomeCategoryModuleEnableOption config {
@@ -21,9 +18,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.comma;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.comma;
+    in
     lib.mkIf cfg.enable {
       programs = {
         nix-index = {

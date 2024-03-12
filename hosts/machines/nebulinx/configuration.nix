@@ -4,7 +4,8 @@
   config,
   hostModulesPath,
   ...
-}: {
+}:
+{
   imports =
     map (v: hostModulesPath + "/${v}") [
       "desktop"
@@ -29,7 +30,7 @@
   };
 
   nix = {
-    settings.trusted-users = ["builder"];
+    settings.trusted-users = [ "builder" ];
     extraOptions = ''
       secret-key-files = ${config.sops.secrets."binary-cache/private".path}
     '';
@@ -52,17 +53,19 @@
         wipeOnBoot = true;
       };
 
-      zfsHost = let
-        gibibyte = 1024 * 1024 * 1024;
-      in {
-        enable = true;
-        arcSize = 8 * gibibyte;
-        snapshots.enable = true;
-        replication = {
+      zfsHost =
+        let
+          gibibyte = 1024 * 1024 * 1024;
+        in
+        {
           enable = true;
-          enableDebug = true;
+          arcSize = 8 * gibibyte;
+          snapshots.enable = true;
+          replication = {
+            enable = true;
+            enableDebug = true;
+          };
         };
-      };
     };
   };
 
@@ -90,7 +93,7 @@
         efiSupport = true;
         useOSProber = true;
         efiInstallAsRemovable = true;
-        devices = ["nodev"];
+        devices = [ "nodev" ];
       };
     };
 
@@ -105,7 +108,7 @@
       ];
     };
 
-    kernelModules = ["kvm-amd"];
+    kernelModules = [ "kvm-amd" ];
   };
 
   hardware = {
@@ -119,7 +122,7 @@
   };
 
   users = {
-    groups.builder = {};
+    groups.builder = { };
   };
 
   system.stateVersion = "23.11";

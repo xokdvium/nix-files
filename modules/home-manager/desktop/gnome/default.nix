@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     gnome.enable = mkHomeCategoryModuleEnableOption config {
       name = "gnome";
@@ -17,9 +16,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.gnome;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.gnome;
+    in
     lib.mkIf cfg.enable {
       # https://github.com/nix-community/home-manager/issues/3263
       xdg.configFile."autostart/gnome-keyring-ssh.desktop".text = ''

@@ -1,16 +1,16 @@
-{config, ...}: let
+{ config, ... }:
+let
   additionalVariables = {
     WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = "1";
   };
-in {
+in
+{
   virtualisation.docker = {
     enableNvidia = true;
   };
 
-  services.xserver.videoDrivers = [
-    "nvidia"
-  ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {
     nvidia = {

@@ -51,7 +51,8 @@
   symlinkJoin,
   writeShellScriptBin,
   lib,
-}: let
+}:
+let
   cryptsetupcmd = "${cryptsetup}/bin/cryptsetup";
   gitcmd = "${git}/bin/git";
   gpg = "${gnupg}/bin/gpg";
@@ -480,7 +481,7 @@
     '';
   };
 in
-  symlinkJoin {
-    name = "gpg-scripts";
-    paths = lib.attrValues gpg-scripts;
-  }
+symlinkJoin {
+  name = "gpg-scripts";
+  paths = lib.attrValues gpg-scripts;
+}

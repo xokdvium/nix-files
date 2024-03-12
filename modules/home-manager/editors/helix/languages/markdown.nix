@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix.languages = {
     language-server.marksman = {
       command = "${pkgs.marksman}/bin/marksman";
-      args = ["server"];
+      args = [ "server" ];
     };
 
     language = [
@@ -10,10 +11,13 @@
         name = "markdown";
         formatter = {
           command = "${pkgs.mdformat}/bin/mdformat";
-          args = ["-"];
+          args = [ "-" ];
         };
         auto-format = true;
-        language-servers = ["marksman" "typos-lsp"];
+        language-servers = [
+          "marksman"
+          "typos-lsp"
+        ];
       }
     ];
   };

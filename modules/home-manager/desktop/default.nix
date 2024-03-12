@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (outputs.lib) mkHomeCategoryEnableOption;
-in {
+in
+{
   imports = [
     ./alacritty.nix
     ./bitwarden.nix
@@ -26,9 +28,10 @@ in {
     ./gnome
   ];
 
-  config.xokdvium = let
-    cfg = config.xokdvium.home.desktop;
-  in
+  config.xokdvium =
+    let
+      cfg = config.xokdvium.home.desktop;
+    in
     lib.mkIf cfg.enable {
       home = {
         headless.enable = true;

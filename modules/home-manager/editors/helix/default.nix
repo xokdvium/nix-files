@@ -4,11 +4,9 @@
   outputs,
   config,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
 
   helixConfig = {
     enable = true;
@@ -60,7 +58,8 @@
       };
     };
   };
-in {
+in
+{
   options.xokdvium.home.editors = {
     helix.enable = mkHomeCategoryModuleEnableOption config {
       name = "helix";
@@ -68,11 +67,13 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.editors.helix;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.editors.helix;
+    in
     lib.mkIf cfg.enable (
-      lib.mkMerge ([
+      lib.mkMerge (
+        [
           {
             programs.helix = helixConfig;
             home.sessionVariables = {
@@ -80,8 +81,7 @@ in {
             };
           }
         ]
-        ++ (import ./languages {
-          inherit pkgs;
-        }))
+        ++ (import ./languages { inherit pkgs; })
+      )
     );
 }

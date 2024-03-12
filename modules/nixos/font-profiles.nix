@@ -1,8 +1,5 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib, config, ... }:
+let
   mkFontOption = kind: {
     family = lib.mkOption {
       type = lib.types.str;
@@ -20,19 +17,21 @@
   };
 
   cfg = config.fontProfiles;
-  profileNames = ["monospace" "regular" "emoji"];
-in {
-  options.fontProfiles =
-    {
-      enable = lib.mkEnableOption "Whether to enable font profiles";
-    }
-    // (lib.genAttrs profileNames mkFontOption);
+  profileNames = [
+    "monospace"
+    "regular"
+    "emoji"
+  ];
+in
+{
+  options.fontProfiles = {
+    enable = lib.mkEnableOption "Whether to enable font profiles";
+  } // (lib.genAttrs profileNames mkFontOption);
 
   config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
-    environment.systemPackages =
-      builtins.map
-      (value: (builtins.getAttr "package" (builtins.getAttr value cfg)))
-      profileNames;
+    environment.systemPackages = builtins.map (
+      value: (builtins.getAttr "package" (builtins.getAttr value cfg))
+    ) profileNames;
   };
 }

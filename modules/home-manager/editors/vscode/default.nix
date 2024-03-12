@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.editors = {
     vscode.enable = mkHomeCategoryModuleEnableOption config {
       name = "vscode";
@@ -18,9 +17,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.editors.vscode;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.editors.vscode;
+    in
     lib.mkIf cfg.enable {
       programs.vscode = {
         enable = true;
@@ -28,7 +28,8 @@ in {
         enableUpdateCheck = false;
         package = pkgs.vscodium;
 
-        extensions = with pkgs.vscode-extensions;
+        extensions =
+          with pkgs.vscode-extensions;
           [
             llvm-vs-code-extensions.vscode-clangd
             ms-toolsai.jupyter
@@ -48,9 +49,7 @@ in {
             catppuccin.catppuccin-vsc
             tomoki1207.pdf
           ]
-          ++ (with pkgs.vscode-marketplace; [
-            jasew.vscode-helix-emulation
-          ]);
+          ++ (with pkgs.vscode-marketplace; [ jasew.vscode-helix-emulation ]);
       };
     };
 }

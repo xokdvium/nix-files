@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     prusa-slicer.enable = mkHomeCategoryModuleEnableOption config {
       name = "prusa-slicer";
@@ -17,12 +16,9 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.prusa-slicer;
-  in
-    lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        prusa-slicer
-      ];
-    };
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.prusa-slicer;
+    in
+    lib.mkIf cfg.enable { home.packages = with pkgs; [ prusa-slicer ]; };
 }

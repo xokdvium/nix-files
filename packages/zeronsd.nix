@@ -17,8 +17,8 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-TL0bgzQgge6j1SpZCdxv/s4pBMSg4/3U5QisjkVE6BE=";
   };
 
-  nativeBuildInputs = [pkg-config];
-  buildInputs = [openssl];
+  nativeBuildInputs = [ pkg-config ];
+  buildInputs = [ openssl ];
   strictDeps = true;
   cargoHash = "sha256-WGap0j90obpJHiMNokCWg0Q3xIAqwvmiESg9NVnFMKE=";
 
@@ -33,6 +33,6 @@ rustPlatform.buildRustPackage rec {
     description = "A DNS server for ZeroTier users";
     homepage = "https://github.com/zerotier/zeronsd";
     license = licenses.bsd3;
-    maintainers = [];
+    maintainers = [ ];
   };
 }

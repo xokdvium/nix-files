@@ -3,9 +3,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.xokdvium.common.style;
-in {
+in
+{
   options.xokdvium.common.style = {
     fonts.enable = lib.mkOption {
       description = "Enable fonts styling";
@@ -19,7 +21,7 @@ in {
 
     monospace = {
       family = "FiraCode Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+      package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
     };
 
     regular = {

@@ -1,3 +1,1 @@
-{
-  style = import ./style;
-}
+{ style = import ./style; }

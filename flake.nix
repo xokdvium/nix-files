@@ -67,7 +67,6 @@
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    lint-nix.url = "github:xc-jp/lint.nix";
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -86,7 +85,6 @@
       url = "github:xokdvium/project-templates";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
-      inputs.lint-nix.follows = "lint-nix";
     };
 
     wezterm = {
@@ -111,101 +109,115 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-    project-templates,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs.lib.extend (_: _: import ./lib {inherit inputs outputs;});
-    hosts = import ./hosts {inherit lib;};
-    users = import ./hosts/users {inherit lib;};
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      project-templates,
+      treefmt-nix,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+      lib = nixpkgs.lib.extend (_: _: import ./lib { inherit inputs outputs; });
+      hosts = import ./hosts { inherit lib; };
+      users = import ./hosts/users { inherit lib; };
 
-    images = {
-      installer = {
-        format = "install-iso";
-        users = {inherit (users) xokdvium;};
-        host = hosts.generic;
+      images = {
+        installer = {
+          format = "install-iso";
+          users = {
+            inherit (users) xokdvium;
+          };
+          host = hosts.generic;
+        };
+
+        airgapped = {
+          format = "iso";
+          users = {
+            inherit (users) xokdvium;
+          };
+          host = hosts.airgapped;
+        };
       };
 
-      airgapped = {
-        format = "iso";
-        users = {inherit (users) xokdvium;};
-        host = hosts.airgapped;
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      additionalSpecialArgs = {
+        hostModulesPath = "${self}/hosts";
       };
+    in
+    flake-utils.lib.eachSystem systems (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = builtins.attrValues outputs.overlays;
+        };
 
-      aarch64-basic = {
-        format = "sd-aarch64";
-        users = {inherit (users) admin;};
-        host = hosts.aarch64-basic;
-      };
-    };
-
-    systems = ["x86_64-linux" "aarch64-linux"];
-    additionalSpecialArgs = {
-      hostModulesPath = "${self}/hosts";
-    };
-  in
-    flake-utils.lib.eachSystem systems (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = builtins.attrValues outputs.overlays;
-      };
-
-      packages = import ./packages {inherit pkgs;};
-      lints = lib.lints pkgs ./.;
-    in {
-      packages =
-        packages
-        // {
+        packages = import ./packages { inherit pkgs; };
+        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      in
+      {
+        packages = packages // {
           installer = lib.mkHostImage images.installer;
           airgapped = lib.mkHostImage images.airgapped;
-        }
-        // lib.attrsets.optionalAttrs (system == "aarch64-linux") {
-          aarch64-basic = lib.mkHostImage images.aarch64-basic;
         };
 
-      legacyPackages = {} // lints;
+        formatter = treefmtEval.config.build.wrapper;
 
-      formatter = pkgs.alejandra;
-
-      devShells = rec {
-        bootstrap = import ./shell.nix {
-          inherit pkgs;
-          inherit (inputs.nh.packages.${system}) nh;
+        checks = {
+          formatting = treefmtEval.config.build.check self;
         };
-        default = bootstrap;
-      };
-    })
+
+        devShells = rec {
+          bootstrap = import ./shell.nix {
+            inherit pkgs;
+            inherit (inputs.nh.packages.${system}) nh;
+          };
+          default = bootstrap;
+        };
+      }
+    )
     // {
       homeManagerModules = import ./modules/home-manager;
       nixosModules = import ./modules/nixos;
-      overlays = import ./overlays {inherit inputs outputs;};
+      overlays = import ./overlays { inherit inputs outputs; };
       templates = project-templates.templates;
 
       nixosConfigurations = {
         nebulinx = lib.mkHostSystem {
-          users = {inherit (users) xokdvium builder;};
+          users = {
+            inherit (users) xokdvium builder;
+          };
           host = hosts.nebulinx;
           inherit additionalSpecialArgs;
         };
 
         vivobook = lib.mkHostSystem {
-          users = {inherit (users) xokdvium;};
+          users = {
+            inherit (users) xokdvium;
+          };
           host = hosts.vivobook;
           inherit additionalSpecialArgs;
         };
       };
 
       nixConfig = {
-        extra-substituters = ["https://attic.aeronas.ru/private/"];
-        extra-trusted-public-keys = ["private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU="];
+        extra-substituters = [ "https://attic.aeronas.ru/private/" ];
+        extra-trusted-public-keys = [ "private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU=" ];
       };
 
-      lib = import ./lib {inherit inputs outputs;};
+      lib = import ./lib { inherit inputs outputs; };
     };
 }

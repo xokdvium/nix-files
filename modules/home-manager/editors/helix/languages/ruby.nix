@@ -1,14 +1,18 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix.languages = {
     language-server.solargraph = {
       command = "${pkgs.rubyPackages_3_3.solargraph}/bin/solargraph";
-      args = ["stdio"];
+      args = [ "stdio" ];
     };
 
     language = [
       {
         name = "ruby";
-        language-servers = ["solargraph" "typos-lsp"];
+        language-servers = [
+          "solargraph"
+          "typos-lsp"
+        ];
         auto-format = true;
         formatter = {
           command = "${pkgs.rubyfmt}/bin/rubyfmt";

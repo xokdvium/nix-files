@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     obsidian.enable = mkHomeCategoryModuleEnableOption config {
       name = "obsidian";
@@ -17,16 +16,15 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.obsidian;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.obsidian;
+    in
     lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        obsidian
-      ];
+      home.packages = with pkgs; [ obsidian ];
 
-      home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-        directories = [".config/obsidian"];
-      };
+      home.persistence."/persistent/home/${config.home.username}" =
+        lib.mkIf config.xokdvium.home.persistence.enable
+          { directories = [ ".config/obsidian" ]; };
     };
 }

@@ -5,12 +5,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     wezterm.enable = mkHomeCategoryModuleEnableOption config {
       name = "wezterm";
@@ -18,9 +17,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.wezterm;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.wezterm;
+    in
     lib.mkIf cfg.enable {
       programs.wezterm = {
         enable = true;

@@ -1,18 +1,16 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib, config, ... }:
+let
   networkId = "a09acf023353c355";
-in {
+in
+{
   services = {
     zerotierone = {
       enable = true;
-      joinNetworks = [networkId];
+      joinNetworks = [ networkId ];
     };
   };
 
   environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
-    directories = ["/var/lib/zerotier-one"];
+    directories = [ "/var/lib/zerotier-one" ];
   };
 }

@@ -1,20 +1,13 @@
-{
-  inputs,
-  outputs,
-  ...
-}: let
-  callLib = pathToLib:
-    import pathToLib {
-      inherit inputs outputs;
-    };
-in rec {
+{ inputs, outputs, ... }:
+let
+  callLib = pathToLib: import pathToLib { inherit inputs outputs; };
+in
+rec {
   home = callLib ./home.nix;
   host = callLib ./host.nix;
   utils = callLib ./utils.nix;
-  lints = callLib ./lints.nix;
 
-  inherit
-    (home)
+  inherit (home)
     mkHomeDir
     mkHomeConfiguration
     mkUser
@@ -23,15 +16,7 @@ in rec {
     genUsers
     ;
 
-  inherit
-    (host)
-    mkHostInfo
-    mkHostSystem
-    mkHostImage
-    ;
+  inherit (host) mkHostInfo mkHostSystem mkHostImage;
 
-  inherit
-    (utils)
-    mkApp
-    ;
+  inherit (utils) mkApp;
 }

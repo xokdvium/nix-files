@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     nix-melt.enable = mkHomeCategoryModuleEnableOption config {
       name = "nix-melt";
@@ -17,12 +16,9 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.nix-melt;
-  in
-    lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        nix-melt
-      ];
-    };
+  config =
+    let
+      cfg = config.xokdvium.home.headless.nix-melt;
+    in
+    lib.mkIf cfg.enable { home.packages = with pkgs; [ nix-melt ]; };
 }

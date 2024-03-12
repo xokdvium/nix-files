@@ -1,5 +1,1 @@
-_: {
-  imports = [
-    ./pulseaudio.nix
-  ];
-}
+_: { imports = [ ./pulseaudio.nix ]; }

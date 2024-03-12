@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   namedPresets = {
     isotope = {
       base16 = "${pkgs.base16-schemes}/share/themes/isotope.yaml";
@@ -45,7 +46,8 @@
       };
     };
   };
-in {
+in
+{
   options.xokdvium.common.style = {
     preset = lib.mkOption {
       description = "Which preset to use for the theme";
@@ -54,16 +56,15 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.common.style;
-    preset =
-      if builtins.isAttrs cfg.preset
-      then cfg.preset
-      else namedPresets.${cfg.preset};
-  in {
-    stylix = {
-      base16Scheme = preset.base16;
-      image = preset.image;
+  config =
+    let
+      cfg = config.xokdvium.common.style;
+      preset = if builtins.isAttrs cfg.preset then cfg.preset else namedPresets.${cfg.preset};
+    in
+    {
+      stylix = {
+        base16Scheme = preset.base16;
+        image = preset.image;
+      };
     };
-  };
 }

@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   xokdvium = {
     home = {
       headless.enable = true;

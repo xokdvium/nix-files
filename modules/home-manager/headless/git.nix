@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     git.enable = mkHomeCategoryModuleEnableOption config {
       name = "git";
@@ -17,46 +16,53 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.git;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.git;
+    in
     lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        git-absorb
-      ];
+      home.packages = with pkgs; [ git-absorb ];
 
       programs.git = {
         enable = true;
 
-        aliases = let
-          commit_msg = "'[chore]: Temporary save point'";
-          pretty_branch_cmd =
-            "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) "
-            + "- %(contents:subject) %(color:green)(%(committerdate:relative)) "
-            + "[%(authorname)]' --sort=-committerdate";
-          pretty_log_cmd =
-            "!git log --pretty=format:'%C(magenta)%h%Creset "
-            + "-%C(red)%d%Creset %s %C(dim green)(%cr) [%an]' --abbrev-commit -30";
-        in {
-          st = "status";
-          co = "checkout";
-          cob = "checkout -b";
-          cm = "commit -m";
-          del = "branch -D";
-          br = "${pretty_branch_cmd}";
-          save = "!git add -A && git commit -m ${commit_msg}";
-          undo = "reset HEAD~1 --mixed";
-          res = "!git reset --hard";
-          lg = "${pretty_log_cmd}";
-        };
+        aliases =
+          let
+            commit_msg = "'[chore]: Temporary save point'";
+            pretty_branch_cmd =
+              "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) "
+              + "- %(contents:subject) %(color:green)(%(committerdate:relative)) "
+              + "[%(authorname)]' --sort=-committerdate";
+            pretty_log_cmd =
+              "!git log --pretty=format:'%C(magenta)%h%Creset "
+              + "-%C(red)%d%Creset %s %C(dim green)(%cr) [%an]' --abbrev-commit -30";
+          in
+          {
+            st = "status";
+            co = "checkout";
+            cob = "checkout -b";
+            cm = "commit -m";
+            del = "branch -D";
+            br = "${pretty_branch_cmd}";
+            save = "!git add -A && git commit -m ${commit_msg}";
+            undo = "reset HEAD~1 --mixed";
+            res = "!git reset --hard";
+            lg = "${pretty_log_cmd}";
+          };
 
         userEmail = lib.mkDefault "serjtsimmerman@gmail.com";
         userName = lib.mkDefault "Sergei Zimmerman";
 
         extraConfig = {
-          init = {defaultBranch = "main";};
-          pull = {rebase = true;};
-          push = {autoSetupRemote = true;};
+          init = {
+            defaultBranch = "main";
+          };
+          pull = {
+            rebase = true;
+          };
+          push = {
+            autoSetupRemote = true;
+          };
           core = {
             fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
           };

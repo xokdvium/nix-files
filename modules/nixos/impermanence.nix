@@ -5,7 +5,8 @@
   config,
   extraConfig,
   ...
-}: let
+}:
+let
   wipeScript = ''
     echo "Erasing my darlings"
     zfs rollback -r rpool/nixos/root@blank
@@ -13,16 +14,12 @@
 
   wipeService = {
     description = "Rollback zfs root";
-    wantedBy = ["initrd.target"];
-    after = [
-      "zfs-import-rpool.service"
-    ];
+    wantedBy = [ "initrd.target" ];
+    after = [ "zfs-import-rpool.service" ];
 
-    before = [
-      "sysroot.mount"
-    ];
+    before = [ "sysroot.mount" ];
 
-    path = [config.boot.zfs.package];
+    path = [ config.boot.zfs.package ];
 
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
@@ -30,10 +27,9 @@
   };
 
   genNormalUsers = outputs.lib.genUsers (lib.filterAttrs (_: v: v.normalUser) extraConfig.users);
-in {
-  imports = [
-    inputs.impermanence.nixosModules.impermanence
-  ];
+in
+{
+  imports = [ inputs.impermanence.nixosModules.impermanence ];
 
   options.xokdvium.nixos = {
     persistence = {
@@ -48,20 +44,17 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.nixos.persistence;
-  in
-    lib.mkIf
-    cfg.enable
-    {
+  config =
+    let
+      cfg = config.xokdvium.nixos.persistence;
+    in
+    lib.mkIf cfg.enable {
       programs.fuse.userAllowOther = true;
 
       environment.persistence."/persistent" = {
         hideMounts = true;
 
-        files = [
-          "/etc/machine-id"
-        ];
+        files = [ "/etc/machine-id" ];
 
         users =
           (genNormalUsers (_: {
@@ -95,16 +88,18 @@ in {
           };
       };
 
-      system.activationScripts.persistent-dirs.text = let
-        mkHomeDir = dir: user:
-          lib.optionalString user.createHome ''
-            mkdir -p /${dir}/${user.home}
-            chown ${user.name}:${user.group} /${dir}/${user.home}
-            chmod ${user.homeMode} /${dir}/${user.home}
-          '';
-        mkHomePersist = user: ((mkHomeDir "persistent" user) + (mkHomeDir "state" user));
-        users = builtins.filter (user: user.isNormalUser) (lib.attrValues config.users.users);
-      in
+      system.activationScripts.persistent-dirs.text =
+        let
+          mkHomeDir =
+            dir: user:
+            lib.optionalString user.createHome ''
+              mkdir -p /${dir}/${user.home}
+              chown ${user.name}:${user.group} /${dir}/${user.home}
+              chmod ${user.homeMode} /${dir}/${user.home}
+            '';
+          mkHomePersist = user: ((mkHomeDir "persistent" user) + (mkHomeDir "state" user));
+          users = builtins.filter (user: user.isNormalUser) (lib.attrValues config.users.users);
+        in
         lib.concatLines (map mkHomePersist users);
 
       fileSystems = lib.mkIf (config.xokdvium.nixos.zfsHost.enable) {
@@ -112,14 +107,11 @@ in {
         "/state".neededForBoot = true;
       };
 
-      boot.initrd =
-        lib.mkIf
-        (cfg.wipeOnBoot && config.xokdvium.nixos.zfsHost.enable)
-        {
-          systemd = {
-            enable = true;
-            services.wipe-root = wipeService;
-          };
+      boot.initrd = lib.mkIf (cfg.wipeOnBoot && config.xokdvium.nixos.zfsHost.enable) {
+        systemd = {
+          enable = true;
+          services.wipe-root = wipeService;
         };
+      };
     };
 }

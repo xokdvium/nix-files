@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     bat = {
       enable = mkHomeCategoryModuleEnableOption config {
@@ -25,22 +24,26 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.bat;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.bat;
+    in
     lib.mkIf cfg.enable {
       programs = {
         bat = {
           enable = true;
 
-          extraPackages = lib.optionals cfg.withExtras (with pkgs.bat-extras; [
-            prettybat
-            batwatch
-            batpipe
-            batman
-            batgrep
-            batdiff
-          ]);
+          extraPackages = lib.optionals cfg.withExtras (
+            with pkgs.bat-extras;
+            [
+              prettybat
+              batwatch
+              batpipe
+              batman
+              batgrep
+              batdiff
+            ]
+          );
         };
 
         zsh.shellAliases = {

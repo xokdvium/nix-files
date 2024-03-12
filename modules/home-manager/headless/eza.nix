@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     eza.enable = mkHomeCategoryModuleEnableOption config {
       name = "eza";
@@ -16,9 +15,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.eza;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.eza;
+    in
     lib.mkIf cfg.enable {
       programs.eza = {
         enable = true;

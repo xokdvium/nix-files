@@ -3,10 +3,11 @@
   outputs,
   inputs,
   ...
-}: let
-  excludedFlakes = [
-  ];
-in {
+}:
+let
+  excludedFlakes = [ ];
+in
+{
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -21,8 +22,15 @@ in {
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
-      trusted-users = ["root" "@wheel"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "repl-flake"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       sandbox = true;
 
       substituters = [
@@ -44,7 +52,9 @@ in {
 
     registry =
       lib.genAttrs
-      (builtins.filter (name: !builtins.elem name excludedFlakes) (builtins.attrNames inputs))
-      (name: {flake = inputs.${name};});
+        (builtins.filter (name: !builtins.elem name excludedFlakes) (builtins.attrNames inputs))
+        (name: {
+          flake = inputs.${name};
+        });
   };
 }

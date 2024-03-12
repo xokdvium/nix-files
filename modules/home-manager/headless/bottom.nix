@@ -3,12 +3,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     bottom.enable = mkHomeCategoryModuleEnableOption config {
       name = "bottom";
@@ -16,9 +15,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.bottom;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.bottom;
+    in
     lib.mkIf cfg.enable {
       programs.bottom = {
         enable = true;

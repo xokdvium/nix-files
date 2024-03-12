@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.crypto = {
     gpg.enable = mkHomeCategoryModuleEnableOption config {
       name = "gpg";
@@ -17,9 +16,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.crypto.gpg;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.crypto.gpg;
+    in
     lib.mkIf cfg.enable {
       programs.gpg = {
         enable = true;
@@ -45,8 +45,6 @@ in {
         enableScDaemon = true;
       };
 
-      home.packages = with pkgs; [
-        gpg-scripts
-      ];
+      home.packages = with pkgs; [ gpg-scripts ];
     };
 }

@@ -1,9 +1,11 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   address4 = "127.0.0.1";
   address6 = "::1";
   logDir = "/var/log/dnscrypt-proxy";
   mkLogFile = file: "${logDir}/${file}";
-in {
+in
+{
   systemd = {
     network = {
       enable = true;
@@ -16,7 +18,10 @@ in {
       enable = true;
       upstreamDefaults = true;
       settings = {
-        listen_addresses = ["${address4}:53" "[${address6}]:53"];
+        listen_addresses = [
+          "${address4}:53"
+          "[${address6}]:53"
+        ];
         sources.public-resolvers = {
           urls = [
             "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
@@ -33,10 +38,11 @@ in {
         log_level = 0;
 
         # FIXME: Find a way to not hardcode the default gateway address here
-        forwarding_rules = let
-          defaultGateway = "192.168.50.1";
-          backupDns = "8.8.8.8";
-        in
+        forwarding_rules =
+          let
+            defaultGateway = "192.168.50.1";
+            backupDns = "8.8.8.8";
+          in
           # FIXME: For whatever reason github.com does not always loads correctly.
           # For the moment the fix seems to be to forward queries to a plain DNS server.
           pkgs.writeText "dnscrypt-proxy2-forwarding-lan" ''
@@ -59,7 +65,10 @@ in {
   };
 
   networking = {
-    nameservers = [address4 address6];
+    nameservers = [
+      address4
+      address6
+    ];
   };
 
   environment = {

@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     dev-tools.enable = mkHomeCategoryModuleEnableOption config {
       name = "dev-tools";
@@ -18,9 +17,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.dev-tools;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.dev-tools;
+    in
     lib.mkIf cfg.enable {
       xokdvium.home.headless = {
         bottom.enable = true;

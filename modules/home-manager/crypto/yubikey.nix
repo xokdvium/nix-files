@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.crypto = {
     yubikey.enable = mkHomeCategoryModuleEnableOption config {
       name = "utils";
@@ -17,9 +16,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.crypto.yubikey;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.crypto.yubikey;
+    in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [
         yubikey-manager

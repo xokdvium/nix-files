@@ -1,8 +1,5 @@
+{ lib, config, ... }:
 {
-  lib,
-  config,
-  ...
-}: {
   services.clamav = {
     daemon.enable = true;
     updater = {
@@ -15,6 +12,6 @@
   };
 
   environment.persistence."/state" = lib.mkIf config.xokdvium.nixos.persistence.enable {
-    directories = ["/var/lib/clamav"];
+    directories = [ "/var/lib/clamav" ];
   };
 }

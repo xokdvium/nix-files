@@ -22,8 +22,8 @@ The latter is most convenient (if you have `nix-direnv` installed):
 
 Otherwise you can enter the shell via `nix-shell` or `nix develop` commands.
 Both are supported and versioned with `flake.lock` file.
-The flake has several formatters configured via [lint.nix](https://github.com/xc-jp/lint.nix/). Definitions can be found at
-[lints.nix](./lib/lints.nix). This file is my go-to for preconfigured linters and formatters for CI/CD and development.
+The flake has several formatters configured via [treefmt-nix](https://github.com/numtide/treefmt-nix).
+This file is my go-to for preconfigured linters and formatters for CI/CD and development.
 All files can be formatted and checked with the following command:
 
 ```bash

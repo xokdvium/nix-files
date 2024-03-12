@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     zsh.enable = mkHomeCategoryModuleEnableOption config {
       name = "zsh";
@@ -17,11 +16,15 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.zsh;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.zsh;
+    in
     lib.mkIf cfg.enable {
-      home.packages = with pkgs; [thefuck navi];
+      home.packages = with pkgs; [
+        thefuck
+        navi
+      ];
       programs = {
         zsh = {
           enable = true;
@@ -33,7 +36,7 @@ in {
 
           oh-my-zsh = {
             enable = true;
-            plugins = ["git"];
+            plugins = [ "git" ];
           };
         };
       };

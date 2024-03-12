@@ -1,6 +1,8 @@
-{outputs, ...}: let
+{ outputs, ... }:
+let
   inherit (outputs.lib) mkHomeCategoryEnableOption;
-in {
+in
+{
   imports = [
     ./gpg.nix
     ./yubikey.nix

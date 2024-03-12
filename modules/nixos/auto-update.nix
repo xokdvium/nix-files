@@ -3,9 +3,11 @@
   config,
   inputs,
   ...
-}: let
+}:
+let
   cfg = config.xokdvium.nixos.autoUpdate;
-in {
+in
+{
   options.xokdvium.nixos.autoUpdate = {
     enable = lib.mkEnableOption "auto-update";
 

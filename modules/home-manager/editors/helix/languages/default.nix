@@ -1,5 +1,5 @@
-{pkgs, ...}:
-map (file: import file {inherit pkgs;}) [
+{ pkgs, ... }:
+map (file: import file { inherit pkgs; }) [
   ./just.nix
   ./cpp.nix
   ./json.nix

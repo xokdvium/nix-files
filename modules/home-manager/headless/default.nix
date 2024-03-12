@@ -1,6 +1,8 @@
-{outputs, ...}: let
+{ outputs, ... }:
+let
   inherit (outputs.lib) mkHomeCategoryEnableOption;
-in {
+in
+{
   imports = [
     ./autojump.nix
     ./bat.nix

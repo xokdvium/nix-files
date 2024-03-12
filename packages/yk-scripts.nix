@@ -41,7 +41,8 @@
   symlinkJoin,
   writeShellScriptBin,
   lib,
-}: let
+}:
+let
   gpg = "${gnupg}/bin/gpg";
   whiptail = "${newt}/bin/whiptail";
   ykman = "${yubikey-manager}/bin/ykman";
@@ -304,7 +305,7 @@
     '';
   };
 in
-  symlinkJoin {
-    name = "yk-scripts";
-    paths = lib.attrValues yk-scripts;
-  }
+symlinkJoin {
+  name = "yk-scripts";
+  paths = lib.attrValues yk-scripts;
+}

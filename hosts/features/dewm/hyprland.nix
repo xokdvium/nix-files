@@ -1,7 +1,5 @@
 _: {
-  imports = [
-    ./common
-  ];
+  imports = [ ./common ];
 
   services.xserver = {
     enable = true;

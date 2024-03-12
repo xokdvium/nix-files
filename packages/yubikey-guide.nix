@@ -2,7 +2,8 @@
   pkgs,
   glow,
   symlinkJoin,
-}: let
+}:
+let
   inherit (pkgs) stdenv lib;
 
   guide = stdenv.mkDerivation {
@@ -15,9 +16,7 @@
       sha256 = "sha256-ZgSMNWFtRICcv/BStmFMiXbx4Xa9d4bbhqxSVb8NhJg=";
     };
 
-    nativeBuildInputs = with pkgs; [
-      pandoc
-    ];
+    nativeBuildInputs = with pkgs; [ pandoc ];
 
     buildPhase = ''
       pandoc README.md -o README.html
@@ -66,7 +65,10 @@
     exec $viewer "${guide}/share/README.md"
   '';
 in
-  symlinkJoin {
-    name = "yubikey-guide";
-    paths = [guide script];
-  }
+symlinkJoin {
+  name = "yubikey-guide";
+  paths = [
+    guide
+    script
+  ];
+}

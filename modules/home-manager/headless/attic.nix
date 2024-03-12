@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.headless = {
     attic.enable = mkHomeCategoryModuleEnableOption config {
       name = "attic";
@@ -17,18 +16,17 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.headless.attic;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.headless.attic;
+    in
     lib.mkIf cfg.enable {
       home = {
-        packages = with pkgs; [
-          attic-client
-        ];
+        packages = with pkgs; [ attic-client ];
 
-        persistence."/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-          directories = [".config/attic"];
-        };
+        persistence."/persistent/home/${config.home.username}" =
+          lib.mkIf config.xokdvium.home.persistence.enable
+            { directories = [ ".config/attic" ]; };
       };
 
       nix.settings = {

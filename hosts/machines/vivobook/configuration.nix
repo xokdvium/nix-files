@@ -3,7 +3,8 @@
   pkgs,
   hostModulesPath,
   ...
-}: {
+}:
+{
   imports =
     map (v: hostModulesPath + "/${v}") [
       "desktop"
@@ -53,7 +54,7 @@
       grub = {
         enable = true;
         efiSupport = true;
-        devices = ["nodev"];
+        devices = [ "nodev" ];
       };
     };
 
@@ -68,7 +69,7 @@
       ];
     };
 
-    kernelModules = ["kvm-intel"];
+    kernelModules = [ "kvm-intel" ];
   };
 
   powerManagement = {

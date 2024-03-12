@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     style.enable = mkHomeCategoryModuleEnableOption config {
       name = "style";
@@ -17,9 +16,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.style;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.style;
+    in
     lib.mkIf cfg.enable {
       gtk.iconTheme = {
         name = "Papirus-Dark";

@@ -6,13 +6,12 @@
   extraConfig,
   outputs,
   ...
-}: let
+}:
+let
   inherit (extraConfig.host) system;
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     firefox = {
       enable = mkHomeCategoryModuleEnableOption config {
@@ -24,17 +23,20 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.firefox;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.firefox;
+    in
     lib.mkIf cfg.enable {
       programs.firefox = {
         enable = true;
         profiles.${config.home.username} = {
-          extensions = let
-            addons = inputs.firefox-addons.packages.${system};
-          in
-            with addons; [
+          extensions =
+            let
+              addons = inputs.firefox-addons.packages.${system};
+            in
+            with addons;
+            [
               ublock-origin
               bitwarden
               videospeed
@@ -49,7 +51,7 @@ in {
               bookmarks = [
                 {
                   name = "miniflux";
-                  tags = ["rss"];
+                  tags = [ "rss" ];
                   keyword = "rss";
                   url = "https://rss.aeronas.ru/";
                 }
@@ -85,7 +87,7 @@ in {
                 ];
 
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = ["@np"];
+                definedAliases = [ "@np" ];
               };
 
               "Bing".metaData.hidden = true;
@@ -109,7 +111,7 @@ in {
                 ];
 
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = ["@no"];
+                definedAliases = [ "@no" ];
               };
 
               "Home Manager Options" = {
@@ -126,7 +128,7 @@ in {
                 ];
 
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = ["@hmo"];
+                definedAliases = [ "@hmo" ];
               };
             };
           };
@@ -134,14 +136,14 @@ in {
       };
 
       xdg.mimeApps.defaultApplications = {
-        "text/html" = ["firefox.desktop"];
-        "text/xml" = ["firefox.desktop"];
-        "x-scheme-handler/http" = ["firefox.desktop"];
-        "x-scheme-handler/https" = ["firefox.desktop"];
+        "text/html" = [ "firefox.desktop" ];
+        "text/xml" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
       };
 
-      home.persistence."/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-        directories = [".mozilla"];
-      };
+      home.persistence."/persistent/home/${config.home.username}" =
+        lib.mkIf config.xokdvium.home.persistence.enable
+          { directories = [ ".mozilla" ]; };
     };
 }

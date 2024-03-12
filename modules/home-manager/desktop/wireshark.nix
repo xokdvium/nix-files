@@ -4,12 +4,11 @@
   config,
   lib,
   ...
-}: let
-  inherit
-    (outputs.lib)
-    mkHomeCategoryModuleEnableOption
-    ;
-in {
+}:
+let
+  inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+in
+{
   options.xokdvium.home.desktop = {
     wireshark.enable = mkHomeCategoryModuleEnableOption config {
       name = "wireshark";
@@ -17,9 +16,10 @@ in {
     };
   };
 
-  config = let
-    cfg = config.xokdvium.home.desktop.wireshark;
-  in
+  config =
+    let
+      cfg = config.xokdvium.home.desktop.wireshark;
+    in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [
         wireshark
