@@ -25,7 +25,7 @@
         name = "nix";
         auto-format = true;
         formatter = {
-          command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt-rfc-style";
+          command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
         };
         language-servers = [
           "nixd"
