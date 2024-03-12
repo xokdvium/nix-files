@@ -11,21 +11,22 @@ in
   imports = [
     ./alacritty.nix
     ./bitwarden.nix
-    ./discord.nix
-    ./firefox.nix
-    ./style.nix
-    ./telegram.nix
-    ./zathura.nix
-    ./wireshark.nix
     ./deluge.nix
-    ./prusa-slicer.nix
+    ./discord.nix
+    ./ferdium.nix
+    ./firefox.nix
     ./freecad.nix
+    ./gaming.nix
+    ./gnome
+    ./matrix-clients.nix
     ./obsidian.nix
     ./okular.nix
-    ./matrix-clients.nix
-    ./ferdium.nix
+    ./prusa-slicer.nix
+    ./style.nix
+    ./telegram.nix
     ./wezterm.nix
-    ./gnome
+    ./wireshark.nix
+    ./zathura.nix
   ];
 
   config.xokdvium =
@@ -34,9 +35,9 @@ in
     in
     lib.mkIf cfg.enable {
       home = {
-        headless.enable = true;
         crypto.enable = true;
         editors.enable = true;
+        headless.enable = true;
       };
 
       common = {

@@ -18,6 +18,7 @@ _: {
         firefox = {
           staticBookmarks = true;
         };
+        gaming.enable = true;
       };
 
       editors = {
