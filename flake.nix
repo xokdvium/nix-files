@@ -84,7 +84,7 @@
     project-templates = {
       url = "github:xokdvium/project-templates";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
     wezterm = {
