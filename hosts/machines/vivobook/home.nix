@@ -19,6 +19,7 @@ _: {
         firefox = {
           staticBookmarks = true;
         };
+        factorio.enable = true;
       };
 
       editors = {

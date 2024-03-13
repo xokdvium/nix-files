@@ -20,6 +20,7 @@ _: {
           staticBookmarks = true;
         };
         gaming.enable = true;
+        factorio.enable = true;
       };
 
       editors = {

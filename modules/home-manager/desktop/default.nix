@@ -9,10 +9,10 @@ let
 in
 {
   imports = [
-    ./alacritty.nix
     ./bitwarden.nix
     ./deluge.nix
     ./discord.nix
+    ./factorio.nix
     ./ferdium.nix
     ./firefox.nix
     ./freecad.nix
@@ -27,6 +27,7 @@ in
     ./wezterm.nix
     ./wireshark.nix
     ./zathura.nix
+    ./alacritty.nix
   ];
 
   config.xokdvium =
