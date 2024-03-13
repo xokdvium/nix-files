@@ -4,7 +4,7 @@ let
   user = builtins.getAttr config.home.username users;
 in
 {
-  imports = [ ../../../hosts/base/nix.nix ];
+  imports = [ ../../../hosts/base/nixpkgs.nix ];
 
   home = {
     homeDirectory = user.homePath;

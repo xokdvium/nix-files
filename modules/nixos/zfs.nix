@@ -136,19 +136,5 @@ in
         }
       );
     };
-
-    boot.kernelPatches = [
-      {
-        name = "enable RT_FULL";
-        patch = null;
-        extraConfig = ''
-          PREEMPT y
-          PREEMPT_BUILD y
-          PREEMPT_VOLUNTARY n
-          PREEMPT_COUNT y
-          PREEMPTION y
-        '';
-      }
-    ];
   };
 }

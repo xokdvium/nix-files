@@ -74,8 +74,8 @@ But due to certain usability issues I've switched to [cachyos](https://cachyos.o
 To remedy the long build times I've spun up a personal binary cache and set up [distributed builds](https://nixos.wiki/wiki/Distributed_build).
 
 ```
-substituters = https://attic.aeronas.ru/private/
-trusted-public-keys = private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU=
+extra-substituters = https://attic.aeronas.ru/private/
+extra-trusted-public-keys = private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU=
 ```
 
 ## 📖 Acknowledgements

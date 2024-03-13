@@ -30,7 +30,7 @@
   };
 
   nix = {
-    settings.trusted-users = [ "builder" ];
+    settings.extra-trusted-users = [ "builder" ];
     extraOptions = ''
       secret-key-files = ${config.sops.secrets."binary-cache/private".path}
     '';

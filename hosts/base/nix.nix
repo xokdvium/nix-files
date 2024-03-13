@@ -1,24 +1,8 @@
-{
-  lib,
-  outputs,
-  inputs,
-  ...
-}:
+{ lib, inputs, ... }:
 let
   excludedFlakes = [ ];
 in
 {
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "electron-25.9.0" # FIXME: Remove this when obsidian gets bumped
-      ];
-    };
-
-    overlays = builtins.attrValues outputs.overlays;
-  };
-
   nix = {
     settings = {
       auto-optimise-store = true;

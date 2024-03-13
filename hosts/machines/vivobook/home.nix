@@ -7,6 +7,7 @@ _: {
         atuin = {
           noShellHistory = true;
           autoSync = true;
+          enableZfsPatch = true;
         };
 
         dev-tools.enable = true;

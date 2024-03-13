@@ -40,8 +40,8 @@ in
     '';
 
     settings = {
-      substituters = [ nebulinxHost ];
-      trusted-public-keys = [ "nebulinx:xUFzx0S3iFRiyWANCv+tlfMmuH0iv5Gs91dQ/NDniME=" ];
+      extra-substituters = [ nebulinxHost ];
+      extra-trusted-public-keys = [ "nebulinx:xUFzx0S3iFRiyWANCv+tlfMmuH0iv5Gs91dQ/NDniME=" ];
     };
   };
 }

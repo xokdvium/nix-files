@@ -1,8 +1,8 @@
 diff --git a/atuin-client/src/database.rs b/atuin-client/src/database.rs
-index e67fe06d..81db9104 100644
+index 8d64bf36..01098fc6 100644
 --- a/atuin-client/src/database.rs
 +++ b/atuin-client/src/database.rs
-@@ -139,9 +139,9 @@ impl Sqlite {
+@@ -137,9 +137,9 @@ impl Sqlite {
          }
  
          let opts = SqliteConnectOptions::from_str(path.as_os_str().to_str().unwrap())?
@@ -10,21 +10,30 @@ index e67fe06d..81db9104 100644
 +            .journal_mode(SqliteJournalMode::Memory)
              .optimize_on_close(true, None)
 -            .synchronous(SqliteSynchronous::Normal)
-+            .synchronous(sqlx::sqlite::SqliteSynchronous::Off)
++            .synchronous(SqliteSynchronous::Off)
+             .with_regexp()
              .create_if_missing(true);
  
-         let pool = SqlitePoolOptions::new()
 diff --git a/atuin-client/src/record/sqlite_store.rs b/atuin-client/src/record/sqlite_store.rs
-index 6333bb27..17fa82b9 100644
+index 6333bb27..e028abbe 100644
 --- a/atuin-client/src/record/sqlite_store.rs
 +++ b/atuin-client/src/record/sqlite_store.rs
+@@ -10,7 +10,7 @@ use eyre::{eyre, Result};
+ use fs_err as fs;
+ 
+ use sqlx::{
+-    sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePool, SqlitePoolOptions, SqliteRow},
++    sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePool, SqlitePoolOptions, SqliteRow, SqliteSynchronous},
+     Row,
+ };
+ 
 @@ -41,7 +41,8 @@ impl SqliteStore {
          }
  
          let opts = SqliteConnectOptions::from_str(path.as_os_str().to_str().unwrap())?
 -            .journal_mode(SqliteJournalMode::Wal)
 +            .journal_mode(SqliteJournalMode::Memory)
-+            .synchronous(sqlx::sqlite::SqliteSynchronous::Off)
++            .synchronous(SqliteSynchronous::Off)
              .foreign_keys(true)
              .create_if_missing(true);
  

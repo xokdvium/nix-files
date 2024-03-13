@@ -22,8 +22,19 @@ in
     lib.mkIf cfg.enable {
       programs.eza = {
         enable = true;
-        enableAliases = true;
+        git = true;
         icons = lib.mkDefault true;
+
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableIonIntegration = true;
+        enableNushellIntegration = true;
+        enableZshIntegration = true;
+
+        extraOptions = [
+          "--group-directories-first"
+          "--header"
+        ];
       };
     };
 }

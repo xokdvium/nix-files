@@ -30,12 +30,12 @@ in
       };
 
       nix.settings = {
-        substituters = [
+        extra-substituters = [
           "https://attic.aeronas.ru/lp4a/"
           "https://attic.aeronas.ru/private/"
         ];
 
-        trusted-public-keys = [
+        extra-trusted-public-keys = [
           "lp4a:Om07le0y+rXgyAo7tM2gWoWVKok18uqrxI7GB9DLtIE="
           "private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU="
         ];
