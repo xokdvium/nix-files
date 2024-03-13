@@ -38,10 +38,5 @@ in
     extraOptions = ''
       builders-use-substitutes = true
     '';
-
-    settings = {
-      extra-substituters = [ nebulinxHost ];
-      extra-trusted-public-keys = [ "nebulinx:xUFzx0S3iFRiyWANCv+tlfMmuH0iv5Gs91dQ/NDniME=" ];
-    };
   };
 }
