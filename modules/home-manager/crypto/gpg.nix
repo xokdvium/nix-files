@@ -41,8 +41,8 @@ in
         enableSshSupport = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        pinentryFlavor = "curses";
         enableScDaemon = true;
+        pinentryPackage = pkgs.pinentry-curses;
       };
 
       home.packages = with pkgs; [ gpg-scripts ];
