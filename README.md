@@ -75,7 +75,7 @@ To remedy the long build times I've spun up a personal binary cache and set up [
 
 ```
 extra-substituters = https://attic.aeronas.ru/private/
-extra-trusted-public-keys = private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU=
+extra-trusted-public-keys = private:piCMDhXH9IYWPqDWBrPjgG0UutnonBDjVmFH49PIS3Q=
 ```
 
 ## 📖 Acknowledgements

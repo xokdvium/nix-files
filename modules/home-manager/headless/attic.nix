@@ -36,8 +36,8 @@ in
         ];
 
         extra-trusted-public-keys = [
-          "lp4a:Om07le0y+rXgyAo7tM2gWoWVKok18uqrxI7GB9DLtIE="
-          "private:IvY1j71q2NBKHzakkPgOgP/OCVjKw7XNsPL1OV1umNU="
+          "lp4a:v95ilxwsZCHb678U95+2zBFw+va3HdndhHDjeehtrOA="
+          "private:piCMDhXH9IYWPqDWBrPjgG0UutnonBDjVmFH49PIS3Q="
         ];
       };
     };
