@@ -1,7 +1,3 @@
-{ lib, inputs, ... }:
-let
-  excludedFlakes = [ ];
-in
 {
   nix = {
     settings = {
@@ -33,12 +29,5 @@ in
         "nixpkgs-update.cachix.org-1:6y6Z2JdoL3APdu6/+Iy8eZX2ajf09e4EE9SnxSML1W8="
       ];
     };
-
-    registry =
-      lib.genAttrs
-        (builtins.filter (name: !builtins.elem name excludedFlakes) (builtins.attrNames inputs))
-        (name: {
-          flake = inputs.${name};
-        });
   };
 }
