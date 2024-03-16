@@ -13,6 +13,7 @@ in
     attic.enable = mkHomeCategoryModuleEnableOption config {
       name = "attic";
       category = "headless";
+      autoEnable = false;
     };
   };
 

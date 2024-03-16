@@ -117,6 +117,11 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
+
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -126,6 +131,7 @@
       flake-parts,
       project-templates,
       nixpkgs,
+      microvm,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -168,6 +174,52 @@
                 inherit (users) xokdvium;
               };
               host = hosts.vivobook;
+              inherit additionalSpecialArgs;
+            };
+
+            vm = lib.mkHostSystem {
+              users = { };
+              host = hosts.generic;
+              modules = (builtins.attrValues microvm.nixosModules) ++ [
+                (
+                  { pkgs, lib, ... }:
+                  {
+                    microvm = {
+                      hypervisor = "qemu";
+                      writableStoreOverlay = "/nix/.rw-store";
+                      mem = 4096;
+
+                      interfaces = [
+                        {
+                          type = "tap";
+                          id = "vm-a1";
+                          mac = "02:00:00:00:00:01";
+                        }
+                      ];
+                    };
+
+                    users.users.root.password = "1";
+
+                    nix = {
+                      optimise.automatic = lib.mkForce false;
+                      settings.auto-optimise-store = lib.mkForce false;
+                      package = lib.mkForce (
+                        pkgs.nixVersions.nix_2_21.overrideAttrs (
+                          final: prev: {
+                            doCheck = false;
+                            src = pkgs.fetchFromGitHub {
+                              owner = "xokdvium";
+                              repo = "nix";
+                              rev = "136c61854c284dd0fb27d4cbe05765501366a96c";
+                              hash = "sha256-JSXym4MP0qqxhatVOXR4yxNwU3VScujs/C8wxYQsqtc=";
+                            };
+                          }
+                        )
+                      );
+                    };
+                  }
+                )
+              ];
               inherit additionalSpecialArgs;
             };
           };
@@ -242,6 +294,8 @@
                 };
                 host = hosts.airgapped;
               };
+
+              vm = self.nixosConfigurations.vm.config.microvm.declaredRunner;
             };
           };
       }
