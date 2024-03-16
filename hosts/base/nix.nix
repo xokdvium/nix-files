@@ -1,7 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   nix = {
-    package = pkgs.nixVersions.nix_2_21;
+    package = lib.mkForce (
+      pkgs.nixVersions.nix_2_21.overrideAttrs (
+        final: prev: {
+          doCheck = false;
+          src = pkgs.fetchFromGitHub {
+            owner = "xokdvium";
+            repo = "nix";
+            rev = "8a28dc25d70f1569646e42351facb15c06360f2a";
+            hash = "sha256-LRTVWjRS6OjzPByk8vMHz1vQB1xiqxmd2KuEPejeR/c=";
+          };
+        }
+      )
+    );
+    # package = pkgs.nixVersions.nix_2_21;
 
     settings = {
       auto-optimise-store = true;
