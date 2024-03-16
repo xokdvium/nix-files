@@ -171,6 +171,37 @@
               inherit additionalSpecialArgs;
             };
           };
+
+          homeConfigurations =
+            let
+              setNixModule =
+                { pkgs, ... }:
+                {
+                  nix.package = pkgs.nix;
+                };
+            in
+            {
+              "xokdvium@nebulinx" = lib.mkHomeConfiguration {
+                user = users.xokdvium;
+                host = hosts.nebulinx;
+                modules = [ setNixModule ];
+                inherit additionalSpecialArgs;
+              };
+
+              "xokdvium@vivobook" = lib.mkHomeConfiguration {
+                user = users.xokdvium;
+                host = hosts.vivobook;
+                modules = [ setNixModule ];
+                inherit additionalSpecialArgs;
+              };
+
+              "xokdvium@generic" = lib.mkHomeConfiguration {
+                user = users.xokdvium;
+                host = hosts.generic;
+                modules = [ setNixModule ];
+                inherit additionalSpecialArgs;
+              };
+            };
         };
 
         perSystem =
