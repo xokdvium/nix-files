@@ -30,15 +30,8 @@ in
       };
 
       nix.settings = {
-        extra-substituters = [
-          "https://attic.aeronas.ru/lp4a/"
-          "https://attic.aeronas.ru/private/"
-        ];
-
-        extra-trusted-public-keys = [
-          "lp4a:v95ilxwsZCHb678U95+2zBFw+va3HdndhHDjeehtrOA="
-          "private:piCMDhXH9IYWPqDWBrPjgG0UutnonBDjVmFH49PIS3Q="
-        ];
+        extra-substituters = [ "https://attic.aeronas.ru/private/" ];
+        extra-trusted-public-keys = [ "private:vKBWz9kKZiVpjooidWtnvC4gIAQx6fv/ofKpnRLIvCI=" ];
       };
     };
 }

@@ -246,9 +246,4 @@
           };
       }
     );
-
-  nixConfig = {
-    extra-substituters = [ "https://attic.aeronas.ru/private/" ];
-    extra-trusted-public-keys = [ "private:piCMDhXH9IYWPqDWBrPjgG0UutnonBDjVmFH49PIS3Q=" ];
-  };
 }

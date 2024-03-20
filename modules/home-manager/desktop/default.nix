@@ -9,6 +9,7 @@ let
 in
 {
   imports = [
+    ./alacritty.nix
     ./bitwarden.nix
     ./deluge.nix
     ./discord.nix
@@ -18,6 +19,7 @@ in
     ./freecad.nix
     ./gaming.nix
     ./gnome
+    ./libreoffice.nix
     ./matrix-clients.nix
     ./obsidian.nix
     ./okular.nix
@@ -27,7 +29,6 @@ in
     ./wezterm.nix
     ./wireshark.nix
     ./zathura.nix
-    ./alacritty.nix
   ];
 
   config.xokdvium =
