@@ -27,6 +27,7 @@ in
     ./attic.nix
     ./nurl.nix
     ./nix-melt.nix
+    ./nix-closure-graph.nix
   ];
 
   options.xokdvium.home.headless = {

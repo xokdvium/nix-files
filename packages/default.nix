@@ -9,4 +9,5 @@ in
   zeronsd = callPackage ./zeronsd.nix { };
   zerotier-systemd-manager = callPackage ./zerotier-systemd-manager.nix { };
   typos-lsp = callPackage ./typos-lsp.nix { };
+  nix-closure-graph = callPackage ./nix-closure-graph.nix { };
 }
