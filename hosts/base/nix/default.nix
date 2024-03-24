@@ -1,9 +1,7 @@
 { pkgs, ... }:
 {
   nix = {
-    package = pkgs.nixVersions.nix_2_20.overrideAttrs (
-      final: prev: { patches = [ ./0001-make-attic-work.patch ]; }
-    );
+    package = pkgs.nixVersions.nix_2_20;
 
     settings = {
       auto-optimise-store = true;
