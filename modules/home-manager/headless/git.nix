@@ -69,7 +69,9 @@ in
         };
 
         delta = {
-          enable = true;
+          # FIXME: Currently this has borked colors with stylix.
+          # Should investigate further.
+          enable = false;
           options = {
             navigate = true;
             line-numbers = true;
