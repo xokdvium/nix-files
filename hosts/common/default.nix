@@ -8,5 +8,6 @@ _: {
     ./man.nix
     ./chaotic.nix
     ./initrd-systemd.nix
+    ./ssh.nix
   ];
 }

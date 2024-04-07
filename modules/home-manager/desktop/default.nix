@@ -19,6 +19,7 @@ in
     ./freecad.nix
     ./gaming.nix
     ./gnome
+    ./plasma
     ./libreoffice.nix
     ./matrix-clients.nix
     ./obsidian.nix
