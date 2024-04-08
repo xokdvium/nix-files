@@ -13,4 +13,5 @@ map (file: import file { inherit pkgs; }) [
   ./markdown.nix
   ./typos.nix
   ./python.nix
+  ./verilog.nix
 ]
