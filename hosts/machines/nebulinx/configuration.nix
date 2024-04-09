@@ -10,7 +10,6 @@
     map (v: hostModulesPath + "/${v}") [
       "desktop"
       "features/dewm/gnome.nix"
-      "features/dewm/plasma.nix"
       "features/docker.nix"
       "features/quietboot.nix"
       "features/crypto.nix"

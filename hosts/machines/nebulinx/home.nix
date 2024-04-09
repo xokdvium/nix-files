@@ -16,7 +16,6 @@ _: {
       desktop = {
         enable = true;
         gnome.enable = true;
-        plasma.enable = true;
         firefox = {
           staticBookmarks = true;
         };

@@ -14,4 +14,5 @@ map (file: import file { inherit pkgs; }) [
   ./typos.nix
   ./python.nix
   ./verilog.nix
+  ./scala.nix
 ]

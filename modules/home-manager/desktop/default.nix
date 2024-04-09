@@ -30,6 +30,7 @@ in
     ./wezterm.nix
     ./wireshark.nix
     ./zathura.nix
+    ./gtkwave.nix
   ];
 
   config.xokdvium =

@@ -10,7 +10,6 @@
       "desktop"
       "features/dewm/hyprland.nix"
       "features/dewm/gnome.nix"
-      "features/dewm/plasma.nix"
       "features/quietboot.nix"
       "features/crypto.nix"
       "features/docker.nix"
