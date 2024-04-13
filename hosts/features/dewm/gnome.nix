@@ -2,10 +2,12 @@
 {
   imports = [ ./common ];
   services = {
+    displayManager = {
+      defaultSession = "gnome-xorg";
+    };
     xserver = {
       enable = true;
       displayManager = {
-        defaultSession = "gnome-xorg";
         gdm = {
           enable = true;
         };

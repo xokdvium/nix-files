@@ -2,14 +2,16 @@
   lib,
   outputs,
   extraConfig,
-  pkgs,
   ...
 }:
 let
   genUsers = outputs.lib.genUsers extraConfig.users;
 in
 {
-  imports = [ ../../common ];
+  imports = [
+    ../../common
+    ../../features/cachyos.nix
+  ];
 
   users.users = genUsers (_: {
     initialPassword = "";
@@ -19,6 +21,5 @@ in
 
   boot = {
     initrd.systemd.enable = lib.mkForce false;
-    kernelPackages = pkgs.linuxPackages_6_7;
   };
 }
