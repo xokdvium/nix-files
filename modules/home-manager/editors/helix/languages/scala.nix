@@ -1,6 +1,13 @@
 { pkgs, ... }:
 {
   programs.helix.languages = {
+    language-server.metals = {
+      command = "${pkgs.metals}/bin/metals";
+      config = {
+        "isHttpEnabled" = true;
+      };
+    };
+
     language = [
       {
         name = "scala";
@@ -12,7 +19,10 @@
           ];
         };
         auto-format = true;
-        language-servers = [ "typos-lsp" ];
+        language-servers = [
+          "metals"
+          "typos-lsp"
+        ];
       }
     ];
   };
