@@ -14,11 +14,14 @@ let
     settings = {
       editor = {
         mouse = false;
+        line-number = "relative";
         auto-format = true;
         auto-save = true;
+        bufferline = "multiple";
+        popup-border = "all";
 
         file-picker = {
-          hidden = false;
+          hidden = true;
           git-ignore = true;
         };
 
@@ -54,6 +57,15 @@ let
             newline = "↵";
             tabpad = "·";
           };
+        };
+
+        smart-tab = {
+          enable = false;
+        };
+
+        search = {
+          smart-case = false;
+          wrap-around = false;
         };
       };
     };

@@ -45,6 +45,30 @@ let
         sha256 = "sha256-fgfzyAXnajnHOJ/HD/n+piDwmdTGrwcKzlMyhjVC0bQ=";
       };
     };
+
+    stella = {
+      base16 = "${pkgs.base16-schemes}/share/themes/stella.yaml";
+      image = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/9d/wallhaven-9dzr8w.png";
+        sha256 = "sha256-fgfzyAXnajnHOJ/HD/n+piDwmdTGrwcKzlMyhjVC0bQ=";
+      };
+    };
+
+    synth-midnight-dark = {
+      base16 = "${pkgs.base16-schemes}/share/themes/synth-midnight-dark.yaml";
+      image = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/yx/wallhaven-yxwggg.jpg";
+        sha256 = "sha256-LATNG/CDZQPeMM0alJv3ZvM6d1YSnFqPvq0JZISazAs=";
+      };
+    };
+
+    catppuccin-macchiato = {
+      base16 = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+      image = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/1p/wallhaven-1pm6yv.jpg";
+        sha256 = "sha256-lJusIsOUWEtBFEaWJ+0BNxqax37n1mwf0gx2/tklRAk=";
+      };
+    };
   };
 in
 {

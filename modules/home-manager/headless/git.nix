@@ -21,7 +21,10 @@ in
       cfg = config.xokdvium.home.headless.git;
     in
     lib.mkIf cfg.enable {
-      home.packages = with pkgs; [ git-absorb ];
+      home.packages = with pkgs; [
+        git-absorb
+        onefetch
+      ];
 
       programs.git = {
         enable = true;

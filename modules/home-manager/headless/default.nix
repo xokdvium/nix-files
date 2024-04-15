@@ -28,6 +28,8 @@ in
     ./nurl.nix
     ./nix-melt.nix
     ./nix-closure-graph.nix
+    ./tldr.nix
+    ./pueue.nix
   ];
 
   options.xokdvium.home.headless = {

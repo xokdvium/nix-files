@@ -9,21 +9,20 @@ let
 in
 {
   options.xokdvium.home.headless = {
-    fzf.enable = mkHomeCategoryModuleEnableOption config {
-      name = "fzf";
+    pueue.enable = mkHomeCategoryModuleEnableOption config {
+      name = "pueue";
       category = "headless";
+      autoEnable = false;
     };
   };
 
   config =
     let
-      cfg = config.xokdvium.home.headless.fzf;
+      cfg = config.xokdvium.home.headless.pueue;
     in
     lib.mkIf cfg.enable {
-      programs.fzf = {
+      services.pueue = {
         enable = true;
-        enableBashIntegration = true;
-        enableZshIntegration = true;
       };
     };
 }

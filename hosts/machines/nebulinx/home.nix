@@ -31,7 +31,7 @@ _: {
     common = {
       style = {
         enable = true;
-        preset = "catppuccin-mocha";
+        preset = "catppuccin-macchiato";
       };
     };
   };
