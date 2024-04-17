@@ -52,7 +52,7 @@ in
 
     opacity =
       let
-        alpha = 0.9;
+        alpha = 0.95;
       in
       {
         terminal = alpha;

@@ -28,7 +28,7 @@ in
         enableBashIntegration = true;
         enableFishIntegration = true;
         enableIonIntegration = true;
-        enableNushellIntegration = true;
+        enableNushellIntegration = false;
         enableZshIntegration = true;
 
         extraOptions = [

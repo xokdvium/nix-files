@@ -64,7 +64,7 @@ let
         };
 
         search = {
-          smart-case = false;
+          smart-case = true;
           wrap-around = false;
         };
       };

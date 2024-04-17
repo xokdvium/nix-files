@@ -37,14 +37,38 @@ in
           enable = true;
           enableBashIntegration = true;
           enableZshIntegration = true;
-          # https://github.com/Mic92/dotfiles/blob/main/home-manager/pkgs/atuin/default.nix
-          # Very cursed patch, but this should help make zfs desktop performance better.
-          # But on the other hand this may result in database corruptions :(
-          package = lib.mkIf cfg.enableZfsPatch (
-            pkgs.atuin.overrideAttrs (_old: {
-              patches = [ ./0001-make-atuin-on-zfs-fast-again.patch ];
-            })
-          );
+
+          package = pkgs.atuin.overrideAttrs (oldAttrs: rec {
+            version = "18.2.0";
+
+            src = pkgs.fetchFromGitHub {
+              owner = "atuinsh";
+              repo = "atuin";
+              rev = "v${version}";
+              hash = "sha256-TTQ2XLqng7TMLnRsLDb/50yyHYuMSPZJ4H+7CEFWQQ0=";
+            };
+
+            # https://github.com/Mic92/dotfiles/blob/main/home-manager/pkgs/atuin/default.nix
+            # Very cursed patch, but this should help make zfs desktop performance better.
+            # But on the other hand this may result in database corruptions :(
+            patches = lib.optionals cfg.enableZfsPatch [ ./0001-make-atuin-on-zfs-fast-again.patch ];
+
+            cargoDeps = oldAttrs.cargoDeps.overrideAttrs (
+              pkgs.lib.const {
+                name = "atuin-${version}-vendor.tar.gz";
+                inherit src;
+                outputHash = "sha256-KMH19Op7uyb3Z/cjT6bdmO+JEp1o2n6rWRNYmn1+0hE=";
+              }
+            );
+
+            checkFlags = [
+              "--skip=registration"
+              "--skip=sync"
+              "--skip=change_password"
+              "--skip=multi_user_test"
+              "--skip=build_aliases"
+            ];
+          });
 
           settings = {
             auto_sync = cfg.autoSync;

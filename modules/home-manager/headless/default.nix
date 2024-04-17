@@ -4,32 +4,34 @@ let
 in
 {
   imports = [
+    ./attic.nix
+    ./atuin
     ./autojump.nix
     ./bat.nix
+    ./bottom.nix
+    ./btop.nix
+    ./chaotic.nix
     ./comma.nix
     ./core.nix
+    ./dev-tools.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
     ./git.nix
     ./impermanence.nix
-    ./wormhole.nix
-    ./zsh.nix
-    ./starship.nix
-    ./zellij.nix
-    ./yazi.nix
-    ./atuin
-    ./bottom.nix
-    ./dev-tools.nix
-    ./chaotic.nix
     ./jj.nix
-    ./btop.nix
-    ./attic.nix
-    ./nurl.nix
-    ./nix-melt.nix
     ./nix-closure-graph.nix
-    ./tldr.nix
+    ./nix-melt.nix
+    ./nurl.nix
+    ./nushell.nix
     ./pueue.nix
+    ./starship.nix
+    ./tldr.nix
+    ./wormhole.nix
+    ./yazi.nix
+    ./zellij.nix
+    ./zoxide.nix
+    ./zsh.nix
   ];
 
   options.xokdvium.home.headless = {
