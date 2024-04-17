@@ -28,10 +28,21 @@ in
             ll = "ls -ll";
             la = "ls -a";
           };
+
+          configFile.text = ''
+            $env.config = {
+              edit_mode: vi
+            }
+          '';
+
           environmentVariables = {
             EDITOR = "${config.programs.helix.package}/bin/hx";
           };
         };
       };
+
+      home.persistence."/persistent/home/${config.home.username}" =
+        lib.mkIf config.xokdvium.home.persistence.enable
+          { directories = [ ".config/nushell" ]; };
     };
 }
