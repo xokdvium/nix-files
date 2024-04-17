@@ -30,6 +30,7 @@ in
     lib.mkIf cfg.enable {
       programs.firefox = {
         enable = true;
+        package = pkgs.firefox_nightly;
         profiles.${config.home.username} = {
           extensions =
             let
