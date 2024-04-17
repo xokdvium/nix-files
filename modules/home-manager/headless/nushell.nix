@@ -26,6 +26,7 @@ in
           shellAliases = {
             lla = "ls -al";
             ll = "ls -ll";
+            la = "ls -a";
           };
           environmentVariables = {
             EDITOR = "${config.programs.helix.package}/bin/hx";
