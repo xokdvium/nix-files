@@ -21,7 +21,7 @@ let
         popup-border = "all";
 
         file-picker = {
-          hidden = true;
+          hidden = false;
           git-ignore = true;
         };
 
