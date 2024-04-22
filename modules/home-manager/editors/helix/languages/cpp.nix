@@ -2,7 +2,7 @@
 {
   programs.helix.languages = {
     language-server.clangd = {
-      command = "${pkgs.clang-tools_17}/bin/clangd";
+      command = "${pkgs.clang-tools_18}/bin/clangd";
       args = [ "--header-insertion=never" ];
     };
 

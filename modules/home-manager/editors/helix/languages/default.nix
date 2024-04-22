@@ -1,18 +1,19 @@
 { pkgs, ... }:
 map (file: import file { inherit pkgs; }) [
-  ./just.nix
-  ./cpp.nix
-  ./json.nix
-  ./cmake.nix
   ./bash.nix
+  ./cmake.nix
+  ./cpp.nix
+  ./git-commit.nix
+  ./json.nix
+  ./just.nix
+  ./markdown.nix
   ./nix.nix
+  ./python.nix
   ./ruby.nix
   ./rust.nix
-  ./yaml.nix
-  ./toml.nix
-  ./markdown.nix
-  ./typos.nix
-  ./python.nix
-  ./verilog.nix
   ./scala.nix
+  ./toml.nix
+  ./typos.nix
+  ./verilog.nix
+  ./yaml.nix
 ]
