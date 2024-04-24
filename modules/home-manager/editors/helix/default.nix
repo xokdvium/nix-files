@@ -18,7 +18,6 @@ let
         auto-format = true;
         auto-save = true;
         bufferline = "multiple";
-        popup-border = "all";
 
         file-picker = {
           hidden = false;
