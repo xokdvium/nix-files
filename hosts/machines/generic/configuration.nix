@@ -10,7 +10,7 @@ in
 {
   imports = [
     ../../common
-    ../../features/cachyos.nix
+    # ../../features/cachyos.nix
   ];
 
   users.users = genUsers (_: {

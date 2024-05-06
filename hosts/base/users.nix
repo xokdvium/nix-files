@@ -26,6 +26,11 @@ in
     });
   };
 
+  environment.shells = with pkgs; [
+    zsh
+    nushell
+  ];
+
   home-manager = {
     extraSpecialArgs = {
       inherit inputs outputs extraConfig;

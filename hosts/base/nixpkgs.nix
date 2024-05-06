@@ -1,11 +1,21 @@
-{ outputs, ... }:
+{ outputs, lib, ... }:
 {
   nixpkgs = {
     config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "electron-25.9.0" # FIXME: Remove this when obsidian gets bumped
-      ];
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (lib.getName pkg) [
+          "obsidian"
+          "factorio-alpha"
+          "discord"
+          "zerotierone"
+          "steam"
+          "steam-original"
+          "steam-run"
+          "nvidia-x11"
+          "nvidia-settings"
+          "nvidia-persistenced"
+        ];
     };
     overlays = builtins.attrValues outputs.overlays;
   };
