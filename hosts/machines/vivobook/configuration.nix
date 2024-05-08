@@ -8,7 +8,6 @@
   imports =
     map (v: hostModulesPath + "/${v}") [
       "desktop"
-      "features/dewm/hyprland.nix"
       "features/dewm/gnome.nix"
       "features/quietboot.nix"
       "features/crypto.nix"
