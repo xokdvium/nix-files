@@ -16,7 +16,7 @@
       "features/zerotier"
       "features/binfmt.nix"
       "features/dnscrypt.nix"
-      # "features/cachyos.nix"
+      "features/cachyos.nix"
       "features/gaming.nix"
     ]
     ++ [
