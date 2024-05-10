@@ -19,6 +19,7 @@ _: {
         firefox = {
           staticBookmarks = true;
         };
+        chromium.enable = true;
         gaming.enable = true;
         factorio.enable = true;
       };

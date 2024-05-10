@@ -31,6 +31,7 @@ in
     ./wireshark.nix
     ./zathura.nix
     ./gtkwave.nix
+    ./chromium.nix
   ];
 
   config.xokdvium =
