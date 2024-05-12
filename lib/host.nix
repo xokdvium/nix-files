@@ -53,6 +53,7 @@ in
       host,
       users,
       format,
+      additionalSpecialArgs ? { },
     }:
     let
       extraConfig = {
@@ -65,6 +66,6 @@ in
       modules = modules ++ host.nixosModules;
       specialArgs = {
         inherit inputs outputs extraConfig;
-      };
+      } // additionalSpecialArgs;
     };
 }
