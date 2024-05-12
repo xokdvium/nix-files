@@ -20,7 +20,6 @@ _: {
           staticBookmarks = true;
         };
         chromium.enable = true;
-        factorio.enable = true;
       };
 
       editors = {

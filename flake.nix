@@ -2,7 +2,7 @@
   description = "My NixOS & Home Manager Configuration";
 
   inputs = {
-    nixpkgs.follows = "chaotic/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -88,7 +88,6 @@
 
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
 

@@ -16,9 +16,7 @@ boot *FLAGS: _cleanup_backups
     @nh os boot {{ justfile_directory() }} {{ FLAGS }}
 
 local-switch *FLAGS: _cleanup_backups
-    @sudo nixos-rebuild switch \
-      --flake "{{ justfile_directory() }}" \
-      --builders ""
+    @nh os switch {{ justfile_directory() }} -- --builders ""
 
 collect-garbage:
     @nh clean all
