@@ -8,10 +8,7 @@ let
   genUsers = outputs.lib.genUsers extraConfig.users;
 in
 {
-  imports = [
-    ../../common
-    ../../features/cachyos.nix
-  ];
+  imports = [ ../../common ];
 
   users.users = genUsers (_: {
     initialPassword = "";
