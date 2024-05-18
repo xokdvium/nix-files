@@ -13,7 +13,7 @@
       "features/crypto.nix"
       "features/docker.nix"
       "features/zerotier"
-      "features/dnscrypt.nix"
+      "features/systemd-networkd.nix"
       "features/distributed-builds"
     ]
     ++ [

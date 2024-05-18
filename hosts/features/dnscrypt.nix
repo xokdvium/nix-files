@@ -6,12 +6,7 @@ let
   mkLogFile = file: "${logDir}/${file}";
 in
 {
-  systemd = {
-    network = {
-      enable = true;
-      wait-online.enable = false;
-    };
-  };
+  imports = [ ./systemd-networkd.nix ];
 
   services = {
     dnscrypt-proxy2 = {
@@ -51,16 +46,6 @@ in
             github.com ${backupDns}
           '';
       };
-    };
-
-    # FIXME: Revisit this issue:
-    # At the time of September 2023, systemd upstream advise to disable DNSSEC by default
-    # as the current code is not robust enough to deal with “in the wild” non-compliant servers,
-    # which will usually give you a broken bad experience in addition of insecure.
-    resolved = {
-      enable = true;
-      dnssec = "false";
-      llmnr = "true";
     };
   };
 
