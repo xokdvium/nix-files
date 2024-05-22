@@ -1,14 +1,13 @@
 { pkgs, ... }:
 {
   nix = {
-    package = pkgs.nixVersions.nix_2_20;
+    package = pkgs.nixVersions.nix_2_22;
 
     settings = {
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"
-        "repl-flake"
       ];
       trusted-users = [
         "root"
