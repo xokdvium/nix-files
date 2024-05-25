@@ -1,7 +1,9 @@
 { extraConfig, ... }:
+
 let
   inherit (extraConfig.host) hostname;
 in
+
 {
   networking = {
     hostName = hostname;

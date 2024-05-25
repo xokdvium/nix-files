@@ -1,4 +1,4 @@
-_: {
+{
   imports = [
     ../base
     ./network-manager.nix

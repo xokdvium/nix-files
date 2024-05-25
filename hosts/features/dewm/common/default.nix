@@ -1,1 +1,1 @@
-_: { imports = [ ./pulseaudio.nix ]; }
+{ imports = [ ./pulseaudio.nix ]; }

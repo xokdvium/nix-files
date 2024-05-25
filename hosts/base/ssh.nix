@@ -5,9 +5,11 @@
   outputs,
   ...
 }:
+
 let
   genUsers = outputs.lib.genUsers (extraConfig.users // { root.name = "root"; });
 in
+
 {
   services.openssh = {
     enable = true;

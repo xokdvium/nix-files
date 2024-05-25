@@ -10,19 +10,22 @@
   fetchFromGitHub,
   ...
 }:
-let
-  lf-dotfiles = fetchFromGitHub {
-    owner = "lf-";
-    repo = "dotfiles";
-    rev = "5332dd44b021069433805bca36949ce256de7a19";
-    hash = "sha256-IHiOvO6mCVUxSfjJMNrrtIdtJkGF5T+0NnlPxgeIYEk=";
-  };
-in
+
 stdenv.mkDerivation {
   pname = "nix-closure-graph";
   version = "0-unstable-2024-03-09";
 
-  src = "${lf-dotfiles}/programs/nix-closure-graph";
+  src =
+    let
+      lf-dotfiles = fetchFromGitHub {
+        owner = "lf-";
+        repo = "dotfiles";
+        rev = "5332dd44b021069433805bca36949ce256de7a19";
+        hash = "sha256-IHiOvO6mCVUxSfjJMNrrtIdtJkGF5T+0NnlPxgeIYEk=";
+      };
+    in
+    "${lf-dotfiles}/programs/nix-closure-graph";
+
   nativeBuildInputs = [ makeWrapper ];
 
   postPatch = ''

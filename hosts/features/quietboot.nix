@@ -1,4 +1,3 @@
-{ ... }:
 {
   console = {
     useXkbConfig = true;

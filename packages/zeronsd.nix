@@ -6,14 +6,15 @@
   pkg-config,
   rustfmt,
 }:
-rustPlatform.buildRustPackage rec {
+
+rustPlatform.buildRustPackage (finalAttrs: {
   pname = "zeronsd";
   version = "0.5.2";
 
   src = fetchFromGitHub {
     owner = "zerotier";
-    repo = pname;
-    rev = "v${version}";
+    repo = "zeronsd";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-TL0bgzQgge6j1SpZCdxv/s4pBMSg4/3U5QisjkVE6BE=";
   };
 
@@ -33,6 +34,5 @@ rustPlatform.buildRustPackage rec {
     description = "A DNS server for ZeroTier users";
     homepage = "https://github.com/zerotier/zeronsd";
     license = licenses.bsd3;
-    maintainers = [ ];
   };
-}
+})

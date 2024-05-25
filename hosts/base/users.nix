@@ -7,11 +7,13 @@
   pkgs,
   ...
 }:
+
 let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
   genUsers = outputs.lib.genUsers extraConfig.users;
   genNormalUsers = outputs.lib.genUsers (lib.filterAttrs (_: v: v.normalUser) extraConfig.users);
 in
+
 {
   programs.zsh.enable = true;
   users = {

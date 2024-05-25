@@ -1,4 +1,4 @@
-_: {
+{
   services.journald = {
     storage = "persistent";
     extraConfig = ''

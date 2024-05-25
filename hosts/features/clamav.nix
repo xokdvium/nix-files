@@ -1,4 +1,5 @@
 { lib, config, ... }:
+
 {
   services.clamav = {
     daemon.enable = true;

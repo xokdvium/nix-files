@@ -1,7 +1,9 @@
 { lib, config, ... }:
+
 let
   networkId = "a09acf023353c355";
 in
+
 {
   services = {
     zerotierone = {

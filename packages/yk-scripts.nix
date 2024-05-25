@@ -34,6 +34,7 @@
 # functions. In a few cases, these are just one-liners, but I think
 # those are still useful because they're easier to remember, once you
 # get in the habit of looking for `yk-*` scripts.
+
 {
   gnupg,
   newt,
@@ -42,6 +43,7 @@
   writeShellScriptBin,
   lib,
 }:
+
 let
   gpg = "${gnupg}/bin/gpg";
   whiptail = "${newt}/bin/whiptail";
@@ -305,6 +307,7 @@ let
     '';
   };
 in
+
 symlinkJoin {
   name = "yk-scripts";
   paths = lib.attrValues yk-scripts;

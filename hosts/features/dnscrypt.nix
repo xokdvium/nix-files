@@ -1,10 +1,12 @@
 { pkgs, ... }:
+
 let
   address4 = "127.0.0.1";
   address6 = "::1";
   logDir = "/var/log/dnscrypt-proxy";
   mkLogFile = file: "${logDir}/${file}";
 in
+
 {
   imports = [ ./systemd-networkd.nix ];
 

@@ -41,6 +41,7 @@
 # the key you're generating/renewing. It probably won't work if you
 # have more than one secret (master) key in your keyring. Caveat
 # emptor.
+
 {
   cryptsetup,
   git,
@@ -52,6 +53,7 @@
   writeShellScriptBin,
   lib,
 }:
+
 let
   cryptsetupcmd = "${cryptsetup}/bin/cryptsetup";
   gitcmd = "${git}/bin/git";
@@ -481,6 +483,7 @@ let
     '';
   };
 in
+
 symlinkJoin {
   name = "gpg-scripts";
   paths = lib.attrValues gpg-scripts;

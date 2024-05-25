@@ -1,4 +1,4 @@
-_: {
+{
   xokdvium = {
     home = {
       persistence.enable = true;

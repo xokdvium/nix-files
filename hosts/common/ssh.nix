@@ -1,1 +1,1 @@
-_: { programs.ssh.enableAskPassword = false; }
+{ programs.ssh.enableAskPassword = false; }

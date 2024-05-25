@@ -1,5 +1,6 @@
 # This file defines overlays
 { inputs, ... }:
+
 {
   additions = final: _: import ../packages { pkgs = final; };
   helix-master = import ./helix.nix { inherit inputs; };

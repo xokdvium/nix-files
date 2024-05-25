@@ -1,7 +1,7 @@
-_:
 let
   nebulinxHost = "nebulinx.jawphugy.home.arpa";
 in
+
 {
   nix = {
     distributedBuilds = true;

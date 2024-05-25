@@ -1,11 +1,12 @@
 { rustPlatform, fetchFromGitHub }:
+
 rustPlatform.buildRustPackage rec {
   pname = "typos-lsp";
   version = "0.1.15";
 
   src = fetchFromGitHub {
     owner = "tekumara";
-    repo = pname;
+    repo = "typos-lsp";
     rev = "v${version}";
     sha256 = "sha256-8mCK/NKik1zf6hqJN4pflDbtFALckHR/8AQborbOoHs=";
   };

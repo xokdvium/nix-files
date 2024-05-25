@@ -1,4 +1,4 @@
-_: {
+{
   imports = [
     ./fixes.nix
     ./home-manager.nix
