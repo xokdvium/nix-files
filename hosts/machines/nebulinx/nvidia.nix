@@ -1,12 +1,5 @@
 { config, ... }:
 
-let
-  additionalVariables = {
-    WLR_RENDERER = "vulkan";
-    WLR_NO_HARDWARE_CURSORS = "1";
-  };
-in
-
 {
   virtualisation.docker = {
     enableNvidia = true;
@@ -22,14 +15,8 @@ in
       nvidiaSettings = true;
       nvidiaPersistenced = true;
       powerManagement = {
-        enable = false;
-        finegrained = false;
+        enable = true;
       };
     };
-  };
-
-  environment = {
-    sessionVariables = additionalVariables;
-    variables = additionalVariables;
   };
 }

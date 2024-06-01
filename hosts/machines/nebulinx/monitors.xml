@@ -7,7 +7,7 @@
       <primary>yes</primary>
       <monitor>
         <monitorspec>
-          <connector>HDMI-0</connector>
+          <connector>DP-0</connector>
           <vendor>GBT</vendor>
           <product>G27Q</product>
           <serial>21022B000187</serial>
@@ -15,7 +15,7 @@
         <mode>
           <width>2560</width>
           <height>1440</height>
-          <rate>143.981</rate>
+          <rate>143.972</rate>
         </mode>
       </monitor>
     </logicalmonitor>

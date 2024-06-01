@@ -12,11 +12,9 @@
       "desktop"
       "features/dewm/gnome.nix"
       "features/docker.nix"
-      "features/quietboot.nix"
       "features/crypto.nix"
       "features/zerotier"
       "features/binfmt.nix"
-      "features/dnscrypt.nix"
       "features/gaming.nix"
     ]
     ++ [
