@@ -46,8 +46,8 @@ in
     polarity = lib.mkDefault "dark";
 
     cursor = {
-      package = pkgs.catppuccin-cursors.mochaDark;
-      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors";
     };
 
     opacity =
