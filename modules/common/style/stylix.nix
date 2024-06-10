@@ -24,6 +24,7 @@ in
   };
 
   config.stylix = lib.mkIf cfg.stylix.enable {
+    enable = true;
     fonts = with config.fontProfiles; {
       serif = mkStylixFont regular;
       sansSerif = mkStylixFont regular;

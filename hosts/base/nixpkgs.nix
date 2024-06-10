@@ -16,6 +16,7 @@
           "nvidia-x11"
           "nvidia-settings"
           "nvidia-persistenced"
+          "libXNVCtrl"
         ];
     };
     overlays = builtins.attrValues outputs.overlays;
