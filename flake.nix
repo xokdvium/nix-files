@@ -20,7 +20,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    flake-utils.url = "github:numtide/flake-utils";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +46,6 @@
     helix = {
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     hyprland = {
@@ -70,14 +68,12 @@
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     attic = {
       url = "github:zhaofengli/attic";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     project-templates = {
@@ -88,13 +84,11 @@
 
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     nixd = {
@@ -105,7 +99,6 @@
     yazi = {
       url = "github:sxyazi/yazi";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     treefmt-nix = {
