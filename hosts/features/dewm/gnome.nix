@@ -29,6 +29,10 @@
     gnome.enable = true;
   };
 
+  services = {
+    gnome.gnome-remote-desktop.enable = false;
+  };
+
   environment.gnome.excludePackages =
     (with pkgs; [ gnome-tour ])
     ++ (with pkgs.gnome; [
@@ -41,5 +45,6 @@
       geary
       gnome-characters
       totem
+      gnome-remote-desktop
     ]);
 }

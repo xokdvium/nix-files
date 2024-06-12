@@ -58,12 +58,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nix-eval-jobs.follows = "nix-eval-jobs";
-    };
-
     nixos-hardware.url = "github:nixos/nixos-hardware";
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -234,6 +228,9 @@
                 };
                 host = hosts.airgapped;
               };
+
+              freerdp3 = pkgs.freerdp3;
+              freerdp = pkgs.freerdp;
             };
           };
       }
