@@ -1,4 +1,4 @@
-{ inputs, ... }:
-(final: _prev: {
+{ ... }:
+(_final: _prev: {
   # hyprland = inputs.hyprland.packages.${final.system}.hyprland; 
 })

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 
 (_final: prev: {
   obsidian = prev.obsidian.overrideAttrs (
