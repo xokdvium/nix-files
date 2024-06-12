@@ -8,10 +8,16 @@
 let
   inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
 
+  correctScheme = pkgs.runCommand "helix-stylix-theme-patched" { } ''
+    cp ${config.xdg.configFile."helix/themes/stylix.toml".source} $out
+    substituteInPlace $out --replace-fail '"ui.virtual.inlay-hint" = { fg = "base01" }' '"ui.virtual.inlay-hint" = { fg = "base06" }'
+  '';
+
   helixConfig = {
     enable = true;
 
     settings = {
+      theme = lib.mkForce "stylix-patched";
       editor = {
         mouse = false;
         line-number = "relative";
@@ -99,6 +105,7 @@ in
             home.sessionVariables = {
               EDITOR = "${config.programs.helix.package}/bin/hx";
             };
+            xdg.configFile."helix/themes/stylix-patched.toml".source = correctScheme;
           }
         ]
         ++ (import ./languages { inherit pkgs; })
