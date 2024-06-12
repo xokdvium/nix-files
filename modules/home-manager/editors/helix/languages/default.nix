@@ -3,6 +3,7 @@ map (file: import file { inherit pkgs; }) [
   ./bash.nix
   ./cmake.nix
   ./cpp.nix
+  ./dockerfile.nix
   ./git-commit.nix
   ./json.nix
   ./just.nix
@@ -16,4 +17,5 @@ map (file: import file { inherit pkgs; }) [
   ./typos.nix
   ./verilog.nix
   ./yaml.nix
+  ./tablegen.nix
 ]

@@ -39,7 +39,7 @@
     common = {
       style = {
         enable = true;
-        preset = "catppuccin-macchiato";
+        preset = "catppuccin-mocha";
       };
     };
 
