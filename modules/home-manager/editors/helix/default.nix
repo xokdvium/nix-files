@@ -66,6 +66,15 @@ let
           smart-case = true;
           wrap-around = false;
         };
+
+        soft-wrap = {
+          enable = true;
+        };
+
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+        };
       };
     };
   };
