@@ -30,6 +30,23 @@ in
     lib.mkIf cfg.enable {
       programs.firefox = {
         enable = true;
+
+        # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
+        policies = {
+          DisableTelemetry = true;
+          DisableFirefoxStudies = true;
+          EnableTrackingProtection = {
+            Value = true;
+            Locked = true;
+            Cryptomining = true;
+            Fingerprinting = true;
+          };
+          DisablePocket = true;
+          DisableFirefoxAccounts = true;
+          DisableAccounts = true;
+          DisableFirefoxScreenshots = true;
+        };
+
         profiles.${config.home.username} = {
           extensions =
             let
