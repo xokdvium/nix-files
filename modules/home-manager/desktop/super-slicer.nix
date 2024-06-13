@@ -10,20 +10,20 @@ let
 in
 {
   options.xokdvium.home.desktop = {
-    prusa-slicer.enable = mkHomeCategoryModuleEnableOption config {
-      name = "prusa-slicer";
+    super-slicer.enable = mkHomeCategoryModuleEnableOption config {
+      name = "super-slicer";
       category = "desktop";
     };
   };
 
   config.home =
     let
-      cfg = config.xokdvium.home.desktop.prusa-slicer;
+      cfg = config.xokdvium.home.desktop.super-slicer;
     in
     {
-      packages = lib.mkIf cfg.enable (with pkgs; [ prusa-slicer ]);
+      packages = lib.mkIf cfg.enable (with pkgs; [ super-slicer-latest ]);
       persistence."/persistent/home/${config.home.username}" =
         lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".config/PrusaSlicer" ]; };
+          { directories = [ ".config/SuperSlicer" ]; };
     };
 }

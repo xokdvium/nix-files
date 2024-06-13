@@ -32,6 +32,7 @@ in
     ./zathura.nix
     ./gtkwave.nix
     ./chromium.nix
+    ./super-slicer.nix
   ];
 
   config.xokdvium =
