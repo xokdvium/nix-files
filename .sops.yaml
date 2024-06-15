@@ -2,12 +2,20 @@ keys:
   - &xokdvium 158A6F530EA202E5F651611314FAEA63448E1DF9
   - &vivobook 461FC9486BAC2D0E85CFF91DA81FF310CADF2F71
   - &nebulinx 0D00A7D80E5D328F1B4E6A4AB83AF36F31276991
-  - &borg 24CBF34513A2A7D5E19E6EE188DD38BB36A4F3FA
 creation_rules:
-  - path_regex: secrets.yaml$
+  - path_regex: ^hosts/machines/nebulinx/secrets.yaml$
+    key_groups:
+      - pgp:
+          - *xokdvium
+          - *nebulinx
+  - path_regex: ^hosts/machines/vivobook/secrets.yaml$
     key_groups:
       - pgp:
           - *xokdvium
           - *vivobook
+  - path_regex: ^secrets/syncoid/secrets.yaml$
+    key_groups:
+      - pgp:
+          - *xokdvium
           - *nebulinx
-          - *borg
+          - *vivobook

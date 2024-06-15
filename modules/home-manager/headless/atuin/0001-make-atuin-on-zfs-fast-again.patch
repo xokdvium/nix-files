@@ -1,8 +1,8 @@
-diff --git a/atuin-client/src/database.rs b/atuin-client/src/database.rs
-index 8d64bf36..01098fc6 100644
---- a/atuin-client/src/database.rs
-+++ b/atuin-client/src/database.rs
-@@ -137,9 +137,9 @@ impl Sqlite {
+diff --git a/crates/atuin-client/src/database.rs b/crates/atuin-client/src/database.rs
+index d01dadb4..f0b22131 100644
+--- a/crates/atuin-client/src/database.rs
++++ b/crates/atuin-client/src/database.rs
+@@ -138,9 +138,9 @@ impl Sqlite {
          }
  
          let opts = SqliteConnectOptions::from_str(path.as_os_str().to_str().unwrap())?
@@ -14,10 +14,10 @@ index 8d64bf36..01098fc6 100644
              .with_regexp()
              .create_if_missing(true);
  
-diff --git a/atuin-client/src/record/sqlite_store.rs b/atuin-client/src/record/sqlite_store.rs
-index 6333bb27..e028abbe 100644
---- a/atuin-client/src/record/sqlite_store.rs
-+++ b/atuin-client/src/record/sqlite_store.rs
+diff --git a/crates/atuin-client/src/record/sqlite_store.rs b/crates/atuin-client/src/record/sqlite_store.rs
+index 31de311b..5d3c501e 100644
+--- a/crates/atuin-client/src/record/sqlite_store.rs
++++ b/crates/atuin-client/src/record/sqlite_store.rs
 @@ -10,7 +10,7 @@ use eyre::{eyre, Result};
  use fs_err as fs;
  

@@ -18,4 +18,5 @@ map (file: import file { inherit pkgs; }) [
   ./verilog.nix
   ./yaml.nix
   ./tablegen.nix
+  ./openscad.nix
 ]
