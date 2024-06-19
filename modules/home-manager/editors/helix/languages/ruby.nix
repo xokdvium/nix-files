@@ -14,9 +14,10 @@
           "typos-lsp"
         ];
         auto-format = true;
-        formatter = {
-          command = "${pkgs.rubyfmt}/bin/rubyfmt";
-        };
+        # FIXME: Fails to build
+        # formatter = {
+        # command = "${pkgs.rubyfmt}/bin/rubyfmt";
+        # };
       }
     ];
   };
