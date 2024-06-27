@@ -21,7 +21,7 @@
         };
         chromium.enable = true;
         gaming.enable = true;
-        factorio.enable = false;
+        factorio.enable = true;
       };
 
       editors = {
