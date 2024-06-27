@@ -9,6 +9,9 @@ in
     zerotierone = {
       enable = true;
       joinNetworks = [ networkId ];
+      localConf = {
+        settings.allowTcpFallbackRelay = false;
+      };
     };
   };
 
