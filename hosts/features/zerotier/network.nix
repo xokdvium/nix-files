@@ -10,7 +10,7 @@ in
       enable = true;
       joinNetworks = [ networkId ];
       localConf = {
-        settings.allowTcpFallbackRelay = false;
+        settings.allowTcpFallbackRelay = true;
       };
     };
   };
