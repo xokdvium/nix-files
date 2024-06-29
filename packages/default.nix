@@ -1,4 +1,4 @@
-{ pkgs }:
+{ inputs, pkgs, ... }:
 
 let
   inherit (pkgs) callPackage;
@@ -11,4 +11,5 @@ in
   zeronsd = callPackage ./zeronsd.nix { };
   zerotier-systemd-manager = callPackage ./zerotier-systemd-manager.nix { };
   nix-closure-graph = callPackage ./nix-closure-graph.nix { };
+  npm-groovy-lint = callPackage ./npm-groovy-lint.nix { dream2nix = inputs.dream2nix; };
 }

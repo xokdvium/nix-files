@@ -2,7 +2,12 @@
 { inputs, ... }:
 
 {
-  additions = final: _: import ../packages { pkgs = final; };
+  additions =
+    final: _:
+    import ../packages {
+      pkgs = final;
+      inherit inputs;
+    };
   helix-master = import ./helix.nix { inherit inputs; };
   hyprland-master = import ./hyprland.nix { inherit inputs; };
   attic = inputs.attic.overlays.default;

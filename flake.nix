@@ -103,6 +103,11 @@
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
     };
+
+    dream2nix = {
+      url = "github:nix-community/dream2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -212,26 +217,28 @@
               default = bootstrap;
             };
 
-            packages = (import ./packages { inherit pkgs; }) // {
-              installer = lib.mkHostImage {
-                format = "install-iso";
-                host = hosts.generic;
-                users = {
-                  inherit (users) xokdvium;
+            packages =
+              (import ./packages {
+                inherit pkgs;
+                inherit inputs;
+              })
+              // {
+                installer = lib.mkHostImage {
+                  format = "install-iso";
+                  host = hosts.generic;
+                  users = {
+                    inherit (users) xokdvium;
+                  };
+                };
+
+                airgapped = lib.mkHostImage {
+                  format = "iso";
+                  users = {
+                    inherit (users) xokdvium;
+                  };
+                  host = hosts.airgapped;
                 };
               };
-
-              airgapped = lib.mkHostImage {
-                format = "iso";
-                users = {
-                  inherit (users) xokdvium;
-                };
-                host = hosts.airgapped;
-              };
-
-              freerdp3 = pkgs.freerdp3;
-              freerdp = pkgs.freerdp;
-            };
           };
       }
     );
