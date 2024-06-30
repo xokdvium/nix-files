@@ -19,4 +19,5 @@ map (file: import file { inherit pkgs; }) [
   ./yaml.nix
   ./tablegen.nix
   ./openscad.nix
+  ./groovy.nix
 ]
