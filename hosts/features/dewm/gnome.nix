@@ -34,17 +34,19 @@
   };
 
   environment.gnome.excludePackages =
-    (with pkgs; [ gnome-tour ])
-    ++ (with pkgs.gnome; [
-      gnome-music
+    (with pkgs; [
+      gnome-tour
       gnome-terminal
-      gnome-contacts
       gnome-calendar
       gnome-calculator
       epiphany
       geary
-      gnome-characters
       totem
+    ])
+    ++ (with pkgs.gnome; [
+      gnome-music
+      gnome-contacts
+      gnome-characters
       gnome-remote-desktop
     ]);
 }

@@ -30,8 +30,9 @@ in
       };
 
       nix.settings = {
-        extra-substituters = [ "https://attic.aeronas.ru/private/" ];
-        extra-trusted-public-keys = [ "private:vKBWz9kKZiVpjooidWtnvC4gIAQx6fv/ofKpnRLIvCI=" ];
+        # (TODO): Rework infrastructure
+        # extra-substituters = [ "https://attic.aeronas.ru/private/" ];
+        # extra-trusted-public-keys = [ "private:vKBWz9kKZiVpjooidWtnvC4gIAQx6fv/ofKpnRLIvCI=" ];
       };
     };
 }

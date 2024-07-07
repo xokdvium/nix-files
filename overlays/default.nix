@@ -14,5 +14,4 @@
   nix-vscode-extensions = inputs.nix-vscode-extensions.overlays.default;
   nixd-main = import ./nixd-main.nix { inherit inputs; };
   yazi-main = inputs.yazi.overlays.default;
-  obsidian-fix = import ./obsidian-fix.nix { inherit inputs; };
 }
