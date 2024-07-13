@@ -47,6 +47,10 @@
     };
   };
 
+  networking = {
+    hostName = "vivobook";
+  };
+
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;

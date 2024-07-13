@@ -39,8 +39,9 @@ in
     };
   };
 
-  # Make sure networking is disabled in every way possible.
   networking = {
+    hostName = "airgapped";
+    # Make sure networking is disabled in every way possible.
     dhcpcd.enable = lib.mkForce false;
     dhcpcd.allowInterfaces = lib.mkForce [ ];
     interfaces = lib.mkForce { };

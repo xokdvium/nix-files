@@ -85,6 +85,10 @@
     });
   '';
 
+  networking = {
+    hostName = "nebulinx";
+  };
+
   boot = {
     loader = {
       grub = {

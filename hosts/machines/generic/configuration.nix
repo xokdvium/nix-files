@@ -12,6 +12,10 @@ in
 {
   imports = [ ../../common ];
 
+  networking = {
+    hostName = "generic";
+  };
+
   users.users = genUsers (_: {
     initialPassword = "";
   });

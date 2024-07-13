@@ -8,7 +8,6 @@ in
       system,
       homeModules ? [ ],
       nixosModules,
-      hostname,
       disk ? null,
       secretsFile ? null,
     }:
@@ -16,7 +15,6 @@ in
       inherit
         system
         homeModules
-        hostname
         disk
         secretsFile
         ;
