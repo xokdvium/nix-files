@@ -45,7 +45,7 @@ let
           render = {
             space = "none";
             tab = "all";
-            newline = "all";
+            newline = "none";
             nbsp = "all";
           };
 
@@ -53,7 +53,6 @@ let
             space = "·";
             nbsp = "+";
             tab = "→";
-            newline = "↵";
             tabpad = "·";
           };
         };

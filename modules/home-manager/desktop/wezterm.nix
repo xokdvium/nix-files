@@ -28,6 +28,7 @@ in
           ''
             return {
               hide_tab_bar_if_only_one_tab = true,
+              allow_square_glyphs_to_overflow_width = "Always",
             }
           '';
       };
