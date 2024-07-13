@@ -36,7 +36,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -45,11 +47,6 @@
 
     helix = {
       url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland = {
-      url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -108,6 +105,10 @@
       url = "github:nix-community/dream2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+    };
   };
 
   outputs =
@@ -131,7 +132,12 @@
         };
       in
       {
-        imports = [ treefmt-nix.flakeModule ];
+        imports = [
+          treefmt-nix.flakeModule
+          flake-parts.flakeModules.easyOverlay
+          ./packages/top.nix
+          ./overlays
+        ];
 
         systems = [
           "x86_64-linux"
@@ -142,7 +148,6 @@
           lib = import ./lib { inherit inputs outputs; };
           homeManagerModules = import ./modules/home-manager;
           nixosModules = import ./modules/nixos;
-          overlays = import ./overlays { inherit inputs outputs; };
           templates = project-templates.templates;
 
           nixosConfigurations = {
@@ -162,83 +167,38 @@
               inherit additionalSpecialArgs;
             };
           };
-
-          homeConfigurations =
-            let
-              setNixModule =
-                { pkgs, ... }:
-                {
-                  nix.package = pkgs.nix;
-                };
-            in
-            {
-              "xokdvium@nebulinx" = lib.mkHomeConfiguration {
-                user = users.xokdvium;
-                host = hosts.nebulinx;
-                modules = [ setNixModule ];
-                inherit additionalSpecialArgs;
-              };
-
-              "xokdvium@vivobook" = lib.mkHomeConfiguration {
-                user = users.xokdvium;
-                host = hosts.vivobook;
-                modules = [ setNixModule ];
-                inherit additionalSpecialArgs;
-              };
-
-              "xokdvium@generic" = lib.mkHomeConfiguration {
-                user = users.xokdvium;
-                host = hosts.generic;
-                modules = [ setNixModule ];
-                inherit additionalSpecialArgs;
-              };
-            };
         };
 
         perSystem =
-          {
-            pkgs,
-            inputs',
-            system,
-            ...
-          }:
+          { system, ... }:
           {
             _module.args.pkgs = import inputs.nixpkgs {
               inherit system;
               overlays = builtins.attrValues outputs.overlays;
             };
 
-            imports = [ ./treefmt.nix ];
-            devShells = rec {
-              bootstrap = import ./shell.nix {
-                inherit pkgs;
-                inherit (inputs'.nh.packages) nh;
+            imports = [
+              ./flake/treefmt.nix
+              ./flake/devshell.nix
+            ];
+
+            packages = {
+              installer = lib.mkHostImage {
+                format = "install-iso";
+                host = hosts.generic;
+                users = {
+                  inherit (users) xokdvium;
+                };
               };
-              default = bootstrap;
+
+              airgapped = lib.mkHostImage {
+                format = "iso";
+                users = {
+                  inherit (users) xokdvium;
+                };
+                host = hosts.airgapped;
+              };
             };
-
-            packages =
-              (import ./packages {
-                inherit pkgs;
-                inherit inputs;
-              })
-              // {
-                installer = lib.mkHostImage {
-                  format = "install-iso";
-                  host = hosts.generic;
-                  users = {
-                    inherit (users) xokdvium;
-                  };
-                };
-
-                airgapped = lib.mkHostImage {
-                  format = "iso";
-                  users = {
-                    inherit (users) xokdvium;
-                  };
-                  host = hosts.airgapped;
-                };
-              };
           };
       }
     );

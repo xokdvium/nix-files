@@ -21,10 +21,7 @@ in
       cfg = config.xokdvium.home.headless.zsh;
     in
     lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        thefuck
-        navi
-      ];
+      home.packages = with pkgs; [ navi ];
       programs = {
         zsh = {
           enable = true;
