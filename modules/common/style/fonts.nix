@@ -25,8 +25,8 @@ in
     };
 
     regular = {
-      family = "Fira Sans";
-      package = pkgs.fira;
+      family = "Noto Sans";
+      package = pkgs.noto-fonts;
     };
 
     emoji = {
