@@ -47,7 +47,6 @@
 
     helix = {
       url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-eval-jobs = {
@@ -109,6 +108,11 @@
     flake-compat = {
       url = "github:edolstra/flake-compat";
     };
+  };
+
+  nixConfig = {
+    extra-substituters = [ "https://helix.cachix.org" ];
+    extra-trusted-public-keys = [ "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=" ];
   };
 
   outputs =

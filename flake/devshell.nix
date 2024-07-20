@@ -5,7 +5,6 @@
     default = config.devShells.bootstrap;
     bootstrap = pkgs.mkShell {
       nativeBuildInputs = with pkgs; [
-        nix
         home-manager
         git
         sops
