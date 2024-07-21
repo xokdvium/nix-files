@@ -103,11 +103,22 @@
     flake-compat = {
       url = "github:edolstra/flake-compat";
     };
+
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
-    extra-substituters = [ "https://helix.cachix.org" ];
-    extra-trusted-public-keys = [ "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=" ];
+    extra-substituters = [
+      "https://helix.cachix.org"
+      "https://microvm.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+      "microvm.cachix.org-1:oXnBc6hRE3eX5rSYdRyMYXnfzcCxC7yKPTbZXALsqys="
+    ];
   };
 
   outputs =

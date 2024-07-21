@@ -22,6 +22,7 @@
     ++ [
       ./zfsroot.nix
       ./nvidia.nix
+      ./microvm.nix
       inputs.disko.nixosModules.disko
     ];
 
