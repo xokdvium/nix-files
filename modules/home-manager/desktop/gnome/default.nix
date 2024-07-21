@@ -51,6 +51,11 @@ in
           sleep-inactive-ac-type = "nothing";
           power-button-action = "interactive";
         };
+
+        "org/gnome/desktop/default-applications/terminal" = {
+          exec = "${config.programs.wezterm.package}/bin/wezterm";
+          exec-arg = "";
+        };
       };
     };
 }
