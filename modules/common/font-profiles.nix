@@ -1,3 +1,4 @@
+setPackagesAttr:
 { lib, config, ... }:
 let
   mkFontOption = kind: {
@@ -28,10 +29,12 @@ in
     enable = lib.mkEnableOption "Whether to enable font profiles";
   } // (lib.genAttrs profileNames mkFontOption);
 
-  config = lib.mkIf cfg.enable {
-    fonts.fontconfig.enable = true;
-    home.packages = builtins.map (
-      value: (builtins.getAttr "package" (builtins.getAttr value cfg))
-    ) profileNames;
-  };
+  config = lib.mkIf cfg.enable (
+    lib.mkMerge [
+      { fonts.fontconfig.enable = true; }
+      (setPackagesAttr (
+        builtins.map (value: (builtins.getAttr "package" (builtins.getAttr value cfg))) profileNames
+      ))
+    ]
+  );
 }

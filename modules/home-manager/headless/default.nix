@@ -18,7 +18,6 @@ in
     ./eza.nix
     ./fzf.nix
     ./git.nix
-    ./impermanence.nix
     ./jj.nix
     ./nix-closure-graph.nix
     ./nix-melt.nix

@@ -1,8 +1,10 @@
 {
-  font-profiles = import ./font-profiles.nix;
+  font-profiles = (import ../common/font-profiles.nix) (p: {
+    environment.systemPackages = p;
+  });
   zfs = import ./zfs.nix;
   immutable-users = import ./immutable-users.nix;
-  impermanence = import ./impermanence.nix;
+  persistence = import ./persistence.nix;
   auto-update = import ./auto-update.nix;
 }
 // import ../common
