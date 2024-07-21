@@ -24,9 +24,15 @@ in
         enable = true;
       };
 
-      xdg.mimeApps.defaultApplications = {
-        "text/pdf" = [ "zathura.desktop" ];
-        "x-scheme-handler/pdf" = [ "zathura.desktop" ];
+      xdg = {
+        enable = true;
+        mimeApps = {
+          enable = true;
+          defaultApplications = {
+            "text/pdf" = "zathura.desktop";
+            "x-scheme-handler/pdf" = "zathura.desktop";
+          };
+        };
       };
     };
 }

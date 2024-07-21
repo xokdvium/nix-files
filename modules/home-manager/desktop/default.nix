@@ -15,7 +15,7 @@ in
     ./discord.nix
     ./factorio.nix
     ./ferdium.nix
-    ./firefox.nix
+    ./firefox
     ./freecad.nix
     ./gaming.nix
     ./gnome

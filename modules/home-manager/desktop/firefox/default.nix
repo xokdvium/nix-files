@@ -153,11 +153,18 @@ in
         };
       };
 
-      xdg.mimeApps.defaultApplications = {
-        "text/html" = [ "firefox.desktop" ];
-        "text/xml" = [ "firefox.desktop" ];
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
+      xdg = {
+        enable = true;
+        mimeApps = {
+          enable = true;
+          defaultApplications = {
+            "default-web-browser" = "firefox.desktop";
+            "text/html" = "firefox.desktop";
+            "text/xml" = "firefox.desktop";
+            "x-scheme-handler/http" = "firefox.desktop";
+            "x-scheme-handler/https" = "firefox.desktop";
+          };
+        };
       };
 
       home.persistence."/persistent/home/${config.home.username}" =
