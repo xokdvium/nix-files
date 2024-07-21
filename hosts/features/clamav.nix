@@ -13,6 +13,6 @@
   };
 
   xokdvium.nixos.persistence = {
-    state.dirs = [ "var/lib/clamav" ];
+    state.dirs = [ "/var/lib/clamav" ];
   };
 }
