@@ -3,6 +3,7 @@
   extraConfig,
   pkgs,
   outputs,
+  hostModulesPath,
   ...
 }:
 
@@ -11,10 +12,10 @@ let
 in
 
 {
-  imports = [
-    ../../common
-    ../../features/dewm/gnome.nix
-    ../../features/crypto.nix
+  imports = map (v: hostModulesPath + "/${v}") [
+    "common"
+    "features/dewm/gnome.nix"
+    "features/crypto.nix"
   ];
 
   xokdvium = {

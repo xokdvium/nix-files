@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 let
   address4 = "127.0.0.1";
@@ -33,20 +33,6 @@ in
         nx_log.file = mkLogFile "nx.log";
         log_file = mkLogFile "dnscrypt-proxy.log";
         log_level = 0;
-
-        # FIXME: Find a way to not hardcode the default gateway address here
-        forwarding_rules =
-          let
-            defaultGateway = "192.168.50.1";
-            backupDns = "8.8.8.8";
-          in
-          # FIXME: For whatever reason github.com does not always loads correctly.
-          # For the moment the fix seems to be to forward queries to a plain DNS server.
-          pkgs.writeText "dnscrypt-proxy2-forwarding-lan" ''
-            aeronas.lan ${defaultGateway}
-            router.asus.com ${defaultGateway}
-            github.com ${backupDns}
-          '';
       };
     };
   };

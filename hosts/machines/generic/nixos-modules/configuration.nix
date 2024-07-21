@@ -2,6 +2,7 @@
   lib,
   outputs,
   extraConfig,
+  hostModulesPath,
   ...
 }:
 
@@ -10,7 +11,7 @@ let
 in
 
 {
-  imports = [ ../../common ];
+  imports = [ "${hostModulesPath}/common" ];
 
   networking = {
     hostName = "generic";

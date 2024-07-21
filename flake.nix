@@ -100,11 +100,6 @@
       url = "github:hercules-ci/flake-parts";
     };
 
-    dream2nix = {
-      url = "github:nix-community/dream2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     flake-compat = {
       url = "github:edolstra/flake-compat";
     };
@@ -193,6 +188,8 @@
                 users = {
                   inherit (users) xokdvium;
                 };
+                inherit additionalSpecialArgs;
+
               };
 
               airgapped = lib.mkHostImage {
@@ -201,6 +198,7 @@
                   inherit (users) xokdvium;
                 };
                 host = hosts.airgapped;
+                inherit additionalSpecialArgs;
               };
             };
           };
