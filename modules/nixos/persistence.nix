@@ -34,19 +34,19 @@ in
       let
         commonOptions = {
           dirs = lib.mkOption {
-            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.string);
+            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.str);
             description = "List of directories to persist";
             default = [ ];
           };
 
           files = lib.mkOption {
-            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.string);
+            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.str);
             description = "List of files to persist";
             default = [ ];
           };
 
           defaultDirs = lib.mkOption {
-            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.string);
+            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.str);
             description = "Default dirs to persist";
             default = [ ];
           };
@@ -65,7 +65,7 @@ in
         hideMounts = lib.mkOption {
           type = lib.types.bool;
           description = "Hide mounts";
-          default = true;
+          default = false;
           example = false;
         };
 
@@ -78,7 +78,7 @@ in
           };
 
           defaultFiles = lib.mkOption {
-            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.string);
+            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.str);
             description = "Default files to persist";
             default = [ ];
           };
@@ -93,7 +93,7 @@ in
           };
 
           defaultFiles = lib.mkOption {
-            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.string);
+            type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.str);
             description = "Default files to persist";
             default = [ "/etc/machine-id" ];
           };

@@ -7,6 +7,6 @@
   };
 
   xokdvium.nixos.persistence = {
-    persist.dirs = [ "/etc/Network/Manager" ];
+    persist.dirs = [ "/etc/NetworkManager" ];
   };
 }
