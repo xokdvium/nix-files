@@ -41,13 +41,9 @@ in
       factorioWithMods = pkgs.factorio.override { mods = [ helmod ]; };
     in
     lib.mkIf cfg.enable {
-      home = {
-        packages = [ factorioWithMods ];
-        persistence = {
-          "/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-            directories = [ ".factorio" ];
-          };
-        };
+      home.packages = [ factorioWithMods ];
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".factorio" ];
       };
     };
 }

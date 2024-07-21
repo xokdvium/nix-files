@@ -27,8 +27,8 @@ in
         enableNushellIntegration = true;
       };
 
-      home.persistence."/persistent/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".local/share/zoxide" ]; };
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".local/share/zoxide" ];
+      };
     };
 }

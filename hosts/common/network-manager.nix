@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
 {
   networking = {
@@ -6,7 +6,7 @@
     wireless.enable = lib.mkOverride 75 false;
   };
 
-  environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
-    directories = [ "/etc/NetworkManager" ];
+  xokdvium.nixos.persistence = {
+    persist.dirs = [ "/etc/Network/Manager" ];
   };
 }

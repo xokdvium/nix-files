@@ -16,14 +16,14 @@ in
     };
   };
 
-  config.home =
+  config =
     let
       cfg = config.xokdvium.home.desktop.super-slicer;
     in
     {
-      packages = lib.mkIf cfg.enable (with pkgs; [ super-slicer-latest ]);
-      persistence."/persistent/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".config/SuperSlicer" ]; };
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ super-slicer-latest ]);
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".config/SuperSlicer" ];
+      };
     };
 }

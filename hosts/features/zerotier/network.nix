@@ -1,5 +1,3 @@
-{ lib, config, ... }:
-
 let
   networkId = "a09acf023353c355";
 in
@@ -15,7 +13,7 @@ in
     };
   };
 
-  environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
-    directories = [ "/var/lib/zerotier-one" ];
+  xokdvium.nixos.persistence = {
+    persist.dirs = [ "/var/lib/zerotier-one" ];
   };
 }

@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
 {
   services.clamav = {
@@ -12,7 +12,7 @@
     scanner.enable = true;
   };
 
-  environment.persistence."/state" = lib.mkIf config.xokdvium.nixos.persistence.enable {
-    directories = [ "/var/lib/clamav" ];
+  xokdvium.nixos.persistence = {
+    state.dirs = [ "var/lib/clamav" ];
   };
 }

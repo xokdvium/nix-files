@@ -1,7 +1,6 @@
 {
   lib,
   extraConfig,
-  config,
   outputs,
   ...
 }:
@@ -30,8 +29,8 @@ in
       );
   });
 
-  environment.persistence."/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable {
-    files = [
+  xokdvium.nixos.persistence = {
+    persist.files = [
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
       "/etc/ssh/ssh_host_ed25519_key"

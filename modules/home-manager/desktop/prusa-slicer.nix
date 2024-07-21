@@ -16,14 +16,14 @@ in
     };
   };
 
-  config.home =
+  config =
     let
       cfg = config.xokdvium.home.desktop.prusa-slicer;
     in
     {
-      packages = lib.mkIf cfg.enable (with pkgs; [ prusa-slicer ]);
-      persistence."/persistent/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".config/PrusaSlicer" ]; };
+      home.packages = lib.mkIf cfg.enable (with pkgs; [ prusa-slicer ]);
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".config/PrusaSlicer" ];
+      };
     };
 }

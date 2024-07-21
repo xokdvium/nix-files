@@ -26,13 +26,11 @@ in
         gomuks
       ];
 
-      home.persistence."/state/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          {
-            directories = [
-              ".local/share/gomuks"
-              ".local/share/cinny"
-            ];
-          };
+      xokdvium.home.persistence = {
+        persist.dirs = [
+          ".local/share/gomuks"
+          ".local/share/cinny"
+        ];
+      };
     };
 }

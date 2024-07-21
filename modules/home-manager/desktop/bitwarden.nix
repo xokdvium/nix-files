@@ -22,9 +22,8 @@ in
     in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [ bitwarden ];
-
-      home.persistence."/persistent/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".config/Bitwarden" ]; };
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".config/Bitwarden" ];
+      };
     };
 }

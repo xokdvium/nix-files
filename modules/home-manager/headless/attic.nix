@@ -13,6 +13,7 @@ in
     attic.enable = mkHomeCategoryModuleEnableOption config {
       name = "attic";
       category = "headless";
+      autoEnable = false;
     };
   };
 
@@ -21,18 +22,9 @@ in
       cfg = config.xokdvium.home.headless.attic;
     in
     lib.mkIf cfg.enable {
-      home = {
-        packages = with pkgs; [ attic-client ];
-
-        persistence."/persistent/home/${config.home.username}" =
-          lib.mkIf config.xokdvium.home.persistence.enable
-            { directories = [ ".config/attic" ]; };
-      };
-
-      nix.settings = {
-        # (TODO): Rework infrastructure
-        # extra-substituters = [ "https://attic.aeronas.ru/private/" ];
-        # extra-trusted-public-keys = [ "private:vKBWz9kKZiVpjooidWtnvC4gIAQx6fv/ofKpnRLIvCI=" ];
+      home.packages = with pkgs; [ attic-client ];
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".config/attic" ];
       };
     };
 }

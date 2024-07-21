@@ -22,9 +22,8 @@ in
     in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [ ferdium ];
-
-      home.persistence."/state/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".config/Ferdium" ]; };
+      xokdvium.home.persistence = {
+        state.dirs = [ ".config/Ferdium" ];
+      };
     };
 }

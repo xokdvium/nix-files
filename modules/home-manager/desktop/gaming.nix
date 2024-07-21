@@ -21,14 +21,9 @@ in
       cfg = config.xokdvium.home.desktop.gaming;
     in
     lib.mkIf cfg.enable {
-      home.persistence = {
-        "/state/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-          directories = [ ".local/share/Steam" ];
-        };
-
-        "/persistent/home/${config.home.username}" = lib.mkIf config.xokdvium.home.persistence.enable {
-          directories = [ ".factorio" ];
-        };
+      xokdvium.home.persistence = {
+        state.dirs = [ ".local/share/Steam" ];
+        persist.dirs = [ ".factorio" ];
       };
     };
 }

@@ -22,9 +22,8 @@ in
     in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [ telegram-desktop_git ];
-
-      home.persistence."/state/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".local/share/TelegramDesktop" ]; };
+      xokdvium.home.persistence = {
+        state.dirs = [ ".local/share/TelegramDesktop" ];
+      };
     };
 }

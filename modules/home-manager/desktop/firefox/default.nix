@@ -167,8 +167,8 @@ in
         };
       };
 
-      home.persistence."/persistent/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".mozilla" ]; };
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".mozilla" ];
+      };
     };
 }

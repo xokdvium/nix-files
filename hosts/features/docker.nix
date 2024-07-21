@@ -1,11 +1,9 @@
-{ lib, config, ... }:
-
 {
   virtualisation.docker = {
     enable = true;
   };
 
-  environment.persistence."/state" = lib.mkIf config.xokdvium.nixos.persistence.enable {
-    directories = [ "/var/lib/docker" ];
+  xokdvium.nixos.persistence = {
+    state.dirs = [ "/var/lib/docker" ];
   };
 }

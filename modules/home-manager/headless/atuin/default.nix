@@ -60,8 +60,8 @@ in
         bash.historyFile = lib.mkIf cfg.noShellHistory "/dev/null";
       };
 
-      home.persistence."/persistent/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".local/share/atuin" ]; };
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".local/share/atuin" ];
+      };
     };
 }

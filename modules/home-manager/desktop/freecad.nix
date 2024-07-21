@@ -23,9 +23,8 @@ in
     in
     lib.mkIf cfg.enable {
       home.packages = with pkgs; [ freecad ];
-
-      home.persistence."/persistent/home/${config.home.username}" =
-        lib.mkIf config.xokdvium.home.persistence.enable
-          { directories = [ ".config/FreeCAD" ]; };
+      xokdvium.home.persistence = {
+        persist.dirs = [ ".config/FreeCAD" ];
+      };
     };
 }
