@@ -16,7 +16,7 @@ in
     };
   };
 
-  config.fontProfiles = lib.mkIf cfg.fonts.enable {
+  config.xokdvium.common.fontProfiles = lib.mkIf cfg.fonts.enable {
     enable = true;
 
     monospace = {

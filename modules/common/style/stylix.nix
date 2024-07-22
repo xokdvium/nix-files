@@ -25,7 +25,7 @@ in
 
   config.stylix = lib.mkIf cfg.stylix.enable {
     enable = true;
-    fonts = with config.fontProfiles; {
+    fonts = with config.xokdvium.common.fontProfiles; {
       serif = mkStylixFont regular;
       sansSerif = mkStylixFont regular;
       monospace = mkStylixFont monospace;

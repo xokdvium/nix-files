@@ -17,7 +17,7 @@ let
     };
   };
 
-  cfg = config.fontProfiles;
+  cfg = config.xokdvium.common.fontProfiles;
   profileNames = [
     "monospace"
     "regular"
@@ -25,7 +25,7 @@ let
   ];
 in
 {
-  options.fontProfiles = {
+  options.xokdvium.common.fontProfiles = {
     enable = lib.mkEnableOption "Whether to enable font profiles";
   } // (lib.genAttrs profileNames mkFontOption);
 
