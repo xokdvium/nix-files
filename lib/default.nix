@@ -19,4 +19,10 @@ rec {
   inherit (host) mkHostInfo mkHostSystem mkHostImage;
 
   inherit (utils) mkApp;
+
+  units.size = rec {
+    kb = 1024;
+    mib = 1024 * kb;
+    gib = 1024 * mib;
+  };
 }

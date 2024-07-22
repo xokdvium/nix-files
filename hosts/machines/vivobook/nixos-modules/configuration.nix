@@ -40,7 +40,7 @@
 
       zfsHost = {
         enable = true;
-        arcSize = 1024 * 1024 * 1024; # 1 GiB
+        arcSize = pkgs.lib.units.size.gib;
         snapshots.enable = true;
         replication.enable = true;
       };

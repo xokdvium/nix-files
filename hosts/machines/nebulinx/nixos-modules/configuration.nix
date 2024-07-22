@@ -3,6 +3,7 @@
   extraConfig,
   config,
   hostModulesPath,
+  pkgs,
   ...
 }:
 
@@ -52,19 +53,15 @@
         wipeOnBoot = true;
       };
 
-      zfsHost =
-        let
-          gibibyte = 1024 * 1024 * 1024;
-        in
-        {
+      zfsHost = {
+        enable = true;
+        arcSize = 8 * pkgs.lib.units.size.gib;
+        snapshots.enable = true;
+        replication = {
           enable = true;
-          arcSize = 8 * gibibyte;
-          snapshots.enable = true;
-          replication = {
-            enable = true;
-            enableDebug = true;
-          };
+          enableDebug = true;
         };
+      };
     };
   };
 

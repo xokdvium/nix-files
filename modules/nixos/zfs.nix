@@ -7,16 +7,11 @@ in
     xokdvium.nixos.zfsHost = {
       enable = lib.mkEnableOption "zfsHost";
 
-      arcSize = lib.mkOption (
-        let
-          gibibyte = 1024 * 1024 * 1024;
-        in
-        {
-          type = lib.types.int;
-          description = "Size of ZFS adaptive replacement cache in bytes";
-          default = gibibyte;
-        }
-      );
+      arcSize = lib.mkOption {
+        type = lib.types.int;
+        description = "Size of ZFS adaptive replacement cache in bytes";
+        default = lib.units.size.gib;
+      };
 
       rootPoolName = lib.mkOption {
         type = lib.types.str;
