@@ -18,6 +18,12 @@ in
         }
       );
 
+      rootPoolName = lib.mkOption {
+        type = lib.types.str;
+        description = "Name of the root pool";
+        default = "rpool";
+      };
+
       snapshots = {
         enable = lib.mkEnableOption "snapshots";
         enableDebug = lib.mkEnableOption "enableDebug";
@@ -82,8 +88,8 @@ in
             };
           in
           {
-            "rpool/nixos/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
-            "rpool/nixos/state" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
+            "${cfg.rootPoolName}/nixos/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
+            "${cfg.rootPoolName}/nixos/state" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
           };
       };
 
@@ -125,7 +131,7 @@ in
 
           commands = {
             "backup2aeronas" = {
-              source = "rpool/nixos/persistent";
+              source = "${cfg.rootPoolName}/nixos/persistent";
               target = "syncoid@aeronas.jawphugy.home.arpa:stank/backups/machines/${config.networking.hostName}";
               sendOptions = "--raw";
               recursive = true;
