@@ -8,7 +8,7 @@
 let
   wipeScript = ''
     echo "Erasing my darlings"
-    zfs rollback -r rpool/nixos/root@blank
+    zfs rollback -r ${config.xokdvium.nixos.zfsHost.rootPoolName}/nixos/root@blank
   '';
 
   wipeService = {
