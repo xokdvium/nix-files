@@ -90,7 +90,6 @@ in
           in
           {
             "${cfg.statePoolName}/nixos/persistent" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
-            "${cfg.statePoolName}/nixos/state" = lib.mkIf config.xokdvium.nixos.persistence.enable snapshotSettings;
           };
       };
 
