@@ -75,9 +75,9 @@ in
 
         datasets =
           let
-            monthlyCount = 12;
-            hourlyCount = 48;
-            dailyCount = 31;
+            monthlyCount = 4;
+            hourlyCount = 12;
+            dailyCount = 14;
 
             snapshotSettings = {
               autosnap = true;
