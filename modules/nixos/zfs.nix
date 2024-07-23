@@ -93,54 +93,32 @@ in
           };
       };
 
-      syncoid = lib.mkIf cfg.replication.enable (
-        let
-          permissions = [
-            "change-key"
-            "compression"
-            "create"
-            "mount"
-            "mountpoint"
-            "receive"
-            "rollback"
-            "bookmark"
-            "hold"
-            "send"
-            "snapshot"
-            "destroy"
-          ];
-        in
-        {
-          enable = true;
+      syncoid = lib.mkIf cfg.replication.enable {
+        enable = true;
 
-          # FIXME: Just give all permissions in the world. This is due to the syncoid erroring out
-          # on sync snapshot deletion: cannot destroy snapshots: permission denied.
-          # TODO: Find the smallest list of permissions without this bug
-          localSourceAllow = permissions;
-          localTargetAllow = permissions;
+        localTargetAllow = lib.optionals (cfg.replication.deleteOldSnapshots) [ "destroy" ];
 
-          commonArgs =
-            [ ]
-            ++ lib.optionals (cfg.replication.enableDebug) [
-              "--debug"
-              "--dumpsnaps"
-            ]
-            ++ lib.optionals (cfg.replication.deleteOldSnapshots) [ "--delete-target-snapshots" ];
+        commonArgs =
+          [ ]
+          ++ lib.optionals (cfg.replication.enableDebug) [
+            "--debug"
+            "--dumpsnaps"
+          ]
+          ++ lib.optionals (cfg.replication.deleteOldSnapshots) [ "--delete-target-snapshots" ];
 
-          sshKey = config.sops.secrets."syncoid/private-key".path;
+        sshKey = config.sops.secrets."syncoid/private-key".path;
 
-          commands = {
-            "backup2aeronas" = {
-              source = "${cfg.statePoolName}/nixos/persistent";
-              target = "syncoid@aeronas.jawphugy.home.arpa:stank/backups/machines/${config.networking.hostName}";
-              sendOptions = "--raw";
-              recursive = true;
-              # FIXME: Do proper host key checking
-              extraArgs = [ "--sshoption=StrictHostKeyChecking=off" ];
-            };
+        commands = {
+          "backup2aeronas" = {
+            source = "${cfg.statePoolName}/nixos/persistent";
+            target = "syncoid@aeronas.jawphugy.home.arpa:stank/backups/machines/${config.networking.hostName}";
+            sendOptions = "--raw";
+            recursive = true;
+            # FIXME: Do proper host key checking
+            extraArgs = [ "--sshoption=StrictHostKeyChecking=off" ];
           };
-        }
-      );
+        };
+      };
     };
   };
 }
