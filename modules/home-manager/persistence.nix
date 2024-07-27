@@ -67,7 +67,7 @@
           defaultFiles = lib.mkOption {
             type = lib.types.listOf (lib.types.either lib.types.attrs lib.types.str);
             description = "Default files to persist";
-            default = [ "/etc/machine-id" ];
+            default = [ ];
           };
 
           defaultDirs = lib.mkOption {
