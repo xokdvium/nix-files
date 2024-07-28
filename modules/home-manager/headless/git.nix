@@ -7,6 +7,25 @@
 }:
 let
   inherit (outputs.lib) mkHomeCategoryModuleEnableOption;
+
+  deltaTheme = pkgs.writeText "delta-stylix-base16.gitconfig" (
+    lib.generators.toGitINI {
+      "delta \"stylix-base16\"" = with config.lib.stylix.colors.withHashtag; {
+        dark = true;
+        line-numbers = true;
+        syntax-theme = "base16-stylix";
+        zero-style = "syntax";
+        plus-style = "${base00} ${base0B}";
+        plus-emph-style = ''"${base00}" "${base0B}"'';
+        minus-style = "${base00} ${base08}";
+        minus-emph-style = ''"${base00}" "${base08}"'';
+        blame-palette = "${base00} ${base01}";
+        file-style = "${base0D}";
+        line-numbers-minus-style = "${base08}";
+        line-numbers-plus-style = "${base0B}";
+      };
+    }
+  );
 in
 {
   options.xokdvium.home.headless = {
@@ -72,14 +91,15 @@ in
             };
           };
 
+          includes = [ { path = deltaTheme; } ];
+
           delta = {
             enable = true;
             options = {
               navigate = true;
               line-numbers = true;
-              side-by-side = true;
               colorMoved = "default";
-              features = "coracias-caudatus";
+              features = "stylix-base16";
             };
           };
         };
@@ -92,5 +112,7 @@ in
           gpf = "git push --force-with-lease --force-if-includes";
         };
       };
+
+      xdg.configFile."delta/stylix-base16.gitconfig".source = deltaTheme;
     };
 }
