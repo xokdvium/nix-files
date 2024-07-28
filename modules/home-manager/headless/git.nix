@@ -15,9 +15,9 @@ let
         line-numbers = true;
         syntax-theme = "base16-stylix";
         zero-style = "syntax";
-        plus-style = "${base00} ${base0B}";
+        plus-style = "syntax";
         plus-emph-style = ''"${base00}" "${base0B}"'';
-        minus-style = "${base00} ${base08}";
+        minus-style = "syntax";
         minus-emph-style = ''"${base00}" "${base08}"'';
         blame-palette = "${base00} ${base01}";
         file-style = "${base0D}";

@@ -99,6 +99,7 @@ in
               EDITOR = "${config.programs.helix.package}/bin/hx";
             };
           }
+          (import ./helix-git-blame { inherit pkgs lib; })
         ]
         ++ (import ./languages { inherit pkgs; })
       )
