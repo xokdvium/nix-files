@@ -111,7 +111,7 @@ in
         commands = {
           "backup2aeronas" = {
             source = "${cfg.statePoolName}/nixos/persistent";
-            target = "syncoid@aeronas.jawphugy.home.arpa:stank/backups/machines/${config.networking.hostName}";
+            target = "syncoid@aeronas.zt.breathein.space:stank/backups/machines/${config.networking.hostName}";
             sendOptions = "--raw";
             recursive = true;
             # FIXME: Do proper host key checking

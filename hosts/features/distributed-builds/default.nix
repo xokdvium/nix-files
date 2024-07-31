@@ -1,5 +1,5 @@
 let
-  nebulinxHost = "nebulinx.jawphugy.home.arpa";
+  nebulinxHost = "nebulinx.zt.breathein.space";
 in
 
 {
