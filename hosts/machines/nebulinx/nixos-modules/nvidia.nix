@@ -1,8 +1,8 @@
 { config, ... }:
 
 {
-  virtualisation.docker = {
-    enableNvidia = true;
+  hardware.nvidia-container-toolkit = {
+    enable = true;
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
