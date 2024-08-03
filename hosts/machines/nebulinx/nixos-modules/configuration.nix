@@ -18,6 +18,7 @@
       "features/zerotier"
       "features/binfmt.nix"
       "features/gaming.nix"
+      "features/cachyos.nix"
     ]
     ++ [
       ./zfsroot.nix

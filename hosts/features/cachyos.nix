@@ -7,6 +7,6 @@
     in
     {
       kernelPackages = kernel;
-      zfs.package = pkgs.zfs_unstable;
+      zfs.package = pkgs.zfs_cachyos;
     };
 }
