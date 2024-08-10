@@ -9,4 +9,8 @@
       };
     };
   };
+
+  xokdvium.home.persistence = {
+    persist.dirs = [ ".thunderbird" ];
+  };
 }
