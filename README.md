@@ -1,5 +1,15 @@
 # ❄️ xokdvium's NixOS flake
 
+<!--toc:start-->
+
+- [❄️ xokdvium's NixOS flake](#%EF%B8%8F-xokdviums-nixos-flake)
+  - [🧬 Structure](#%F0%9F%A7%AC-structure)
+  - [🔧 Development](#%F0%9F%94%A7-development)
+  - [🚀 Deployment](#%F0%9F%9A%80-deployment)
+  - [📖 Acknowledgements](#%F0%9F%93%96-acknowledgements)
+
+<!--toc:end-->
+
 This repository contains my personal flake. It builds my development machines and deploys part of my infrastructure
 
 If you don't know what nix, nixos and flakes are then please take a look at [introduction-to-flakes](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes/)
@@ -64,18 +74,6 @@ a local switch:
 
 ```bash
 ❯ just local-switch
-```
-
-## 🎒 Binary Cache
-
-This flake builds a lot of packages from source, since I like to use the latest unstable branches to get
-the latest updates as fast as possible. I run [zfs](https://nixos.wiki/wiki/ZFS) root for my desktop systems.
-But due to certain usability issues I've switched to [cachyos](https://cachyos.org/) kernel from [nyx](https://github.com/chaotic-cx/nyx/).
-To remedy the long build times I've spun up a personal binary cache and set up [distributed builds](https://nixos.wiki/wiki/Distributed_build).
-
-```
-extra-substituters = https://attic.aeronas.ru/private/
-extra-trusted-public-keys = private:vKBWz9kKZiVpjooidWtnvC4gIAQx6fv/ofKpnRLIvCI=
 ```
 
 ## 📖 Acknowledgements
