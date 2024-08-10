@@ -1,4 +1,6 @@
 {
+  imports = [ ../../users/mail ];
+
   xokdvium = {
     home = {
       persistence.enable = true;
