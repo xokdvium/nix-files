@@ -16,7 +16,6 @@
       "features/zerotier"
       "features/systemd-networkd.nix"
       "features/distributed-builds"
-      "features/cachyos.nix"
     ]
     ++ [
       ./zfsroot.nix
