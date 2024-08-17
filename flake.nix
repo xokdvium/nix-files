@@ -99,6 +99,11 @@
     flake-compat = {
       url = "github:edolstra/flake-compat";
     };
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {

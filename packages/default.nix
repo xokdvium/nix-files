@@ -9,4 +9,5 @@ in
   zerotier-systemd-manager = callPackage ./zerotier-systemd-manager.nix { };
   nix-closure-graph = callPackage ./nix-closure-graph.nix { };
   npm-groovy-lint = callPackage ./npm-groovy-lint.nix { dream2nix = inputs.dream2nix; };
+  schemat = callPackage ./schemat.nix { inherit (inputs) fenix; };
 }
