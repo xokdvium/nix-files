@@ -10,7 +10,9 @@ _cleanup_backups:
     rm -rf {{ files_to_clean }}
 
 switch *FLAGS: _cleanup_backups
+    just reveal
     nh os switch {{ justfile_directory() }} {{ FLAGS }}
+    just hide
 
 boot *FLAGS: _cleanup_backups
     nh os boot {{ justfile_directory() }} {{ FLAGS }}
