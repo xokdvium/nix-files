@@ -15,6 +15,7 @@
         dig
         nh
         glow
+        git-secret
       ];
 
       NIX_CONFIG = "extra-experimental-features = nix-command flakes";

@@ -37,3 +37,11 @@ lint: check format
 
 update:
     nix flake update --accept-flake-config
+
+reveal:
+    git secret reveal -f
+    git add --all
+
+hide:
+    git secret hide -d
+    git add --all
