@@ -25,6 +25,11 @@ in
     lib.mkIf cfg.enable {
       programs.chromium = {
         enable = true;
+        extensions = [
+          # WebRTC Network Limiter
+          # https://chromewebstore.google.com/detail/npeicpdbkakmehahjeeohfdhnlpdklia
+          { id = "npeicpdbkakmehahjeeohfdhnlpdklia"; }
+        ];
       };
 
       xokdvium.home.persistence = {

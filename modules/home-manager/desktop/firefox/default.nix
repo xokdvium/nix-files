@@ -68,12 +68,6 @@ in
               toolbar = true;
               bookmarks = [
                 {
-                  name = "miniflux";
-                  tags = [ "rss" ];
-                  keyword = "rss";
-                  url = "https://rss.aeronas.ru/";
-                }
-                {
                   name = "linkding";
                   url = "https://linkding.aeronas.ru/";
                 }
@@ -83,6 +77,7 @@ in
 
           settings = {
             "signon.rememberSignons" = false;
+            "media.peerconnection.enabled" = false;
           };
 
           search = {
