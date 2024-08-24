@@ -21,9 +21,10 @@ in
       cfg = config.xokdvium.home.desktop.matrix-clients;
     in
     lib.mkIf cfg.enable {
+      # deadnix: skip
       home.packages = with pkgs; [
-        cinny-desktop
-        gomuks
+        # cinny-desktop
+        # gomuks
       ];
 
       xokdvium.home.persistence = {

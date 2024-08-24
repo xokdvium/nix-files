@@ -20,5 +20,10 @@ in
     let
       cfg = config.xokdvium.home.headless.nix-melt;
     in
-    lib.mkIf cfg.enable { home.packages = with pkgs; [ nix-melt ]; };
+    lib.mkIf cfg.enable {
+      # deadnix: skip
+      home.packages = with pkgs; [
+        # nix-melt 
+      ];
+    };
 }

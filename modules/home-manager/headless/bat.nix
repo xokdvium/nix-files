@@ -41,7 +41,7 @@ in
               batpipe
               batman
               batgrep
-              batdiff
+              # batdiff
             ]
           );
         };
