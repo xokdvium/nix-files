@@ -24,6 +24,7 @@
         chromium.enable = true;
         gaming.enable = true;
         factorio.enable = true;
+        nekoray.enable = true;
       };
 
       editors = {

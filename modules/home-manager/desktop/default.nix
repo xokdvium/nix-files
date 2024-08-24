@@ -33,6 +33,7 @@ in
     ./gtkwave.nix
     ./chromium.nix
     ./super-slicer.nix
+    ./nekoray.nix
   ];
 
   config.xokdvium =
