@@ -22,6 +22,7 @@
           staticBookmarks = true;
         };
         chromium.enable = true;
+        nekoray.enable = true;
       };
 
       editors = {

@@ -19,6 +19,7 @@
       "features/binfmt.nix"
       "features/gaming.nix"
       "features/cachyos.nix"
+      "features/github-token.nix"
     ]
     ++ [
       ./zfsroot.nix

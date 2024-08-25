@@ -11,6 +11,7 @@ in
       "docker"
       "networkmanager"
       "wireshark"
+      "keys"
     ];
     homeModules = [ ];
   };

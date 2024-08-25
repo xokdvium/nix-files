@@ -19,3 +19,9 @@ creation_rules:
           - *xokdvium
           - *nebulinx
           - *vivobook
+  - path_regex: ^secrets/github/secrets.yaml$
+    key_groups:
+      - pgp:
+          - *xokdvium
+          - *nebulinx
+          - *vivobook

@@ -16,6 +16,7 @@
       "features/zerotier"
       "features/systemd-networkd.nix"
       "features/distributed-builds"
+      "features/github-token.nix"
     ]
     ++ [
       ./zfsroot.nix
