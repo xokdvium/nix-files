@@ -33,20 +33,17 @@
     gnome.gnome-remote-desktop.enable = false;
   };
 
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-tour
-      gnome-terminal
-      gnome-calendar
-      gnome-calculator
-      epiphany
-      geary
-      totem
-    ])
-    ++ (with pkgs.gnome; [
-      gnome-music
-      gnome-contacts
-      gnome-characters
-      gnome-remote-desktop
-    ]);
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-terminal
+    gnome-calendar
+    gnome-calculator
+    epiphany
+    geary
+    totem
+    gnome-music
+    gnome-characters
+    gnome-contacts
+    gnome-remote-desktop
+  ];
 }

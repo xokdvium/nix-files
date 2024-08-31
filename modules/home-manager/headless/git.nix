@@ -73,7 +73,7 @@ in
               lg = "${pretty_log_cmd}";
             };
 
-          userEmail = lib.mkDefault "serjtsimmerman@gmail.com";
+          userEmail = lib.mkDefault "145775305+xokdvium@users.noreply.github.com";
           userName = lib.mkDefault "Sergei Zimmerman";
 
           extraConfig = {

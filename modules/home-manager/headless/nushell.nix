@@ -36,7 +36,7 @@ in
           '';
 
           environmentVariables = {
-            EDITOR = "${config.programs.helix.package}/bin/hx";
+            EDITOR = "'${config.programs.helix.package}/bin/hx'";
           };
         };
       };

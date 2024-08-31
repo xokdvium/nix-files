@@ -20,6 +20,7 @@
       "features/gaming.nix"
       "features/cachyos.nix"
       "features/github-token.nix"
+      "features/latest-nix.nix"
     ]
     ++ [
       ./zfsroot.nix
