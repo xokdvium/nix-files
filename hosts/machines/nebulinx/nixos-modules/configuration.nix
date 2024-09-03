@@ -12,7 +12,6 @@
     map (v: hostModulesPath + "/${v}") [
       "desktop"
       "features/dewm/gnome.nix"
-      "features/dewm/hyprland.nix"
       "features/docker.nix"
       "features/crypto.nix"
       "features/zerotier"

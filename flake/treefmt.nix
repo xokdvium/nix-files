@@ -8,6 +8,8 @@
       just.enable = true;
       keep-sorted.enable = true;
       mdformat.enable = true;
+      black.enable = true;
+      ruff-check = true;
     };
   };
 }
