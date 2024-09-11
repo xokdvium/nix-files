@@ -9,6 +9,7 @@ map (file: import file { inherit pkgs; }) [
   ./json.nix
   ./just.nix
   ./markdown.nix
+  ./meson.nix
   ./nix.nix
   ./openscad.nix
   ./python.nix
