@@ -23,7 +23,7 @@
         };
         chromium.enable = true;
         gaming.enable = true;
-        factorio.enable = true;
+        factorio.enable = false;
         nekoray.enable = true;
       };
 
