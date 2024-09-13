@@ -10,4 +10,5 @@ in
   nix-closure-graph = callPackage ./nix-closure-graph.nix { };
   npm-groovy-lint = callPackage ./npm-groovy-lint.nix { dream2nix = inputs.dream2nix; };
   schemat = callPackage ./schemat.nix { inherit (inputs) fenix; };
+  binsider = callPackage ./binsider.nix { };
 }
