@@ -53,6 +53,8 @@ in
         sd # sd - better sed
         grex # grex - to battle regex
         dyff # - diff tool for yaml (json)
+        # -- viewers --
+        binsider
       ];
     };
 }
