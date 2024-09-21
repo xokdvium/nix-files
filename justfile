@@ -45,5 +45,9 @@ reveal:
     git add --all
 
 hide:
+    #!/usr/bin/env bash
     git secret hide -d
     git add --all
+    secrets=$(find -name '*.secret')
+    git restore --staged "${secrets}"
+    git restore "${secrets}"

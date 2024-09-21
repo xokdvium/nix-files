@@ -9,7 +9,7 @@
       keep-sorted.enable = true;
       mdformat.enable = true;
       black.enable = true;
-      ruff-check = true;
+      ruff-check.enable = true;
     };
   };
 }

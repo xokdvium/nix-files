@@ -14,6 +14,9 @@
           "mesonlsp"
           "typos-lsp"
         ];
+        formatter = {
+          command = "${pkgs.meson}/bin/meson";
+        };
       }
     ];
   };
