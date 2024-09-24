@@ -117,6 +117,7 @@
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
     graphics.enable = true;
+    probe-rs-rules.enable = true;
   };
 
   users = {
