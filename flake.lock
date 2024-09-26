@@ -800,6 +800,22 @@
         "type": "github"
       }
     },
+    "nix-mineral": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726074722,
+        "narHash": "sha256-HqAzX3JD0hsvO+Iw/W0tjeUvEVM/8whg9503OVZBRS4=",
+        "owner": "cynicsketch",
+        "repo": "nix-mineral",
+        "rev": "630c42c574073730989d8fc59f9d89b01b0dbfe8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cynicsketch",
+        "repo": "nix-mineral",
+        "type": "github"
+      }
+    },
     "nix-vscode-extensions": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -1029,6 +1045,7 @@
         "impermanence": "impermanence",
         "nix-eval-jobs": "nix-eval-jobs",
         "nix-index-database": "nix-index-database",
+        "nix-mineral": "nix-mineral",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixd": "nixd",
         "nixos-generators": "nixos-generators",

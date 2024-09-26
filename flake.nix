@@ -101,6 +101,11 @@
     };
 
     fenix.follows = "chaotic/fenix";
+
+    nix-mineral = {
+      url = "github:cynicsketch/nix-mineral";
+      flake = false;
+    };
   };
 
   nixConfig = {
