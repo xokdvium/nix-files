@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.helix.languages = {
     language-server.rust-analyzer = {
-      command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+      command = "rust-analyzer";
     };
 
     language = [
@@ -13,7 +13,7 @@
           "typos-lsp"
         ];
         formatter = {
-          command = "${pkgs.rustfmt}/bin/rustfmt";
+          command = "rustfmt";
         };
         auto-format = true;
       }
