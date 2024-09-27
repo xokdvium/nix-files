@@ -31,6 +31,7 @@ in
     ./zellij.nix
     ./zoxide.nix
     ./zsh.nix
+    ./rust-tools.nix
   ];
 
   options.xokdvium.home.headless = {
