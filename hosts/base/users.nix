@@ -24,7 +24,7 @@ in
       uid = user.uid;
       group = lib.mkIf (!builtins.isNull user.group) user.group;
       extraGroups = user.groups ++ ifTheyExist user.optionalGroups;
-      shell = lib.mkOverride 75 pkgs.nushell;
+      shell = lib.mkOverride 75 pkgs.zsh;
     });
   };
 
