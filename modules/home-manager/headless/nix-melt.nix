@@ -21,9 +21,8 @@ in
       cfg = config.xokdvium.home.headless.nix-melt;
     in
     lib.mkIf cfg.enable {
-      # deadnix: skip
       home.packages = with pkgs; [
-        # nix-melt 
+        nix-melt
       ];
     };
 }
