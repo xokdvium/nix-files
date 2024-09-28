@@ -37,7 +37,7 @@
     };
 
     impermanence = {
-      url = "github:nix-community/impermanence";
+      url = "github:nix-community/impermanence/9ded619dfb84584fac1faa2645aaf0d2ad4a2520";
     };
 
     disko = {
