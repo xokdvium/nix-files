@@ -17,6 +17,7 @@
       "features/systemd-networkd.nix"
       "features/distributed-builds"
       "features/github-token.nix"
+      "features/cachyos.nix"
     ]
     ++ [
       ./zfsroot.nix
