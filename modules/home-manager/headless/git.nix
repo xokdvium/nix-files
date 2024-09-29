@@ -43,6 +43,7 @@ in
       home.packages = with pkgs; [
         git-absorb
         onefetch
+        pre-commit
       ];
 
       programs = {
