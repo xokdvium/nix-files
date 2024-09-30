@@ -22,6 +22,14 @@ let
       };
     };
 
+    eighties-spaceduck = {
+      base16 = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
+      image = pkgs.fetchurl {
+        url = "https://w.wallhaven.cc/full/kx/wallhaven-kx5v57.jpg";
+        sha256 = "sha256-aOvy3zKZS6DfSfH6gFxBNJH8UKHCqbvPeoOgxfjQZtA=";
+      };
+    };
+
     catppuccin-frappe = {
       base16 = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
       image = pkgs.fetchurl {

@@ -2,6 +2,7 @@
   outputs,
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -53,7 +54,7 @@ in
         };
 
         "org/gnome/desktop/default-applications/terminal" = {
-          exec = "${config.programs.wezterm.package}/bin/wezterm";
+          exec = "${lib.getExe config.programs.alacritty.package}";
           exec-arg = "";
         };
       };

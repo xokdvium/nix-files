@@ -1,5 +1,9 @@
 {
-  imports = [ ../../users/mail ];
+  imports = [
+    ../../users/mail
+    ../../../modules/home-manager/desktop/hyprland
+    ../../../modules/home-manager/desktop/hyprland/nvidia.nix
+  ];
 
   xokdvium = {
     home = {
@@ -35,7 +39,7 @@
     common = {
       style = {
         enable = true;
-        preset = "catppuccin-mocha";
+        preset = "eighties-spaceduck";
       };
     };
   };

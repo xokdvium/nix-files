@@ -21,6 +21,10 @@ in
       cfg = config.xokdvium.home.headless.jujutsu;
     in
     lib.mkIf cfg.enable {
+      home.packages = with pkgs; [
+        lazyjj
+      ];
+
       programs.jujutsu = {
         enable = true;
         package = pkgs.jujutsu_git;

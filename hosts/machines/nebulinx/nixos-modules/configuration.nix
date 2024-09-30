@@ -43,7 +43,7 @@
     common = {
       style = {
         enable = true;
-        preset = "catppuccin-mocha";
+        preset = "eighties-spaceduck";
       };
     };
 

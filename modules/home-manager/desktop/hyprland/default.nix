@@ -10,9 +10,9 @@ let
 in
 {
   imports = [
-    ../.
     ./wofi.nix
     ./binds.nix
+    ./waybar.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -34,7 +34,8 @@ in
         in
         [
           "SUPER,Return,exec,${terminal}"
-          "SUPER,d,exec,${wofi} -S run"
+          "SUPER,d,exec,${wofi} --show drun"
+          "SUPER,D,exec,${wofi} --show run"
           "SUPER,b,exec,${firefox}"
           "SUPER,q,killactive"
           "SUPER,v,togglefloating"

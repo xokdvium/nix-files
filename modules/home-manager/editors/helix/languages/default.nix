@@ -22,4 +22,5 @@ map (file: import file { inherit pkgs; }) [
   ./typos.nix
   ./verilog.nix
   ./yaml.nix
+  ./css.nix
 ]

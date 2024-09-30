@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [ ./common ];
@@ -8,17 +12,21 @@
     };
     xserver = {
       enable = true;
+      excludePackages = with pkgs; [ xterm ];
       displayManager = {
         gdm = {
           enable = true;
         };
       };
-      desktopManager.gnome = {
-        enable = true;
-        extraGSettingsOverrides = ''
-          [org.gnome.desktop.peripherals.touchpad]
-          tap-to-click=true
-        '';
+      desktopManager = {
+        gnome = {
+          enable = true;
+          extraGSettingsOverrides = ''
+            [org.gnome.desktop.peripherals.touchpad]
+            tap-to-click=true
+          '';
+        };
+        xterm.enable = lib.mkForce false;
       };
     };
 
@@ -34,6 +42,7 @@
   };
 
   environment.gnome.excludePackages = with pkgs; [
+    gnome-console
     gnome-tour
     gnome-terminal
     gnome-calendar

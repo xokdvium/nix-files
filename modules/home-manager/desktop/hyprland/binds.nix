@@ -22,17 +22,17 @@ in
         (makeWorkspaceBind workspaceIndices)
         ++ (makeMoveToWorkspaceBind workspaceIndices)
         ++ [
-          "ALT,h,movefocus,l"
-          "ALT,l,movefocus,r"
-          "ALT,k,movefocus,u"
-          "ALT,j,movefocus,d"
-          "CTRL_ALT,h,movewindow,l"
-          "CTRL_ALT,l,movewindow,r"
-          "CTRL_ALT,k,movewindow,u"
-          "CTRL_ALT,j,movewindow,d"
+          "SUPER,h,movefocus,l"
+          "SUPER,l,movefocus,r"
+          "SUPER,k,movefocus,u"
+          "SUPER,j,movefocus,d"
+          "SUPER_ALT,h,movewindow,l"
+          "SUPER_ALT,l,movewindow,r"
+          "SUPER_ALT,k,movewindow,u"
+          "SUPER_ALT,j,movewindow,d"
         ];
 
-      bindm = [ "CTRL,mouse:272,resizewindow" ];
+      bindm = [ "SUPER_CTRL,mouse:272,resizewindow" ];
     };
   };
 }
