@@ -31,6 +31,7 @@ in
         # -- monitoring processes --
         bandwidth # - tell which processes utilize bandwidth
         procs # procs - better top
+        gping # - better ping
         # -- cli tools for one-liners --
         du-dust # du - better du
         ncdu # ncdu - tui du
@@ -45,6 +46,7 @@ in
         glow # - terminal markdown reader
         bitwise # - bitwise calculator
         libqalculate # - cli calculator
+        license-generator # - generate license files
         # -- working with containers --
         distrobox # - to run non-nix based containers
         # -- text/structured data processing --
@@ -54,6 +56,7 @@ in
         grex # grex - to battle regex
         dyff # - diff tool for yaml (json)
         amber # - smart & interactive text replacement
+        pandoc # - conversion between different text formats
         # -- viewers --
         binsider
       ];

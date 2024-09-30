@@ -10,9 +10,13 @@ let
 in
 {
   options.xokdvium.home.headless = {
-    tldr.enable = mkHomeCategoryModuleEnableOption config {
-      name = "tldr";
-      category = "headless";
+    tldr = {
+      enable = mkHomeCategoryModuleEnableOption config {
+        name = "tldr";
+        category = "headless";
+      };
+
+      package = lib.mkPackageOption pkgs "tealdeer" { };
     };
   };
 
@@ -20,5 +24,5 @@ in
     let
       cfg = config.xokdvium.home.headless.tldr;
     in
-    lib.mkIf cfg.enable { home.packages = with pkgs; [ tldr ]; };
+    lib.mkIf cfg.enable { home.packages = [ cfg.package ]; };
 }

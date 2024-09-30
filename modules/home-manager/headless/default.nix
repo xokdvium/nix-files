@@ -19,11 +19,13 @@ in
     ./fzf.nix
     ./git.nix
     ./jj.nix
+    ./macchina.nix
     ./nix-closure-graph.nix
     ./nix-melt.nix
     ./nurl.nix
     ./nushell.nix
     ./pueue.nix
+    ./rust-tools.nix
     ./starship.nix
     ./tldr.nix
     ./wormhole.nix
@@ -31,7 +33,6 @@ in
     ./zellij.nix
     ./zoxide.nix
     ./zsh.nix
-    ./rust-tools.nix
   ];
 
   options.xokdvium.home.headless = {

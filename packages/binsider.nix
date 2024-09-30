@@ -2,15 +2,15 @@
 
 rustPlatform.buildRustPackage {
   pname = "binsider";
-  version = "0.1.0-unstable-2024-09-13";
+  version = "0.2.0";
 
   src = fetchFromGitHub {
     owner = "orhun";
     repo = "binsider";
-    rev = "52192df05b7c508076cdf8baad831f08305b37f8";
-    hash = "sha256-sNfgYUEIjGkDKeKPqgY4QM2WdYi4TZ3PlLksCoZFs8U=";
+    rev = "v0.2.0";
+    hash = "sha256-VnWLslelEAXuSy7XnxrdgSkXqTrd+Ni7lQFsB2P+ILs=";
   };
 
-  cargoHash = "sha256-vBGhm5XFLboW6T/39tGNk3riCnE1PU7V/IhgzDepC34=";
+  cargoHash = "sha256-eBZ7zUOucarzdxTjHecUxGqUsKTQPaaotOfs/v0MxHk=";
   doCheck = false;
 }
