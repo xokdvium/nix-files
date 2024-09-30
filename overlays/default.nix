@@ -2,7 +2,7 @@
 
 let
 
-  inherit (inputs) nixpkgs attic nix-vscode-extensions;
+  inherit (inputs) nixpkgs;
 
   inherit (self) outputs;
   inherit (nixpkgs) lib;
@@ -26,6 +26,6 @@ in
         lib = prev.lib.extend (_: _: import ../lib { inherit inputs outputs; });
       };
     }
-    (getDefaultOverlayAttrs { inherit attic nix-vscode-extensions; })
+    (getDefaultOverlayAttrs { inherit (inputs) attic nix-vscode-extensions hyprland; })
   ];
 }
