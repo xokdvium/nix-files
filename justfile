@@ -11,14 +11,14 @@ _cleanup_backups:
 
 switch *FLAGS: _cleanup_backups
     just reveal
-    nh os switch {{ justfile_directory() }} {{ FLAGS }}
+    nh os switch {{ justfile_directory() }} {{ FLAGS }} -- --accept-flake-config
     just hide
 
 boot *FLAGS: _cleanup_backups
-    nh os boot {{ justfile_directory() }} {{ FLAGS }}
+    nh os boot {{ justfile_directory() }} {{ FLAGS }} -- --accept-flake-config
 
 local-switch *FLAGS: _cleanup_backups
-    nh os switch {{ justfile_directory() }} -- --builders ""
+    nh os switch {{ justfile_directory() }} -- --builders "" --accept-flake-config
 
 collect-garbage:
     nh clean all
