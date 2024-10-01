@@ -35,7 +35,7 @@ in
         [
           "SUPER,Return,exec,${terminal}"
           "SUPER,d,exec,${wofi} --show drun"
-          "SUPER,D,exec,${wofi} --show run"
+          "SUPER_SHIFT,d,exec,${wofi} --show run"
           "SUPER,b,exec,${firefox}"
           "SUPER,q,killactive"
           "SUPER,v,togglefloating"
