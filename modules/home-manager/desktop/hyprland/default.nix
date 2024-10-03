@@ -10,10 +10,10 @@ let
 in
 {
   imports = [
-    ./wofi.nix
     ./binds.nix
-    ./waybar.nix
     ./hyprnome.nix
+    ./waybar
+    ./wofi.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -50,6 +50,7 @@ in
         "col.nogroup_border" = lib.mkForce "rgb(${colors.base09})";
         "col.nogroup_border_active" = lib.mkForce "rgb(${colors.base0D})";
         border_size = 2;
+        gaps_out = 10;
       };
 
       decoration =
@@ -71,6 +72,8 @@ in
         touchpad = {
           natural_scroll = true;
         };
+        kb_layout = "us,ru";
+        kb_options = "grp:alt_shift_toggle";
       };
 
       animations = {

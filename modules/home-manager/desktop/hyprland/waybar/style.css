@@ -1,0 +1,14 @@
+/* https://gitlab.com/fazzi/dotfiles/-/blob/hyprland-laptop/.config/waybar/style.css?ref_type=heads */
+/* https://www.reddit.com/r/unixporn/comments/12ii6cy/hyprland_w_waybar_custom_css_startpage/#lightbox */
+
+#workspaces button.active {
+  border-color: @base0C;
+}
+
+#workspaces button.focused {
+  color: @base0C;
+}
+
+#tray {
+  margin-right: 4px;
+}

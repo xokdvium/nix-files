@@ -1,16 +1,25 @@
-{
-  ...
-}:
+{ config, ... }:
+
+let
+  hyprlandSettings = config.wayland.windowManager.hyprland.settings;
+in
 
 {
+  imports = [
+    ./style.nix
+  ];
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
 
     settings = [
       {
-        height = 30;
+        height = 40;
         layer = "top";
+        margin-left = hyprlandSettings.general.gaps_out;
+        margin-right = hyprlandSettings.general.gaps_out;
+        margin-top = hyprlandSettings.general.gaps_out;
         position = "top";
         tray = {
           spacing = 20;
@@ -22,44 +31,13 @@
         modules-right = [
           "pulseaudio"
           "network"
-          "cpu"
-          "memory"
-          "temperature"
-          "battery"
           "clock"
           "tray"
         ];
 
-        battery = {
-          format = "{capacity}% {icon}";
-          format-alt = "{time} {icon}";
-          format-charging = "{capacity}% ";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          format-plugged = "{capacity}% ";
-          states = {
-            critical = 15;
-            warning = 30;
-          };
-        };
-
         clock = {
           format-alt = "{:%Y-%m-%d}";
           tooltip-format = "{:%Y-%m-%d | %H:%M}";
-        };
-
-        cpu = {
-          format = "{usage}% ";
-          tooltip = false;
-        };
-
-        memory = {
-          format = "{}% ";
         };
 
         network = {
