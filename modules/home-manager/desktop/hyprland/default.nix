@@ -13,6 +13,7 @@ in
     ./wofi.nix
     ./binds.nix
     ./waybar.nix
+    ./hyprnome.nix
   ];
 
   wayland.windowManager.hyprland = {

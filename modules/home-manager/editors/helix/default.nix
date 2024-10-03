@@ -89,14 +89,23 @@ in
   config =
     let
       cfg = config.xokdvium.home.editors.helix;
+      sessionVariables = {
+        EDITOR = "${config.programs.helix.package}/bin/hx";
+      };
     in
     lib.mkIf cfg.enable (
       lib.mkMerge (
         [
           {
-            programs.helix = helixConfig;
-            home.sessionVariables = {
-              EDITOR = "${config.programs.helix.package}/bin/hx";
+            programs = {
+              helix = helixConfig;
+              zsh = {
+                inherit sessionVariables;
+              };
+            };
+
+            home = {
+              inherit sessionVariables;
             };
           }
           (import ./helix-git-blame { inherit pkgs lib; })
