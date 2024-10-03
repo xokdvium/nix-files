@@ -1,7 +1,14 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
 let
   cfg = config.xokdvium.nixos.zfsHost;
 in
+
 {
   options = {
     xokdvium.nixos.zfsHost = {
@@ -56,6 +63,10 @@ in
         sopsFile = ../../secrets/syncoid/secrets.yaml;
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      httm # interactive cli file history via zfs
+    ];
 
     services = {
       zfs = {
