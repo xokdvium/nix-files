@@ -3,6 +3,7 @@
   outputs,
   config,
   lib,
+  inputs,
   ...
 }:
 let
@@ -29,10 +30,8 @@ in
         package = pkgs.vscodium;
 
         extensions =
-          with pkgs.vscode-extensions;
-          [
+          (with pkgs.vscode-extensions; [
             llvm-vs-code-extensions.vscode-clangd
-            ms-toolsai.jupyter
             xaver.clang-format
             editorconfig.editorconfig
             ms-python.python
@@ -48,8 +47,11 @@ in
             redhat.vscode-yaml
             catppuccin.catppuccin-vsc
             tomoki1207.pdf
-          ]
-          ++ (with pkgs.vscode-marketplace; [ jasew.vscode-helix-emulation ]);
+          ])
+          ++ (with pkgs.vscode-marketplace; [ jasew.vscode-helix-emulation ])
+          ++ (with inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.vscode-extensions; [
+            ms-toolsai.jupyter
+          ]);
       };
     };
 }
