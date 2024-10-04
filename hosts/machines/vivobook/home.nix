@@ -1,5 +1,8 @@
 {
-  imports = [ ../../users/mail ];
+  imports = [
+    ../../users/mail
+    ../../../modules/home-manager/desktop/hyprland
+  ];
 
   xokdvium = {
     home = {
