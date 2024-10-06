@@ -28,7 +28,8 @@
         chromium.enable = true;
         gaming.enable = true;
         factorio.enable = false;
-        nekoray.enable = true;
+        nekoray.enable = false;
+        hiddify-next.enable = true;
       };
 
       editors = {

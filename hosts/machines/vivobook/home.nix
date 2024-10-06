@@ -26,6 +26,7 @@
         };
         chromium.enable = true;
         nekoray.enable = true;
+        hiddify-next.enable = true;
       };
 
       editors = {

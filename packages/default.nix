@@ -12,4 +12,5 @@ in
   schemat = callPackage ./schemat.nix { inherit (inputs) fenix; };
   binsider = callPackage ./binsider.nix { };
   probe-rs-rules = callPackage ./probe-rs-rules.nix { };
+  hiddify-next = callPackage ./hiddify-next.nix { };
 }

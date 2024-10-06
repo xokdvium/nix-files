@@ -34,6 +34,7 @@ in
     ./chromium.nix
     ./super-slicer.nix
     ./nekoray.nix
+    ./hiddify-next.nix
   ];
 
   config.xokdvium =
