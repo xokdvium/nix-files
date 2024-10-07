@@ -11,8 +11,9 @@ stdenvNoCC.mkDerivation {
 
   dontUnpack = true;
 
+  # https://bbs.archlinux.org/viewtopic.php?id=164676
   installPhase = ''
     mkdir -p $out/lib/udev/rules.d
-    cp $src $out/lib/udev/rules.d/69-probe-rs.rules
+    substitute $src $out/lib/udev/rules.d/69-probe-rs.rules --replace-fail ", GROUP=\"plugdev\"" ""
   '';
 }
