@@ -1,8 +1,8 @@
 # Fix GNOME xdg-desktop-portal
 # https://discourse.nixos.org/t/ln-failed-to-create-symbolic-link-nix-store-user-units-xdg-desktop-portal-gtk-service-file-exists/53876/6
 
-final: prev: {
-  xdg-desktop-portal-gtk = prev.xdg-desktop-portal-gtk.overrideAttrs (old: {
+_final: prev: {
+  xdg-desktop-portal-gtk = prev.xdg-desktop-portal-gtk.overrideAttrs (_old: {
     buildInputs = [
       prev.glib
       prev.gtk3
