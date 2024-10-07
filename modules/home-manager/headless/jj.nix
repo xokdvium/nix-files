@@ -21,8 +21,10 @@ in
       cfg = config.xokdvium.home.headless.jujutsu;
     in
     lib.mkIf cfg.enable {
+      # deadnix: skip
       home.packages = with pkgs; [
-        lazyjj
+        # FIXME: Fails to build
+        # lazyjj
       ];
 
       programs.jujutsu = {

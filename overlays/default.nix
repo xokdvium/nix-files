@@ -16,6 +16,7 @@ in
     {
       helix-master = import ./helix.nix { inherit inputs; };
       nixd-main = import ./nixd-main.nix { inherit inputs; };
+      fix-gnome-hyprland = import ./fix-gnome-hyprland.nix;
       additions =
         final: _:
         import ../packages {
