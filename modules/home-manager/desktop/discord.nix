@@ -13,6 +13,7 @@ in
     discord.enable = mkHomeCategoryModuleEnableOption config {
       name = "discord";
       category = "desktop";
+      autoEnable = false;
     };
   };
 
