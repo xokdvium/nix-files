@@ -4,7 +4,7 @@
 }:
 
 appimageTools.wrapType2 rec {
-  pname = "hiddiy-next";
+  pname = "hiddify-next";
   version = "2.5.7";
 
   src = fetchurl {
