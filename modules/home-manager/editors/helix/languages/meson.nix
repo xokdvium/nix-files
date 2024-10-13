@@ -1,4 +1,12 @@
 { pkgs, ... }:
+
+let
+  inherit (pkgs) lib;
+  meson-stdin-fmt = pkgs.writeShellScriptBin "meson-stdin-fmt" ''
+    ${lib.getExe pkgs.meson} format /dev/stdin "$@"
+  '';
+in
+
 {
   programs.helix.languages = {
     language-server.mesonlsp = {
@@ -15,7 +23,7 @@
           "typos-lsp"
         ];
         formatter = {
-          command = "${pkgs.meson}/bin/meson";
+          command = "${lib.getExe meson-stdin-fmt}";
         };
       }
     ];
