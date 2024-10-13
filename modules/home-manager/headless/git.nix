@@ -1,3 +1,4 @@
+# https://blog.gitbutler.com/git-tips-1-theres-a-git-config-for-that/
 {
   pkgs,
   outputs,
@@ -72,6 +73,7 @@ in
               undo = "reset HEAD~1 --mixed";
               res = "!git reset --hard";
               lg = "${pretty_log_cmd}";
+              bwc = "blame -w -C -C -C";
             };
 
           userEmail = lib.mkDefault "145775305+xokdvium@users.noreply.github.com";
@@ -89,6 +91,10 @@ in
             };
             core = {
               fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
+            };
+            rerere = {
+              enabled = true;
+              autoUpdate = true;
             };
           };
 
