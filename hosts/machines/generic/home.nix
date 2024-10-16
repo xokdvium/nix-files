@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 
 {
   xokdvium = {
@@ -9,10 +9,6 @@
     common = {
       style.enable = true;
     };
-  };
-
-  programs.eza = {
-    icons = lib.mkForce false;
   };
 
   # NOTE: This does not really matter since this system is not supposed to

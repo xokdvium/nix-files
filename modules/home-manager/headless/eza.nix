@@ -23,7 +23,7 @@ in
       programs.eza = {
         enable = true;
         git = true;
-        icons = lib.mkDefault true;
+        icons = "auto";
 
         enableBashIntegration = true;
         enableFishIntegration = true;

@@ -21,7 +21,14 @@ in
       cfg = config.xokdvium.home.desktop.super-slicer;
     in
     {
-      home.packages = lib.mkIf cfg.enable (with pkgs; [ super-slicer-latest ]);
+      home.packages = lib.mkIf cfg.enable (
+        # deadnix: skip
+        with pkgs;
+        [
+          # TODO: Fix build failure
+          # super-slicer-latest 
+        ]
+      );
       xokdvium.home.persistence = {
         persist.dirs = [ ".config/SuperSlicer" ];
       };

@@ -100,7 +100,9 @@
       url = "github:edolstra/flake-compat";
     };
 
-    fenix.follows = "chaotic/fenix";
+    fenix = {
+      url = "github:nix-community/fenix";
+    };
 
     nix-mineral = {
       url = "github:cynicsketch/nix-mineral";
