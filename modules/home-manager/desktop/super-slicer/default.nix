@@ -22,11 +22,13 @@ in
     in
     {
       home.packages = lib.mkIf cfg.enable (
-        # deadnix: skip
         with pkgs;
         [
-          # TODO: Fix build failure
-          # super-slicer-latest 
+          (super-slicer-latest.overrideAttrs (prev: {
+            patches = prev.patches ++ [
+              ./0001-fix-broken-include.patch
+            ];
+          }))
         ]
       );
       xokdvium.home.persistence = {

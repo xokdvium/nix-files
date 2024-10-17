@@ -1,0 +1,24 @@
+diff --git a/src/jpeg-compressor/jpge.cpp b/src/jpeg-compressor/jpge.cpp
+index f2605ad..8641ed5 100644
+--- a/src/jpeg-compressor/jpge.cpp
++++ b/src/jpeg-compressor/jpge.cpp
+@@ -30,8 +30,9 @@
+ 
+ #include "jpge.h"
+ 
+-#include <stdlib.h>
+-#include <string.h>
++#include <cstdlib>
++#include <cstring>
++#include <cstdio>
+ //#include <malloc.h> // not needed, even create bugs in macos
+ 
+ #define JPGE_MAX(a,b) (((a)>(b))?(a):(b))
+@@ -934,7 +935,6 @@ namespace jpge {
+ 	}
+ 
+ 	// Higher level wrappers/examples (optional).
+-#include <stdio.h>
+ 
+ 	class cfile_stream : public output_stream
+ 	{

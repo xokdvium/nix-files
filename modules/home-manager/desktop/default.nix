@@ -32,7 +32,7 @@ in
     ./zathura.nix
     ./gtkwave.nix
     ./chromium.nix
-    ./super-slicer.nix
+    ./super-slicer
     ./nekoray.nix
     ./hiddify-next.nix
   ];
