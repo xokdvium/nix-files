@@ -16,8 +16,7 @@ map (file: import file { inherit pkgs; }) [
   ./ruby.nix
   ./rust.nix
   ./scala.nix
-  # TODO: Fix build. Maybe switch to rust-overlay?
-  # ./scheme.nix
+  ./scheme.nix
   ./tablegen.nix
   ./toml.nix
   ./typos.nix

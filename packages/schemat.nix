@@ -1,15 +1,14 @@
 # https://www.github.com/raviqqe/schemat/pull/149
 
 {
-  fenix,
+  rust-bin,
   makeRustPlatform,
   lib,
   fetchFromGitHub,
-  system,
 }:
 
 let
-  toolchain = fenix.packages."${system}".minimal.toolchain;
+  toolchain = rust-bin.nightly."2024-08-16".default;
   rustNightlyPlatform = makeRustPlatform {
     cargo = toolchain;
     rustc = toolchain;

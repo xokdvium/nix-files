@@ -27,6 +27,13 @@ in
         lib = prev.lib.extend (_: _: import ../lib { inherit inputs outputs; });
       };
     }
-    (getDefaultOverlayAttrs { inherit (inputs) attic nix-vscode-extensions hyprland; })
+    (getDefaultOverlayAttrs {
+      inherit (inputs)
+        attic
+        nix-vscode-extensions
+        hyprland
+        rust-overlay
+        ;
+    })
   ];
 }

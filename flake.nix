@@ -18,6 +18,7 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     nixos-generators = {
@@ -52,6 +53,8 @@
     nix-eval-jobs = {
       url = "github:nix-community/nix-eval-jobs";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -70,21 +73,20 @@
       url = "github:xokdvium/project-templates";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
-    };
-
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     nixd = {
       url = "github:nix-community/nixd";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     treefmt-nix = {
@@ -94,14 +96,16 @@
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
     };
 
-    fenix = {
-      url = "github:nix-community/fenix";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-mineral = {
