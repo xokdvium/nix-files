@@ -67,6 +67,8 @@
       url = "github:zhaofengli/attic";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     project-templates = {
