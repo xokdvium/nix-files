@@ -10,7 +10,7 @@
   fetchFromGitHub,
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
   pname = "nix-closure-graph";
   version = "0-unstable-2024-03-09";
 
@@ -21,7 +21,7 @@ stdenv.mkDerivation {
     hash = "sha256-IHiOvO6mCVUxSfjJMNrrtIdtJkGF5T+0NnlPxgeIYEk=";
   };
 
-  sourceRoot = "source/programs/nix-closure-graph";
+  sourceRoot = "${finalAttrs.src.name}/programs/nix-closure-graph";
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -49,4 +49,4 @@ stdenv.mkDerivation {
       ]
     }
   '';
-}
+})
