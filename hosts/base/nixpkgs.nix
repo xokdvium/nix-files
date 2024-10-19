@@ -11,6 +11,7 @@
           "discord"
           "zerotierone"
           "steam"
+          "steam-unwrapped"
           "steam-original"
           "steam-run"
           "nvidia-x11"
