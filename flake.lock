@@ -1011,6 +1011,32 @@
         "type": "github"
       }
     },
+    "riscv-isa-manual-glow": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729379062,
+        "narHash": "sha256-ocg4ldBb3LSL2aV29EbZuw+fQ2eh2MFs/gxkgoUAL5g=",
+        "owner": "xokdvium",
+        "repo": "riscv-isa-manual-glow",
+        "rev": "f98b0ccb416b74185d636ccd56e90819be63f097",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xokdvium",
+        "repo": "riscv-isa-manual-glow",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "attic": "attic",
@@ -1036,6 +1062,7 @@
         ],
         "nixpkgs-stable": "nixpkgs-stable_2",
         "project-templates": "project-templates",
+        "riscv-isa-manual-glow": "riscv-isa-manual-glow",
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
         "stylix": "stylix",

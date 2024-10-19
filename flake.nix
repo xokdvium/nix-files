@@ -123,6 +123,13 @@
     nixpkgs-stable = {
       url = "github:nixos/nixpkgs/nixos-24.05";
     };
+
+    riscv-isa-manual-glow = {
+      url = "github:xokdvium/riscv-isa-manual-glow";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   nixConfig = {

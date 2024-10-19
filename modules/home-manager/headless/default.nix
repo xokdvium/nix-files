@@ -33,6 +33,7 @@ in
     ./zellij.nix
     ./zoxide.nix
     ./zsh.nix
+    ./riscv-isa-manual-glow.nix
   ];
 
   options.xokdvium.home.headless = {
