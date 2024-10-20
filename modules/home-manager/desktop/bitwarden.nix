@@ -21,10 +21,8 @@ in
       cfg = config.xokdvium.home.desktop.bitwarden;
     in
     lib.mkIf cfg.enable {
-      # deadnix: skip
       home.packages = with pkgs; [
-        # TODO: Fix build
-        # bitwarden
+        bitwarden
       ];
       xokdvium.home.persistence = {
         persist.dirs = [ ".config/Bitwarden" ];
