@@ -76,6 +76,8 @@
 
             default = [
               ".cache/nix"
+              ".local/share/nix"
+              ".local/state/nix"
               ".gnupg"
               ".ssh"
               "Downloads"
