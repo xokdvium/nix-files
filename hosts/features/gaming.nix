@@ -9,5 +9,6 @@
         proton-ge-custom
       ];
     };
+    gamemode.enable = true;
   };
 }
