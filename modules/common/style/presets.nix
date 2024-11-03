@@ -25,8 +25,8 @@ let
     eighties-spaceduck = {
       base16 = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
       image = pkgs.fetchurl {
-        url = "https://w.wallhaven.cc/full/kx/wallhaven-kx5v57.jpg";
-        sha256 = "sha256-aOvy3zKZS6DfSfH6gFxBNJH8UKHCqbvPeoOgxfjQZtA=";
+        url = "https://w.wallhaven.cc/full/o5/wallhaven-o5p5rl.jpg";
+        sha256 = "sha256-l8Ku7OprZKoitZpDQeiFfwXk/guRItxAtINVAbZk+24=";
       };
     };
 
