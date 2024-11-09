@@ -24,6 +24,10 @@ in
 
       programs.gpg = {
         enable = true;
+        scdaemonSettings = {
+          reader-port = "Yubico Yubi";
+          disable-ccid = true;
+        };
         publicKeys = [
           {
             source = ../../../secrets/keys/pgp.asc;
