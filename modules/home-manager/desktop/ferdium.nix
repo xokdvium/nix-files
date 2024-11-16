@@ -13,6 +13,7 @@ in
     ferdium.enable = mkHomeCategoryModuleEnableOption config {
       name = "ferdium";
       category = "desktop";
+      autoEnable = false;
     };
   };
 
