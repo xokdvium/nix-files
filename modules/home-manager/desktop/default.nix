@@ -11,6 +11,7 @@ in
   imports = [
     ./alacritty.nix
     ./bitwarden.nix
+    ./chromium.nix
     ./deluge.nix
     ./discord.nix
     ./factorio.nix
@@ -19,22 +20,22 @@ in
     ./freecad.nix
     ./gaming.nix
     ./gnome
-    ./plasma
+    ./gtkwave.nix
+    ./hiddify-next.nix
+    ./icon.nix
     ./libreoffice.nix
     ./matrix-clients.nix
+    ./nekoray.nix
     ./obsidian.nix
     ./okular.nix
+    ./plasma
     ./prusa-slicer.nix
     ./style.nix
+    ./super-slicer
     ./telegram.nix
     ./wezterm.nix
     ./wireshark.nix
     ./zathura.nix
-    ./gtkwave.nix
-    ./chromium.nix
-    ./super-slicer
-    ./nekoray.nix
-    ./hiddify-next.nix
   ];
 
   config.xokdvium =

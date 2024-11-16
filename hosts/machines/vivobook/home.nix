@@ -27,6 +27,10 @@
         chromium.enable = true;
         nekoray.enable = true;
         hiddify-next.enable = true;
+        icon = {
+          enable = true;
+          icon = ../../../images/icon.png;
+        };
       };
 
       editors = {

@@ -30,6 +30,10 @@
         factorio.enable = false;
         nekoray.enable = false;
         hiddify-next.enable = true;
+        icon = {
+          enable = true;
+          icon = ../../../images/icon.png;
+        };
       };
 
       editors = {
