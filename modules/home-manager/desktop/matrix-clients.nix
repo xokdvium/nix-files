@@ -21,16 +21,14 @@ in
       cfg = config.xokdvium.home.desktop.matrix-clients;
     in
     lib.mkIf cfg.enable {
-      # deadnix: skip
       home.packages = with pkgs; [
-        # cinny-desktop
-        # gomuks
+        element-desktop
       ];
 
       xokdvium.home.persistence = {
         persist.dirs = [
-          ".local/share/gomuks"
-          ".local/share/cinny"
+          ".config/Element"
+          ".config/Riot"
         ];
       };
     };
