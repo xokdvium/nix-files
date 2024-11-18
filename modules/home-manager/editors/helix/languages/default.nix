@@ -5,7 +5,6 @@ map (file: import file { inherit pkgs; }) [
   ./cpp.nix
   ./dockerfile.nix
   ./git-commit.nix
-  ./groovy.nix
   ./json.nix
   ./just.nix
   ./markdown.nix
