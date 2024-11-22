@@ -20,5 +20,5 @@ in
     let
       cfg = config.xokdvium.home.desktop.libreoffice;
     in
-    lib.mkIf cfg.enable { home.packages = with pkgs; [ libreoffice-fresh ]; };
+    lib.mkIf cfg.enable { home.packages = with pkgs; [ libreoffice ]; };
 }
