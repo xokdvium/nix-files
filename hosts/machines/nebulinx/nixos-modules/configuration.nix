@@ -18,7 +18,7 @@
       "features/zerotier"
       "features/binfmt.nix"
       "features/gaming.nix"
-      "features/cachyos.nix"
+      # "features/cachyos.nix"
       "features/github-token.nix"
       "features/latest-nix.nix"
     ]
