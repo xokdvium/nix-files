@@ -18,6 +18,7 @@
           "nvidia-settings"
           "nvidia-persistenced"
           "libXNVCtrl"
+          "vscode-extension-mhutchie-git-graph"
         ];
     };
     overlays = builtins.attrValues outputs.overlays;
