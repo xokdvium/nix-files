@@ -13,6 +13,7 @@ in
     super-slicer.enable = mkHomeCategoryModuleEnableOption config {
       name = "super-slicer";
       category = "desktop";
+      autoEnable = false;
     };
   };
 

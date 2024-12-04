@@ -14,6 +14,7 @@ in
     riscv-isa-manual-glow.enable = mkHomeCategoryModuleEnableOption config {
       name = "riscv-isa-manual-glow";
       category = "headless";
+      autoEnable = false;
     };
   };
 
