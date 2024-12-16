@@ -127,6 +127,16 @@
     probe-rs-rules.enable = true;
   };
 
+  nix.settings = {
+    system-features = [
+      "benchmark"
+      "big-parallel"
+      "kvm"
+      "nixos-test"
+      "gccarch-znver3"
+    ];
+  };
+
   users = {
     groups.builder = { };
   };
