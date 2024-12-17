@@ -119,6 +119,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs-stable = {
       url = "github:nixos/nixpkgs/nixos-24.05";
     };

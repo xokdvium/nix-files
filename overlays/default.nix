@@ -32,6 +32,7 @@ in
         attic
         nix-vscode-extensions
         hyprland
+        hyprpaper
         rust-overlay
         ;
     })
