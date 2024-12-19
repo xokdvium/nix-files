@@ -114,7 +114,7 @@ in
           files = cfg.persist.files ++ cfg.persist.defaultFiles;
           directories = cfg.persist.dirs ++ cfg.persist.defaultDirs;
 
-          # (FIXME): Make this configurable. Root is not managed by 
+          # (FIXME): Make this configurable. Root is not managed by
           # home-manager yet. Maybe it would be worthwhile to define root
           # user just like all other users?
           users = {
