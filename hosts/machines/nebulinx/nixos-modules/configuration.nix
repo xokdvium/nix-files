@@ -16,7 +16,7 @@
       "features/docker.nix"
       "features/crypto.nix"
       "features/zerotier"
-      "features/binfmt.nix"
+      # "features/binfmt.nix"
       "features/gaming.nix"
       # "features/cachyos.nix"
       "features/github-token.nix"
